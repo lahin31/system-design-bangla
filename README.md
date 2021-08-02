@@ -7,7 +7,7 @@
 - [Section 1: System Design](#section-1-system-design)
 - [Section 2: Client Server Architecture](#section-2-client-server-architecture)
 - [Section 3: Proxy](#section-3-proxy)
-- [Section 4: REST API]
+- [Section 4: REST API](#section-4-rest-api)
 - [Section 5: Scalability]
   - [What is Scalability]
   - [Vertical and Horizontal Scaling]
