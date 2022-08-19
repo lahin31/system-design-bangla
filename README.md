@@ -1,6 +1,8 @@
 # সিস্টেম ডিজাইন বাংলা
 
-এটি একটি রিপোজিটরি যেখানে সেস্টেম ডিজাইন এর মৌলিক জিনিসগুলো নিয়ে আলোচনা করা হয়েছে।
+এটি একটি রিপোজিটরি যেখানে সিস্টেম ডিজাইন এর মৌলিক জিনিসগুলো নিয়ে আলোচনা করা হয়েছে।
+
+[সিস্টেম ডিজাইন একটি বিশাল টপিক, আমাদের জিনিসগুলো বুঝতে হলে সবসময় পড়ালেখা করতে হবে।]
 
 ### সুচিপত্র
 
@@ -11,14 +13,16 @@
 - [Section 5: Proxy](#section-5-proxy)
 - [Section 6: REST API](#section-6-rest-api)
 - [Section 7: Scalability](#section-7-scalability)
-- [Section 8: Replication]
+- [Section 8: Caching]
+- [Section 9: Replication]
   - [What is Replication]
   - [Synchronous and Asynchronous Replication]
   - [Advantage of Synchronous Replication]
   - [Advantage of Asynchronous Replication]
-- [Section 9: CAP]
+- [Section 10: CAP]
   - [What is CAP]
   - [Consistency, Availability & Partitioning in Distributed System]
+- [Section 11: Resources](#section-11-resources)
 
 ## Section 1: System Design
 
@@ -79,3 +83,9 @@ https://dev.to/mukulalpha/system-design-101-everything-to-know-about-distributed
 স্কেলেবিলিটি সাধারণত 2 প্রকারের, ভার্টিকাল স্কেলেবিলিটি (Vertical Scalability) এবং হরাইজন্টাল স্কেলেবিলিটি (Horizontal Scalability)।
 
 🔗 [**আরও পড়ুন: স্কেলেবিলিটি**](./sections/scalability/README.md)
+
+## Section 11: Resources
+
+- <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin</a>
+- <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications</a>
+- <a href="amazon.com/System-Design-Interview-Insiders-Guide/dp/1736049119" target="_blank">System Design Interview by Alex Xu</a>
