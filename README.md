@@ -2,7 +2,7 @@
 
 এটি একটি রিপোজিটরি যেখানে সিস্টেম ডিজাইন এর মৌলিক জিনিসগুলো নিয়ে আলোচনা করা হয়েছে।
 
-[সিস্টেম ডিজাইন একটি বিশাল টপিক, আমাদের জিনিসগুলো বুঝতে হলে সবসময় পড়ালেখা করতে হবে।]
+[সিস্টেম ডিজাইন একটি বিশাল টপিক, আমাদের জিনিসগুলো বুঝতে হলে সবসময় পড়ালেখার মধ্যে থাকতে হবে।]
 
 ### সুচিপত্র
 
@@ -86,6 +86,6 @@ https://dev.to/mukulalpha/system-design-101-everything-to-know-about-distributed
 
 ## Section 11: Resources
 
-- <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin</a>
-- <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications</a>
-- <a href="amazon.com/System-Design-Interview-Insiders-Guide/dp/1736049119" target="_blank">System Design Interview by Alex Xu</a>
+- <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
+- <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
+- <a href="amazon.com/System-Design-Interview-Insiders-Guide/dp/1736049119" target="_blank">System Design Interview by Alex Xu (paid)</a>
