@@ -11,12 +11,12 @@
 - [Section 5: Proxy](#section-5-proxy)
 - [Section 6: REST API](#section-6-rest-api)
 - [Section 7: Scalability](#section-7-scalability)
-- [Section 7: Replication]
+- [Section 8: Replication]
   - [What is Replication]
   - [Synchronous and Asynchronous Replication]
   - [Advantage of Synchronous Replication]
   - [Advantage of Asynchronous Replication]
-- [Section 8: CAP]
+- [Section 9: CAP]
   - [What is CAP]
   - [Consistency, Availability & Partitioning in Distributed System]
 
