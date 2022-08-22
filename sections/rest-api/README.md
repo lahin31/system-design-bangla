@@ -86,7 +86,7 @@ router.get('/users', (req, res) => {
 
 - Filtering, Sorting এর জন্য Query Params ব্যবহার করা। উদাহরণ,
 
-https://mysite.com/posts?tags=react
+{api_endpoint}/posts?tags=react
 
 ? এর পরের অংশটুকু হল Query Parameters.
 
