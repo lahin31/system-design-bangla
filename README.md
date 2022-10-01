@@ -13,16 +13,17 @@
 - [Section 5: Proxy](#section-5-proxy)
 - [Section 6: REST API](#section-6-rest-api)
 - [Section 7: Scalability](#section-7-scalability)
-- [Section 8: Caching]
+- [Section 8: Sharding](#section-8-sharding)
 - [Section 9: Replication]
   - [What is Replication]
   - [Synchronous and Asynchronous Replication]
   - [Advantage of Synchronous Replication]
   - [Advantage of Asynchronous Replication]
-- [Section 10: CAP]
+- [Section 10: Caching]
+- [Section 11: CAP]
   - [What is CAP]
   - [Consistency, Availability & Partitioning in Distributed System]
-- [Section 11: Resources](#section-11-resources)
+- [Section 12: Resources](#section-11-resources)
 
 ## Section 1: System Design
 
@@ -90,7 +91,7 @@ https://dev.to/mukulalpha/system-design-101-everything-to-know-about-distributed
 
 🔗 [**আরও পড়ুন: স্কেলেবিলিটি**](./sections/scalability/README.md)
 
-## Section 11: Resources
+## Section 12: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
