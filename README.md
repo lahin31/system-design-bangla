@@ -96,7 +96,7 @@ https://dev.to/mukulalpha/system-design-101-everything-to-know-about-distributed
 Horizontal Scaling কে Sharding বলে। Sharding হল ডেটা পৃথক করা। উদাহরণ বলা যায়, ডাটাবেসের ডেটা যদি বাড়তে থাকে এবং এত পরিমাণ ডেটা Store করার ক্ষমতা যদি ডাটাবেসের না থাকে তখন আরও রিসোর্স (ডাটাবেসের সংখ্যা) বৃদ্ধি করে আমরা ডেটা পৃথক করে রাখি তাহলে সেটাই Sharding।
 
 <p align="center">
-  <img src="./sections/scalability/images/horizontal-scaling.png" alt="Horizontal Scaling or Sharding">
+  <img src="./images/sharding.png" alt="Sharding">
 </p>
 
 ## Section 12: Resources
