@@ -1,3 +1,5 @@
+## Proxy
+
 এখানে আমরা উক্ত বিষয়গুলো আলোচনা করব।
 
 - [Forward Proxy and Reverse Proxy](#forward-proxy-and-reverse-proxy)
@@ -66,3 +68,8 @@ Load Balancer সাধারণত ৩টি পদ্ধতিতে মেন
 
 - স্কেলেবিলিটি (Scalability), লোড ব্যালেন্সার হরাইজন্টাল স্কেলিং পদ্ধতি ব্যবহার করে আমাদের ওয়েবসাইটকে স্কেল করে থাকে।
 - এভাইল্যাবিলিটি (Availability), কোন সার্ভার যদি কোন কারণে নষ্ট হয়ে যায় লোড ব্যালেন্সারের সেই রিকুয়েস্টকে অন্য সার্ভারে ট্রান্সফার করতে পারবে।
+
+### Resources
+
+- <a href="https://youtu.be/ozhe__GdWC8" target="_blank">Proxy vs. Reverse Proxy (Explained by Example)</a>
+- <a href="https://youtu.be/Nu-4Q3OoR4E" target="_blank">Proxies by sudoCODE</a>

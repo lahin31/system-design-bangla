@@ -128,3 +128,8 @@ HTTP Status Code কে পাঁচ শ্রেণিতে ভাগ কর�
 - 500, মানে সার্ভার এমন কিছু Error পেয়েছে যা সে জানে না কিভাবে ঠিক করবে।
 
 আরও জানতে এই লিংকে যেতে পারেন, https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+### Resources
+
+- <a href="https://youtu.be/ST8XxjOTIsg" target="_blank">What is a REST API? Basics of HTTP REST APIs, taxonomy , HTTP verbs and more</a>
+- <a href="https://youtu.be/aumDleTg_UQ" target="_blank">What is an HTTP POST API? REST API Series,POST method, response codes, errors, best practices & more</a>
