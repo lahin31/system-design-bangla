@@ -74,6 +74,17 @@ POST এবং PUT এর মধ্যে পার্থক্য হল, POST 
 
 PUT এবং PATCH এর মধ্যে পার্থক্য হল, PUT এর ক্ষেত্রে ক্লায়েন্ট একটি স্পেসিফিক ডাটার কিছু পরিবর্তন করতে চাইলে তাকে সেই ডাটার সম্পূর্ণ Attributes সার্ভারকে দিতে হবে এবং PATCH এর ক্ষেত্রে ক্লায়েন্ট সেই ডাটার যে Attribute পরিবর্তন হবে সেই Attribute টাই শুধু সার্ভারকে দিতে হবে।
 
+### HTTP Headers
+
+REST API তে Client এবং Server একে অপরের মধ্যে কিছু অতিরিক্ত তথ্য আদান-প্রধান করতে পারে তা করা হয় HTTP Headers ব্যবহার করে।
+
+HTTP Headers কে ৪ category তে ভাগ করা হয়,
+
+- Request headers: Client থেকে Server
+- Response headers: Server থেকে Client
+- Representation headers: Information about the body of the resource.
+- Payload headers: Information about the payload data.
+
 ### REST API best practices
 
 - JSON format ব্যবহার করা রিকুয়েস্ট এবং রেসপন্সের পাঠানোর সময়। উদাহরণ,
@@ -133,3 +144,4 @@ HTTP Status Code কে পাঁচ শ্রেণিতে ভাগ কর�
 
 - <a href="https://youtu.be/ST8XxjOTIsg" target="_blank">What is a REST API? Basics of HTTP REST APIs, taxonomy , HTTP verbs and more</a>
 - <a href="https://youtu.be/aumDleTg_UQ" target="_blank">What is an HTTP POST API? REST API Series,POST method, response codes, errors, best practices & more</a>
+- <a href="https://youtu.be/76CcJ90Lz4U" target="_blank">How to use headers in REST APIs? Different types of headers, how and where to use?</a>
