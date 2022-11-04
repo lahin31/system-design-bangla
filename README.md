@@ -9,21 +9,22 @@
 - [Section 1: System Design](#section-1-system-design)
 - [Section 2: Reliability](#section-2-reliability)
 - [Section 3: Client Server Architecture](#section-3-client-server-architecture)
-- [Section 4: Distributed System](#section-4-distributed-system)
-- [Section 5: Proxy](#section-5-proxy)
-- [Section 6: REST API](#section-6-rest-api)
-- [Section 7: Scalability](#section-7-scalability)
-- [Section 8: Sharding](#section-8-sharding)
-- [Section 9: Replication]
+- [Section 4: Latency and Response Time](#section-4-latency-and-response-time)
+- [Section 5: Distributed System](#section-5-distributed-system)
+- [Section 6: Proxy](#section-6-proxy)
+- [Section 7: REST API](#section-7-rest-api)
+- [Section 8: Scalability](#section-8-scalability)
+- [Section 9: Sharding](#section-9-sharding)
+- [Section 10: Replication]
   - [What is Replication]
   - [Synchronous and Asynchronous Replication]
   - [Advantage of Synchronous Replication]
   - [Advantage of Asynchronous Replication]
-- [Section 10: Caching]
-- [Section 11: CAP]
+- [Section 11: Caching]
+- [Section 12: CAP]
   - [What is CAP]
   - [Consistency, Availability & Partitioning in Distributed System]
-- [Section 12: Resources](#section-11-resources)
+- [Section 13: Resources](#section-11-resources)
 
 ## Section 1: System Design
 
