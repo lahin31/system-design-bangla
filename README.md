@@ -78,10 +78,6 @@ YouTube কেন?
 
 এগুলো সবকিছু মিলে Distributed System YouTube তৈরি করে।
 
-Distributed System নিয়ে পড়তে চাইলে,
-
-https://dev.to/mukulalpha/system-design-101-everything-to-know-about-distributed-systems-2hd6
-
 ## Section 6: Proxy
 
 ক্লায়েন্ট যখন সার্ভারকে রিকুয়েস্ট পাঠানোর সময় সরাসরি সার্ভারকে রিকুয়েস্ট না করে অন্য একটি সার্ভাররের মাধ্যমে রিকুয়েস্ট করলে, সেই প্রসেস হচ্ছে প্রক্সি এবং যে সার্ভার দিয়ে রিকুয়েস্ট করবে সেটা হচ্ছে প্রক্সি সার্ভার।
