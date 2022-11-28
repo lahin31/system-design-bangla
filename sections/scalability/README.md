@@ -19,3 +19,5 @@
 <p align="center">
   <img src="./images/horizontal-scaling.png" alt="Horizontal Scaling">
 </p>
+
+Horizontal Scaling ব্যবহার করার সবচেয়ে বড় সুবিধা, <a href="./sections/reliability/README.md" target="_blank">Fault Tolarance</a> and Availability. 
