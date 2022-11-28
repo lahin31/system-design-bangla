@@ -20,4 +20,6 @@
   <img src="./images/horizontal-scaling.png" alt="Horizontal Scaling">
 </p>
 
-Horizontal Scaling ব্যবহার করার সবচেয়ে বড় সুবিধা, <a href="./sections/reliability/README.md" target="_blank">Fault Tolarance</a> and Availability. 
+Horizontal Scaling ব্যবহার করার সবচেয়ে বড় সুবিধা, <a href="./sections/reliability/README.md" target="_blank">Fault Tolarance</a> and Availability.
+
+Horizontal Scaling এর একটি সম্পূর্ণ উদাহরণ AWS Auto Scale. আপনার যদি একটি EC2 instance server থাকে এবং আপনার সার্ভার প্রচুর অনুরোধ পেয়ে থাকে তাহলে AWS Auto Scale নতুন সার্ভার/instance তৈরি করতে পারে এবং Horizontal Scale ভিত্তিক কাজ করে।
