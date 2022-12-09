@@ -15,7 +15,7 @@
 - [Section 7: REST API](#section-7-rest-api)
 - [Section 8: Scalability](#section-8-scalability)
 - [Section 9: Sharding](#section-9-sharding)
-- [Section 10: Database Replication](#section-10-dataase-replication)
+- [Section 10: Database Replication](#section-10-database-replication)
 - [Section 11: Caching]
 - [Section 12: CAP]
   - [What is CAP]
