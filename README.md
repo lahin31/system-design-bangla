@@ -15,11 +15,7 @@
 - [Section 7: REST API](#section-7-rest-api)
 - [Section 8: Scalability](#section-8-scalability)
 - [Section 9: Sharding](#section-9-sharding)
-- [Section 10: Replication]
-  - [What is Replication]
-  - [Synchronous and Asynchronous Replication]
-  - [Advantage of Synchronous Replication]
-  - [Advantage of Asynchronous Replication]
+- [Section 10: Database Replication](#section-10-dataase-replication)
 - [Section 11: Caching]
 - [Section 12: CAP]
   - [What is CAP]
@@ -112,6 +108,14 @@ Horizontal Scaling কে Sharding বলে। Sharding হল ডেটা প
 
 <p align="center">
   <img src="./images/sharding.png" alt="Sharding">
+</p>
+
+## Section 10: Database Repication
+
+Database Repication এক প্রকারের Strategy, যেখানে একটি Master Database এবং একটি কিংবা একাধিক Slave Database থাকবে, Master Database এর মধ্যে Insert, Delete এবং Update এর কাজ হবে এবং Slave Database মধ্যে Master Database এর ডেটাগুলোর Copy থাকবে এবং তার মধ্যে শুধু Read Operation হবে।
+
+<p align="center">
+  <img src="./images/DB_replication.png" alt="Database Replication">
 </p>
 
 ## Section 13: Resources
