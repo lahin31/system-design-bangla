@@ -114,6 +114,8 @@ Database Repication এক প্রকারের Strategy, যেখানে
   <img src="./images/DB_replication.png" alt="Database Replication">
 </p>
 
+🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/db_replication/README.md)
+
 ## Section 13: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
