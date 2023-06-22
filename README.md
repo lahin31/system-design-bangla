@@ -16,7 +16,7 @@
 - [Section 8: Scalability](#section-8-scalability)
 - [Section 9: Sharding](#section-9-sharding)
 - [Section 10: Database Replication](#section-10-database-replication)
-- [Section 11: Caching]
+- [Section 11: Caching](#section-11-caching)
 - [Section 12: CAP]
   - [What is CAP]
   - [Consistency, Availability & Partitioning in Distributed System]
@@ -115,6 +115,18 @@ Database Replication এক প্রকারের Strategy, যেখান�
 </p>
 
 🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/db_replication/README.md)
+
+## Section 11: Caching
+
+Caching একটি কৌশল যা দ্বারা কোন Expensive Response'কে কোনো মেমোরিতে রাখা হয়, যাতে বার বার আসা সেই রেস্পন্সের রিকোয়েস্ট কে দ্রুত রেসপন্সটি দিতে পারি। মূল সার্ভারে (যেমন ডাটাবেস) হিট করার পরিবর্তে ক্যাশিং সার্ভারে রিকোয়েস্ট করবে। এতে করে যে সুবিধাটুকু হবে,
+
+- Read API রিকোয়েস্ট Fast হবে
+- Latency Reduce হবে 
+- Fault Tolarence এর ঝুঁকি কমবে
+
+<p align="center">
+  <img src="./images/caching.png" alt="Caching">
+</p>
 
 ## Section 13: Resources
 
