@@ -125,7 +125,7 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 - Fault Tolarence এর ঝুঁকি কমবে
 
 <p align="center">
-  <img src="./images/caching.png" alt="Caching">
+  <img src="./images/caching1.png" alt="Caching">
 </p>
 
 ## Section 13: Resources
