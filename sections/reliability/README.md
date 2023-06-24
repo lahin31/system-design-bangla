@@ -20,6 +20,10 @@ Software এর কোনো বাগ (bug) যদি আমাদের সি
 
 যদি সিস্টেমের কোনো পার্ট নষ্ট হয়ে যায় এবং এর জন্য সম্পূর্ণ সিস্টেম বন্ধ হয়ে যায় তাহলে সেই নষ্ট হয়ে যাওয়া পার্ট হল Single Point of Failure।
 
+<p align="center">
+  <img src="./images/spof.jpeg" alt="Single Point of Failure">
+</p>
+
 ### Resources
 
 - <a href="https://youtu.be/g4EnIOgYuHQ" target="_blank">Reliability, Faults and Failures in Software Engineering by Rachit</a>
