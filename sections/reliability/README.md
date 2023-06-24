@@ -16,6 +16,10 @@ Software এর কোনো বাগ (bug) যদি আমাদের সি
 
 মানুষ(Developer) যখন সিস্টেমটিতে কোনো ভুল Configuration করে থাকে আর সেজন্য যদি সিস্টেমটি Crash করে ফেলে, তখন সেটা আর Reliable হল না। এরকমের Fault গুলোকে আমরা Testing (Unit, Integration) দ্বারা প্রতিরোধ করতে পারি। অন্য পদ্ধতি হল আমরা Sandbox Environment তৈরি করে রাখতে পারি যেখানে মানুষ Explore কিংবা Experiment করতে পারবে আমাদের Features গুলোকে, কোনো প্রাকারের Real User কে effect করা ছাড়া। 
 
+## Single Point of Failure
+
+যদি সিস্টেমের কোনো পার্ট নষ্ট হয়ে যায় এবং এর জন্য সম্পূর্ণ সিস্টেম বন্ধ হয়ে যায় তাহলে সেই নষ্ট হয়ে যাওয়া পার্ট হল Single Point of Failure।
+
 ### Resources
 
 - <a href="https://youtu.be/g4EnIOgYuHQ" target="_blank">Reliability, Faults and Failures in Software Engineering by Rachit</a>
