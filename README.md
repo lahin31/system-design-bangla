@@ -4,6 +4,10 @@
 
 [সিস্টেম ডিজাইন একটি বিশাল টপিক, আমাদের জিনিসগুলো বুঝতে হলে সবসময় পড়ালেখার মধ্যে থাকতে হবে।]
 
+<p align="center">
+  <img src="./images/system-design-wallpaper.png" alt="System Design Wallpaper">
+</p>
+
 ### সুচিপত্র
 
 - [Section 1: System Design](#section-1-system-design)
