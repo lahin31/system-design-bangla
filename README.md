@@ -114,6 +114,8 @@ YouTube কেন?
 
 Horizontal Scaling কে Sharding বলে। Sharding হল ডেটা পৃথক করা। উদাহরণ বলা যায়, ডাটাবেসের ডেটা যদি বাড়তে থাকে এবং এত পরিমাণ ডেটা Store করার ক্ষমতা যদি ডাটাবেসের না থাকে তখন আরও রিসোর্স (ডাটাবেসের সংখ্যা) বৃদ্ধি করে আমরা ডেটা পৃথক করে রাখি তাহলে সেটাই Sharding।
 
+(বিস্তারিত চলমান)
+
 <p align="center">
   <img src="./images/sharding.png" alt="Sharding">
 </p>
@@ -139,6 +141,8 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 <p align="center">
   <img src="./images/caching1.png" alt="Caching">
 </p>
+
+(বিস্তারিত চলমান)
 
 ## Section 13: Resources
 
