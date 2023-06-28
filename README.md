@@ -21,7 +21,7 @@
 - [Section 9: Sharding](#section-9-sharding)
 - [Section 10: Database Replication](#section-10-database-replication)
 - [Section 11: Caching](#section-11-caching)
-- [Secyion 12: Consistent Hashing]
+- [Section 12: Consistent Hashing]
 - [Section 13: CAP]
   - [What is CAP]
   - [Consistency, Availability & Partitioning in Distributed System] 
