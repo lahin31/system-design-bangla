@@ -25,7 +25,7 @@
 - [Section 13: CAP]
   - [What is CAP]
   - [Consistency, Availability & Partitioning in Distributed System] 
-- [Section 14: Resources](#section-11-resources)
+- [Section 14: Resources](#section-14-resources)
 
 ## Section 1: System Design
 
