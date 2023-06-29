@@ -21,11 +21,10 @@
 - [Section 9: Sharding](#section-9-sharding)
 - [Section 10: Database Replication](#section-10-database-replication)
 - [Section 11: Caching](#section-11-caching)
-- [Section 12: Consistent Hashing]
-- [Section 13: CAP]
-  - [What is CAP]
-  - [Consistency, Availability & Partitioning in Distributed System]
-- [Section 14: Resources](#section-14-resources)
+- [Section 12: Content Delivery Network]
+- [Section 13: Consistent Hashing]
+- [Section 14: CAP Theorem]
+- [Section 15: Resources](#section-15-resources)
 
 ## Section 1: System Design
 
@@ -149,7 +148,7 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 
 (বিস্তারিত চলমান)
 
-## Section 14: Resources
+## Section 15: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
