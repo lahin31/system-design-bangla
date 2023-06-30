@@ -1,0 +1,20 @@
+name: "Thanks a pull request"
+
+on:
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - "main"
+
+jobs:
+  thanks-pr-message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Thanks PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            Hello there, thanks for opening your Pull Request. Someone will review it soon.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
