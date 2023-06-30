@@ -82,6 +82,20 @@ YouTube কেন?
 
 এগুলো সবকিছু মিলে Distributed System YouTube তৈরি করে।
 
+## Section 7: Domain Name System
+
+Domain Name System কিংবা DNS একটি নির্দিষ্ট Human Readable Domain (যেমন www.google.com) কে একটি নির্দিষ্ট IP-তে রূপান্তর করে।
+এই রূপান্তর করার পদ্ধতিটা শুরু হয় DNS Resolver দিয়ে,
+
+- DNS Resolver মূলত Human Readable Domain কে নির্দিষ্ট IP-তে রূপান্তর করে থাকে। এর ৩টি পার্ট আছে,
+  - Root Server, এই সার্ভার মূলত .com, .org, .net ইত্যাদির তথ্য রাখে এবং সেগুলোর IP সেই DNS Resolver কে দিয়ে থাকে যেমন .com এর জন্য .com এর IP, .org এর জন্য .org এর IP
+  - Top Level Domain Server, এই সার্ভার মূলত প্রতিটি Top Level Domain এর Authorititve Server এর তথ্য নিজের মধ্যে রাখে।
+  - Authorititve Server, এই সার্ভারের মধ্যে সেই Human Readable Domain (যেমন www.google.com) এর IP পাওয়া যায়।
+
+<p align="center">
+  <img src="./images/dns.png" alt="DNS">
+</p>
+
 ## Section 8: Proxy
 
 ক্লায়েন্ট যখন সার্ভারকে রিকুয়েস্ট পাঠানোর সময় সরাসরি সার্ভারকে রিকুয়েস্ট না করে অন্য একটি সার্ভাররের মাধ্যমে রিকুয়েস্ট করলে, সেই প্রসেস হচ্ছে প্রক্সি এবং যে সার্ভার দিয়ে রিকুয়েস্ট করবে সেটা হচ্ছে প্রক্সি সার্ভার।
