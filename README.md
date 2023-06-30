@@ -16,7 +16,7 @@
 - [Section 4: Reliability](#section-4-reliability)
 - [Section 5: Performance Metrics](#section-5-performance-metrics)
 - [Section 6: Distributed System](#section-6-distributed-system)
-- [Section 7: Domain Name System]
+- [Section 7: Domain Name System](#section-7-domain-name-system)
 - [Section 8: Proxy](#section-8-proxy)
 - [Section 9: REST API](#section-9-rest-api)
 - [Section 10: Scalability](#section-10-scalability)
@@ -89,7 +89,7 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 
 - DNS Resolver মূলত Human Readable Domain কে নির্দিষ্ট IP-তে রূপান্তর করে থাকে। এর ৩টি পার্ট আছে,
   - Root Server, এই সার্ভার মূলত .com, .org, .net ইত্যাদির তথ্য রাখে এবং সেগুলোর IP সেই DNS Resolver কে দিয়ে থাকে যেমন .com এর জন্য .com এর IP, .org এর জন্য .org এর IP
-  - Top Level Domain Server, এই সার্ভার মূলত প্রতিটি Top Level Domain এর Authorititve Server এর তথ্য নিজের মধ্যে রাখে।
+  - Top Level Domain Server, এই সার্ভার মূলত প্রতিটি Top Level Domain (www.google.com এর TLD হল .com) এর Authorititve Server এর তথ্য নিজের মধ্যে রাখে।
   - Authorititve Server, এই সার্ভারের মধ্যে সেই Human Readable Domain (যেমন www.google.com) এর IP পাওয়া যায়।
 
 <p align="center">
