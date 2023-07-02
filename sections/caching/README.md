@@ -21,3 +21,16 @@
 <p align="center">
   <img src="./images/cache_aside.png" alt="Cache Aside" />
 </p>
+
+### Pros of cache-aside
+
+- read-heavy application এর জন্য উত্তম।
+- Cache server ডাউন থাকলেও request ব্যর্থ হওয়ার সুযোগ নাই, যেহেতু তখন ডাটাবেসে থেকে ডেটা নিবে।
+
+### Cons of cache-aside
+
+- নতুন ডেটা Read এর ক্ষেত্রে সবসময় cache miss হবে।
+
+Memcached এবং Redis, cache-aside caching strategy follow করে।
+
+(বিস্তারিত চলমান)
