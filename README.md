@@ -27,10 +27,11 @@
 - [Section 15: Consistent Hashing]
 - [Section 16: CAP Theorem]
 - [Section 17: Message Queue]
-- [Section 18: Design a Rate Limiter]
-- [Section 19: Design a Chat System]
-- [Section 20: Design a Notification System]
-- [Section 21: Resources](#section-21-resources)
+- [Section 18: Design URL Shortener]
+- [Section 19: Design a Rate Limiter]
+- [Section 20: Design a Chat System]
+- [Section 21: Design a Notification System]
+- [Section 22: Resources](#section-22-resources)
 
 ## Section 1: System Design
 
@@ -154,7 +155,7 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 
 🔗 [**আরও পড়ুন: ক্যাশিং**](./sections/caching/README.md)
 
-## Section 21: Resources
+## Section 22: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
