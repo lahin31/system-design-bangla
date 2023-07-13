@@ -60,4 +60,8 @@ Memcached এবং Redis, cache-aside caching strategy follow করে।
 - যদি ডেটা ক্যাশিং সার্ভারে বিদ্যমান না থাকে তাহলে ক্যাশিং সার্ভার Database হিট করবে এবং ডেটা সংগ্রহ করে ক্যাশিং সার্ভারে রাখবে এবং তারপর সেই ডেটা Application সার্ভারকে রিটার্ন করবে।
 - তারপর Application সার্ভার সেই ডেটা'টি ক্লায়েন্টকে দিবে।
 
+<p align="center">
+  <img src="./images/read_through.png" alt="Read-through" />
+</p>
+
 (বিস্তারিত চলমান)
