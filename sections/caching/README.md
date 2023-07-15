@@ -83,4 +83,8 @@ Memcached এবং Redis, cache-aside caching strategy follow করে।
   <img src="./images/write_around.png" alt="Write Around" />
 </p>
 
+#### Pros of Write Around
+
+- Inconsistency issue resolve করে between Cache and Database।
+
 (বিস্তারিত চলমান)
