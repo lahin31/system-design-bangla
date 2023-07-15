@@ -64,4 +64,13 @@ Memcached এবং Redis, cache-aside caching strategy follow করে।
   <img src="./images/read_through.png" alt="Read-through" />
 </p>
 
+#### Pros of Read-through
+
+- read-heavy application এর জন্য উত্তম।
+- Application Server এ কোনো প্রকারের Data Fetching হবে না।
+
+#### Cons of Read-through
+
+- নতুন ডেটা Read এর ক্ষেত্রে সবসময় cache miss হবে।
+
 (বিস্তারিত চলমান)
