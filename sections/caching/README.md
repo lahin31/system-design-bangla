@@ -73,4 +73,14 @@ Memcached এবং Redis, cache-aside caching strategy follow করে।
 
 - নতুন ডেটা Read এর ক্ষেত্রে সবসময় cache miss হবে।
 
+### Write Around
+
+- প্রথমে Client Application সার্ভারে write রিকোয়েস্ট করবে।
+- Application Server সরাসরি ডাটাবেসে value update করবে।
+- Application Server ক্যাশিং সার্ভারে ডাটা Dirty হিসেবে যোগ করবে। যাতে করে পরবর্তী সময় Read রিকোয়েস্ট আসলে বুজা যায় ডাটা Stale।
+
+<p align="center">
+  <img src="./images/write_around.png" alt="Write Around" />
+</p>
+
 (বিস্তারিত চলমান)
