@@ -17,7 +17,7 @@
 - [Section 5: Performance Metrics](#section-5-performance-metrics)
 - [Section 6: Distributed System](#section-6-distributed-system)
 - [Section 7: Domain Name System](#section-7-domain-name-system)
-- [Section 8: Stateful and Stateless Architecture]
+- [Section 8: Stateful and Stateless Architecture](#section-8-stateful-and-stateless-architecture)
 - [Section 9: Proxy](#section-9-proxy)
 - [Section 10: REST API](#section-10-rest-api)
 - [Section 11: Scalability](#section-11-scalability)
