@@ -19,7 +19,7 @@
 - [Section 5: Performance Metrics](#section-5-performance-metrics)
 - [Section 6: Distributed System](#section-6-distributed-system)
 - [Section 7: Domain Name System](#section-7-domain-name-system)
-- [Section 8: Functional and Non Fuctional Requirements](#section-8-functional-and-non-functional-requirements)
+- [Section 8: Functional and Non Functional Requirements](#section-8-functional-and-non-functional-requirements)
 - [Section 9: Stateful and Stateless Architecture](#section-9-stateful-and-stateless-architecture)
 - [Section 10: Proxy](#section-10-proxy)
 - [Section 11: REST API](#section-11-rest-api)
@@ -115,7 +115,7 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
   <img src="./images/dns.png" alt="DNS">
 </p>
 
-## Section 8: Functional and Non Fuctional Requirements
+## Section 8: Functional and Non Functional Requirements
 
 ### Functional Requirements
 
