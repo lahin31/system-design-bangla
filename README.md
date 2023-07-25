@@ -20,22 +20,23 @@
 - [Section 6: Distributed System](#section-6-distributed-system)
 - [Section 7: Domain Name System](#section-7-domain-name-system)
 - [Section 8: Functional and Non Functional Requirements](#section-8-functional-and-non-functional-requirements)
-- [Section 9: Stateful and Stateless Architecture](#section-9-stateful-and-stateless-architecture)
-- [Section 10: Proxy](#section-10-proxy)
-- [Section 11: REST API](#section-11-rest-api)
-- [Section 12: Scalability](#section-12-scalability)
-- [Section 13: Sharding](#section-13-sharding)
-- [Section 14: Database Replication](#section-14-database-replication)
-- [Section 15: Caching](#section-15-caching)
-- [Section 16: Content Delivery Network](#section-16-content-delivery-network)
-- [Section 17: Consistent Hashing]
-- [Section 18: CAP Theorem]
-- [Section 19: Message Queue]
-- [Section 20: Design URL Shortener]
-- [Section 21: Design a Rate Limiter]
-- [Section 22: Design a Chat System]
-- [Section 23: Design a Notification System]
-- [Section 24: Resources](#section-24-resources)
+- [Section 9: Back Of the Envelope Estimation]
+- [Section 10: Stateful and Stateless Architecture](#section-10-stateful-and-stateless-architecture)
+- [Section 11: Proxy](#section-11-proxy)
+- [Section 12: REST API](#section-12-rest-api)
+- [Section 13: Scalability](#section-13-scalability)
+- [Section 14: Sharding](#section-14-sharding)
+- [Section 15: Database Replication](#section-15-database-replication)
+- [Section 16: Caching](#section-16-caching)
+- [Section 17: Content Delivery Network](#section-17-content-delivery-network)
+- [Section 18: Consistent Hashing]
+- [Section 19: CAP Theorem]
+- [Section 20: Message Queue]
+- [Section 21: Design URL Shortener]
+- [Section 22: Design a Rate Limiter]
+- [Section 23: Design a Chat System]
+- [Section 24: Design a Notification System]
+- [Section 25: Resources](#section-25-resources)
 
 ## Section 1: System Design
 
@@ -140,7 +141,7 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 
 প্রতিটা হচ্ছে এক একটি Non Functional Requirement।
 
-## Section 9: Stateful and Stateless Architecture
+## Section 10: Stateful and Stateless Architecture
 
 ### Stateful
 
@@ -156,7 +157,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: স্টেটলেস-স্টেটফুল আর্কিটেকচার**](./sections/stateless-stateful-architecture/README.md)
 
-## Section 10: Proxy
+## Section 11: Proxy
 
 ক্লায়েন্ট যখন সার্ভারকে রিকুয়েস্ট পাঠানোর সময় সরাসরি সার্ভারকে রিকুয়েস্ট না করে অন্য একটি সার্ভাররের মাধ্যমে রিকুয়েস্ট করলে, সেই প্রসেস হচ্ছে প্রক্সি এবং যে সার্ভার দিয়ে রিকুয়েস্ট করবে সেটা হচ্ছে প্রক্সি সার্ভার।
 
@@ -164,7 +165,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: প্রক্সি**](./sections/proxy/README.md)
 
-## Section 11: REST Api
+## Section 12: REST Api
 
 REST Api জানার পূর্বে আমাদের বুঝতে হবে রেস্ট(REST) মানে কি, REST মানে হল Representational State Transfer যার মানে দাড়ায় এটি একটি আর্কিটেকচারাল স্টাইল যা ব্যবহার করা হয় স্টেট ট্রান্সফার এর জন্য। এখন REST Api হল, এক প্রকারের এপিআই কনভেনশন যা ব্যবহার করা হয় দুটি এন্ড(যেমনঃ ক্লায়েন্ট এবং সার্ভার) এর মধ্যে স্টেট ট্রান্সফার করাকে নিশ্চিত করার জন্য।
 
@@ -172,7 +173,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: রেস্ট এপিআই**](./sections/rest-api/README.md)
 
-## Section 12: Scalability
+## Section 13: Scalability
 
 স্কেলেবিলিটি সাধারণত সিস্টেমের ক্ষমতাকে বুঝায় যখন সিস্টেমে ট্রাফিকের পরিমাণ বাড়তে থাকে। উদাহরণ বলা যেতে পারে, একটি ওয়েবসাইটের ডাটাবেসে এখন একটি নির্দিষ্ট পরিমাণ রিকুয়েস্ট করা হচ্ছে কিন্তু আজ থেকে ৫ মাস পর রিকুয়েস্ট ২ গুণ হয়ে গেল তার ঠিক আরও ৫ মাস পর রিকুয়েস্ট ৪ গুণ হয়ে গেল, একটা সময় দেখা যেতে পারে ডাটাবেস সার্ভার এত পরিমাণ রিকুয়েস্ট লোড নিতে পারছে না, এই সমস্যার সমাধানের জন্য স্কেল করাকে স্কেলেবিলিটি বলে।
 
@@ -180,7 +181,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: স্কেলেবিলিটি**](./sections/scalability/README.md)
 
-## Section 13: Sharding
+## Section 14: Sharding
 
 Horizontal Scaling কে Sharding বলে। Sharding হল ডেটা পৃথক করা। উদাহরণ বলা যায়, ডাটাবেসের ডেটা যদি বাড়তে থাকে এবং এত পরিমাণ ডেটা Store করার ক্ষমতা যদি ডাটাবেসের না থাকে তখন আরও রিসোর্স (ডাটাবেসের সংখ্যা) বৃদ্ধি করে আমরা ডেটা পৃথক করে রাখি তাহলে সেটাই Sharding।
 
@@ -190,7 +191,7 @@ Horizontal Scaling কে Sharding বলে। Sharding হল ডেটা প
   <img src="./images/sharding.png" alt="Sharding">
 </p>
 
-## Section 14: Database Replication
+## Section 15: Database Replication
 
 Database Replication এক প্রকারের Strategy, যেখানে একটি Master Database এবং একটি কিংবা একাধিক Slave Database থাকবে। Master Database এর মধ্যে Insert, Delete এবং Update এর কাজ হবে এবং Slave Database মধ্যে Master Database এর ডেটাগুলোর Copy থাকবে এবং তার মধ্যে শুধু Read Operation হবে।
 
@@ -200,7 +201,7 @@ Database Replication এক প্রকারের Strategy, যেখান�
 
 🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/db_replication/README.md)
 
-## Section 15: Caching
+## Section 16: Caching
 
 Caching একটি কৌশল যা দ্বারা কোন Expensive Response'কে কোনো মেমোরিতে রাখা হয়, যাতে বার বার আসা সেই রেস্পন্সের রিকোয়েস্ট কে দ্রুত রেসপন্সটি দিতে পারি। মূল সার্ভারে (যেমন ডাটাবেস) হিট করার পরিবর্তে ক্যাশিং সার্ভারে রিকোয়েস্ট করবে। এতে করে যে সুবিধাটুকু হবে,
 
@@ -214,7 +215,7 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 
 🔗 [**আরও পড়ুন: ক্যাশিং**](./sections/caching/README.md)
 
-## Section 16: Content Delivery Network
+## Section 17: Content Delivery Network
 
 Content Delivery Network অথবা CDN, এটি একটি সিস্টেম যেখানে একাধিক সার্ভার আমাদের ভৌগোলিক এর আসেপাশে থাকে, যাতে আমরা খুব দ্রুত কন্টেন্ট পেতে পারি। কন্টেন্টটি হতে পারে JS, CSS অথবা Images।
 
@@ -227,7 +228,7 @@ Content Delivery Network অথবা CDN, এটি একটি সিস্�
 
 (বিস্তারিত চলমান)
 
-## Section 24: Resources
+## Section 25: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
