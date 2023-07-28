@@ -31,12 +31,15 @@
 - [Section 17: Content Delivery Network](#section-17-content-delivery-network)
 - [Section 18: Consistent Hashing]
 - [Section 19: CAP Theorem]
-- [Section 20: Message Queue]
+- [Section 20: Distributed Messaging System]
 - [Section 21: Design URL Shortener]
 - [Section 22: Design a Rate Limiter]
 - [Section 23: Design a Chat System]
 - [Section 24: Design a Notification System]
-- [Section 25: Resources](#section-25-resources)
+- [Section 25: Design High Availability & Resilience System]
+- [Section 26: How Discord Stores Trillions of Messages]
+- [Section 27: How Grab stores and processes millions of orders daily]
+- [Section 28: Resources](#section-28-resources)
 
 ## Section 1: System Design
 
@@ -228,7 +231,7 @@ Content Delivery Network অথবা CDN, এটি একটি সিস্�
 
 (বিস্তারিত চলমান)
 
-## Section 25: Resources
+## Section 28: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
