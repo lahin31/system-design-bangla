@@ -144,6 +144,12 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 
 প্রতিটা হচ্ছে এক একটি Non Functional Requirement।
 
+## Section 9: Back Of the Envelope Estimation
+
+এটি একটি টেকনিক যা আমাদেরকে সিস্টেম ডিজাইন এর Constraints (Load Balancer, CDN) গুলো ব্যবহার করবো কি না তার আনুমানিক ধারনা হিসাব করে বলে দিতে পারে।
+
+(বিস্তারিত চলমান)
+
 ## Section 10: Stateful and Stateless Architecture
 
 ### Stateful
