@@ -29,16 +29,16 @@
 - [Section 15: Database Replication](#section-15-database-replication)
 - [Section 16: Caching](#section-16-caching)
 - [Section 17: Content Delivery Network](#section-17-content-delivery-network)
-- [Section 18: Consistent Hashing]
-- [Section 19: CAP Theorem]
-- [Section 20: Distributed Messaging System]
-- [Section 21: Design URL Shortener]
-- [Section 22: Design a Rate Limiter]
-- [Section 23: Design a Chat System]
-- [Section 24: Design a Notification System]
-- [Section 25: Design High Availability & Resilience System]
-- [Section 26: How Discord Stores Trillions of Messages]
-- [Section 27: How Grab stores and processes millions of orders daily]
+- [Section 18: Consistent Hashing] (চলমান)
+- [Section 19: CAP Theorem] (চলমান)
+- [Section 20: Distributed Messaging System] (চলমান)
+- [Section 21: Design URL Shortener] (চলমান)
+- [Section 22: Design a Rate Limiter] (চলমান)
+- [Section 23: Design a Chat System] (চলমান)
+- [Section 24: Design a Notification System] (চলমান)
+- [Section 25: Design High Availability & Resilience System] (চলমান)
+- [Section 26: How Discord Stores Trillions of Messages] (চলমান)
+- [Section 27: How Grab stores and processes millions of orders daily] (চলমান)
 - [Section 28: Resources](#section-28-resources)
 
 ## Section 1: System Design
