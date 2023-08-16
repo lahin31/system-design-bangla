@@ -210,6 +210,8 @@ Database Replication এক প্রকারের Strategy, যেখান�
   <img src="./images/DB_replication.png" alt="Database Replication">
 </p>
 
+Database Replication, SQL এবং NoSQL দুটি ডেটাবেসে করা যায়।
+
 🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/db_replication/README.md)
 
 ## Section 16: Caching
