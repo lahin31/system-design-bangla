@@ -4,7 +4,7 @@
 
 - **effective scaling**: মাল্টিপল সার্ড টেবিলে ডিস্ট্রিবিউট করার ফলে scalability ensure হয়ে থাকে।
 
-- **database resiliency**: মাল্টিপল সার্ড টেবিলে ডিস্ট্রিবিউট করার ফলে প্রতিবার যখন নতুন ডেটা insert হয় database resiliency বজায় থাকে।
+- **database resiliency**: মাল্টিপল সার্ড টেবিলে ডিস্ট্রিবিউট করার ফলে প্রতিবার যখন একটি সার্ভার(সার্ড) কোন কারনে নষ্ট হয়ে যায়, তখন অন্য সার্ভার(সার্ড) up and running থাকে।
 
 ## Sharding Techniques
 
