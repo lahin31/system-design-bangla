@@ -12,7 +12,7 @@
 
 [আপনার যদি এই কনটেন্ট পড়ে ভালো লাগে, আপনি চাইলে আমাকে কফি স্পনসর করতে পারেন, https://www.buymeacoffee.com/lahin31]
 
-### সুচিপত্র
+### সূচিপত্র
 
 - [Section 1: System Design](#section-1-system-design)
 - [Section 2: Database - SQL and NoSQL](#section-2-database---sql-and-nosql)
@@ -136,7 +136,7 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 
 ### Non Functional Requirements
 
-এটি মূলত একটি সিস্টেমের গুণমান বৈশিষ্ট্যতা (Quality Characteristics), উদাহরণ,
+এটি মূলত একটি সিস্টেমের গুণমান বৈশিষ্ট্যতা (Quality Characteristics), উদাহরণ:
 
 - Performance
 - Security

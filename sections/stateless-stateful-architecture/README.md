@@ -12,6 +12,6 @@
   <img src="./images/stateful-2.png" alt="Stateful pic">
 </p>
 
-অতিরিক্ত Client Request এর ফলে Client 1 এর Deta নষ্ট হওয়ার পর, সার্ভারে Client 1 এর ডেটা আর নাই।
+অতিরিক্ত Client Request এর ফলে Client 1 এর Data নষ্ট হওয়ার পর, সার্ভারে Client 1 এর ডেটা আর নাই।
 
 এটি হল একটি Limitation (Scale না করতে পারা)।
