@@ -31,7 +31,3 @@ Software এর কোনো বাগ (bug) যদি আমাদের সি
 <p align="center">
   <img src="./images/spof-2.png" alt="Single Point of Failure">
 </p>
-
-### Resources
-
-- <a href="https://youtu.be/g4EnIOgYuHQ" target="_blank">Reliability, Faults and Failures in Software Engineering by Rachit</a>
