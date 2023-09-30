@@ -31,3 +31,26 @@ Software এর কোনো বাগ (bug) যদি আমাদের সি
 <p align="center">
   <img src="./images/spof-2.png" alt="Single Point of Failure">
 </p>
+
+### How to prevent Single Point of Failure
+
+ধরুন আমাদের একটি সিস্টেম আছে যেখানে একটি সার্ভার নোড এবং একটি ডেটাবেস সার্ভার আছে।
+
+<p align="center">
+  <img src="./images/spof-3.png" alt="Single Point of Failure">
+</p>
+
+এখানে **সার্ভার নোড** আর **ডাটাবেস** হচ্ছে Single Point of Failure। সার্ভার নোড কিংবা ডাটাবেস বন্ধ হয়ে গেলে সম্পূর্ণ সিস্টেম ডাউন হয়ে যাবে। Single Point of Failure prevent করতে হলে আমাদের,
+
+- একাধিক সার্ভারের সাপোর্ট দিতে হবে।
+- একাধিক ডেটাবেস সার্ভার মানে <a href="../db_replication/README.md" target="_blank">Database Replication</a> করতে হবে।
+
+এখন একাধিক সার্ভার যোগ করার পর, আমরা Load Balancer এর মাধ্যমে একাধিক সার্ভারে ক্লায়েন্ট রিকোয়েস্ট ডিস্ট্রিবিউট করতে পারি।
+
+<p align="center">
+  <img src="./images/spof-4.png" alt="Single Point of Failure">
+</p>
+
+এখানে Load Balancer নিজে Single Point of Failure। একাধিক Load Balancer যোগ করে DNS এর মাধ্যমে আমাদের ক্লায়েন্ট রিকোয়েস্ট নির্দিষ্ট Load Balancer চলে যাবে।
+
+এরকম আমরা Single Point of Failure prevent করতে পারব।
