@@ -43,7 +43,7 @@ Software এর কোনো বাগ (bug) যদি আমাদের সি
 এখানে **সার্ভার নোড** আর **ডাটাবেস** হচ্ছে Single Point of Failure। সার্ভার নোড কিংবা ডাটাবেস বন্ধ হয়ে গেলে সম্পূর্ণ সিস্টেম ডাউন হয়ে যাবে। Single Point of Failure prevent করতে হলে আমাদের,
 
 - একাধিক সার্ভারের সাপোর্ট দিতে হবে।
-- একাধিক ডেটাবেস সার্ভার মানে <a href="../db_replication/README.md" target="_blank">Database Replication</a> করতে হবে।
+- একাধিক ডেটাবেস সার্ভার মানে <a href="../../README.md#section-15-database-replication" target="_blank">Database Replication</a> করতে হবে।
 
 এখন একাধিক সার্ভার যোগ করার পর, আমরা Load Balancer এর মাধ্যমে একাধিক সার্ভারে ক্লায়েন্ট রিকোয়েস্ট ডিস্ট্রিবিউট করতে পারি।
 
