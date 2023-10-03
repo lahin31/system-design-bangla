@@ -15,11 +15,13 @@ x Million users \* y KB = xy GB
 
 ধরি ফেসবুক এর DAU(Daily Active User) ১০ Billion।
 
-Daily Active User যদি গড় ১ টি করে post করে তাহলে, ১ টি post ধরে নি 1kb
+Daily Active User যদি গড় ১ টি করে post করে তাহলে প্রতিটি post ধরে নি 1kb
+
+উপরের চার্ট অনুযায়ী billion এর ৯ টি zeros আর kb এর ৩ টি zeros মোট ৯ + ৩ = ১২, ১২ টি zeros মানে trillion আর ১০ \* ১ মানে ১০। 
 
 (10 Billion \* 1 kb) = 10 trillion
 
-উপরের চার্ট অনুযায়ী billion এর ৯ টি zeros আর kb এর ৩ টি zeros মোট ৯ + ৩ = ১২, ১২ টি zeros মানে trillion আর ১০ \* ১ মানে ১০। storage এর পরিমান দাঁড়ায় ১০ trillion।
+storage এর পরিমান দাঁড়ায় ১০ trillion।
 
 **আমরা এখন ফেইসবুক এর Traffic Estimation বের করতে পারি।**
 
