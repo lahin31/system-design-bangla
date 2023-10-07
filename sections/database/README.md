@@ -27,7 +27,7 @@ SQL এবং NoSQL কিছু বৈশিষ্ট্য আছে যার
 - Transection অথবা Operation হয় completely হবে, না হয় completely হবে না। তাকে Atomicity বলে।
 - প্রতিটি Transection একটি Database state কে, একটি constant state থেকে আরেকটি constant staten এ রূপান্তর করবে। তাকে Consistency বলে।
 - একাধিক Transection আলাদাভাবে concurrently কাজ করতে পারবে। তাকে Isolation বলে।
-- Transection এর মাধ্যমে changes permanent হবে।
+- Transection এর মাধ্যমে changes permanent হবে। তাকে Durability বলে।
 
 NoSQL ভিত্তিক Database ACID properties সম্পূর্ণ সাপোর্ট করে না।
 
