@@ -22,9 +22,16 @@ SQL এবং NoSQL কিছু বৈশিষ্ট্য আছে যার
 
 - ACID: SQL ভিত্তিক Database সাধারণত ACID property follow করে থাকে। যেখানে A মানে Atomicity, C মানে Consistency, I মানে Isolation এবং D মানে Durability। এগুলোর উদ্দেশ্য হল Data Integrity এবং Consistency বজায় রাখা। যেমন Banking Software/ATM Vendor Machine এগুলোর জন্য ACID খুব গুরুত্বপূর্ণ।
 
+আরো specifically বললে,
+
+- Transection অথবা Operation হয় completely হবে, না হয় completely হবে না। তাকে Atomicity বলে।
+- প্রতিটি Transection একটি Database state কে, একটি constant state থেকে আরেকটি constant staten এ রূপান্তর করবে। তাকে Consistency বলে।
+- একাধিক Transection আলাদাভাবে concurrently কাজ করতে পারবে। তাকে Isolation বলে।
+- Transection এর মাধ্যমে changes permanent হবে।
+
 NoSQL ভিত্তিক Database ACID properties সম্পূর্ণ সাপোর্ট করে না।
 
-এখন আমাদের সিস্টেমে Data Integrity এবং Consistency বজায় রাখতে চাইলে আমরা SQL ভিত্তিক Database ব্যবহার করব, না হয় NoSQL ভিত্তিক Database।
+এখন আমাদের সিস্টেমে Data Integrity/Consistency(Eventual Consistency) বজায় রাখতে চাইলে আমরা **SQL ভিত্তিক Database ব্যবহার করব**, না হয় **NoSQL ভিত্তিক Database**।
 
 ## Database Performance
 
