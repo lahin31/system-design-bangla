@@ -33,15 +33,16 @@
 - [Section 17: Content Delivery Network](#section-17-content-delivery-network)
 - [Section 18: CAP Theorem](#section-18-cap-theorem)
 - [Section 19: Consistent Hashing] (চলমান)
-- [Section 20: Distributed Messaging System] (চলমান)
-- [Section 21: Design URL Shortener] (চলমান)
-- [Section 22: Design a Rate Limiter] (চলমান)
-- [Section 23: Design a Chat System] (চলমান)
-- [Section 24: Design a Notification System] (চলমান)
-- [Section 25: Design High Availability & Resilience System] (চলমান)
-- [Section 26: How Discord Stores Trillions of Messages] (চলমান)
-- [Section 27: How Grab stores and processes millions of orders daily] (চলমান)
-- [Section 28: Resources](#section-28-resources)
+- [Section 20: Polling and Streaming] (চলমান)
+- [Section 21: Distributed Messaging System] (চলমান)
+- [Section 22: Design URL Shortener] (চলমান)
+- [Section 23: Design a Rate Limiter] (চলমান)
+- [Section 24: Design a Chat System] (চলমান)
+- [Section 25: Design a Notification System] (চলমান)
+- [Section 26: Design High Availability & Resilience System] (চলমান)
+- [Section 27: How Discord Stores Trillions of Messages] (চলমান)
+- [Section 28: How Grab stores and processes millions of orders daily] (চলমান)
+- [Section 29: Resources](#section-29-resources)
 
 ## Section 1: System Design
 
@@ -259,7 +260,15 @@ Partition Tolerance হচ্ছে একাধিক নোড একে অ�
 
 🔗 [**আরও পড়ুন: ক্যাপ থিওরাম**](./sections/cap-theorem/README.md)
 
-## Section 28: Resources
+## Section 20: Polling and Streaming
+
+Polling মানে হচ্ছে client regular interval এ server কে বার বার ডেটার জন্য রিকোয়েস্ট করবে। যেমন, ক্লায়েন্ট প্রতি ৫ সেকেন্ড পর পর সার্ভার কে রিকোয়েস্ট করবে এর সার্ভার তার রেসপন্স করবে।
+
+<p align="center">
+  <img src="./images/polling.png" alt="polling">
+</p>
+
+## Section 29: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
