@@ -33,7 +33,7 @@
 - [Section 17: Content Delivery Network](#section-17-content-delivery-network)
 - [Section 18: CAP Theorem](#section-18-cap-theorem)
 - [Section 19: Consistent Hashing] (চলমান)
-- [Section 20: Polling and Streaming] (চলমান)
+- [Section 20: Polling and Streaming](#section-20-polling-and-streaming)
 - [Section 21: Distributed Messaging System] (চলমান)
 - [Section 22: Design URL Shortener] (চলমান)
 - [Section 23: Design a Rate Limiter] (চলমান)
