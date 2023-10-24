@@ -125,6 +125,10 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
   <img src="./images/dns.png" alt="DNS">
 </p>
 
+## Section 8: HTTP and HTTPS
+
+HTTP অর্থাৎ HyperText Transfer Protocol, HTTP এক প্রকারের বৈশিষ্ট প্রদান করে থাকে, যার মাধ্যমে Web Browser এবং Web Server নিজেদের ভিতর communication করে থাকে। এটি এক প্রকারের set of rules যা ডেটা ক্লায়েন্ট থেকে সার্ভারে পাঠানো সাহায্য করে। ডেটা হতে পারে Text, Image ইত্যাদি।
+
 ## Section 9: Functional and Non Functional Requirements
 
 ### Functional Requirements
