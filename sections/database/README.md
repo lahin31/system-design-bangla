@@ -74,7 +74,7 @@ Database Sharding হল টেবিল থেকে ডেটা পৃথক 
 
 ### Connection Pool
 
-এটি ডেটাবেসের একাধিক connection open করে রাখে যাতে বার বার সেই ডেটাবেসে আসা রিকোয়েস্ট'গুলোকে এসব connection এর মধ্য দিয়ে সার্ভ করে। সাধারণত ডেটাবেসে কোনো ক্লায়েন্ট যখন রিকোয়েস্ট করে তখন তার জন্য একটি dedicated tcp connection তৈরী হয়ে থাকে, যখন ক্লায়েন্ট এর কাজ শেষ হয়ে যাবে তখন tcp connection শেষ হয়ে যাবে। ।
+সাধারণত ডেটাবেসে কোনো ক্লায়েন্ট যখন রিকোয়েস্ট করে তখন তার জন্য একটি dedicated tcp connection তৈরী হয়ে থাকে, যখন ক্লায়েন্ট এর কাজ শেষ হয়ে যাবে তখন tcp connection শেষ হয়ে যাবে। ।
 
 <p align="center">
   <img src="./images/db-1.png" alt="database">
