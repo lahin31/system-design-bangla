@@ -21,7 +21,7 @@
 - [Section 5: Performance Metrics](#section-5-performance-metrics)
 - [Section 6: Distributed System](#section-6-distributed-system)
 - [Section 7: Domain Name System](#section-7-domain-name-system)
-- [Section 8: HTTP and HTTPS] (চলমান)
+- [Section 8: HTTP and HTTPS](#section-8-http-and-https)
 - [Section 9: Functional and Non Functional Requirements](#section-9-functional-and-non-functional-requirements)
 - [Section 10: Back Of the Envelope Estimation](#section-10-back-of-the-envelope-estimation)
 - [Section 11: Stateful and Stateless Architecture](#section-11-stateful-and-stateless-architecture)
