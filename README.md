@@ -21,28 +21,31 @@
 - [Section 5: Performance Metrics](#section-5-performance-metrics)
 - [Section 6: Distributed System](#section-6-distributed-system)
 - [Section 7: Domain Name System](#section-7-domain-name-system)
-- [Section 8: Functional and Non Functional Requirements](#section-8-functional-and-non-functional-requirements)
-- [Section 9: Back Of the Envelope Estimation](#section-9-back-of-the-envelope-estimation)
-- [Section 10: Stateful and Stateless Architecture](#section-10-stateful-and-stateless-architecture)
-- [Section 11: Proxy](#section-11-proxy)
-- [Section 12: REST API](#section-12-rest-api)
-- [Section 13: Scalability](#section-13-scalability)
-- [Section 14: Database Sharding](#section-14-database-sharding)
-- [Section 15: Database Replication](#section-15-database-replication)
-- [Section 16: Caching](#section-16-caching)
-- [Section 17: Content Delivery Network](#section-17-content-delivery-network)
-- [Section 18: CAP Theorem](#section-18-cap-theorem)
-- [Section 19: Consistent Hashing] (চলমান)
-- [Section 20: Polling and Streaming](#section-20-polling-and-streaming)
-- [Section 21: Distributed Messaging System] (চলমান)
-- [Section 22: Design URL Shortener] (চলমান)
-- [Section 23: Design a Rate Limiter] (চলমান)
-- [Section 24: Design a Chat System] (চলমান)
-- [Section 25: Design a Notification System] (চলমান)
-- [Section 26: Design High Availability & Resilience System] (চলমান)
-- [Section 27: How Discord Stores Trillions of Messages] (চলমান)
-- [Section 28: How Grab stores and processes millions of orders daily] (চলমান)
-- [Section 29: Resources](#section-29-resources)
+- [Section 8: HTTP and HTTPS] (চলমান)
+- [Section 9: Functional and Non Functional Requirements](#section-9-functional-and-non-functional-requirements)
+- [Section 10: Back Of the Envelope Estimation](#section-10-back-of-the-envelope-estimation)
+- [Section 11: Stateful and Stateless Architecture](#section-11-stateful-and-stateless-architecture)
+- [Section 12: Proxy](#section-12-proxy)
+- [Section 13: REST API](#section-13-rest-api)
+- [Section 14: Scalability](#section-14-scalability)
+- [Section 15: Database Sharding](#section-15-database-sharding)
+- [Section 16: Database Replication](#section-16-database-replication)
+- [Section 17: Caching](#section-17-caching)
+- [Section 18: Content Delivery Network](#section-18-content-delivery-network)
+- [Section 19: CAP Theorem](#section-19-cap-theorem)
+- [Section 20: Consistent Hashing] (চলমান)
+- [Section 21: Polling and Streaming](#section-21-polling-and-streaming)
+- [Section 22: Distributed Messaging System] (চলমান)
+- [Section 23: How Live Streaming works] (চলমান)
+- [Section 24: How OAuth2 works] (চলমান)
+- [Section 25: Design URL Shortener] (চলমান)
+- [Section 26: Design a Rate Limiter] (চলমান)
+- [Section 27: Design a Chat System] (চলমান)
+- [Section 28: Design a Notification System] (চলমান)
+- [Section 29: Design High Availability & Resilience System] (চলমান)
+- [Section 30: How Discord Stores Trillions of Messages] (চলমান)
+- [Section 31: How Grab stores and processes millions of orders daily] (চলমান)
+- [Section 32: Resources](#section-32-resources)
 
 ## Section 1: System Design
 
@@ -122,7 +125,7 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
   <img src="./images/dns.png" alt="DNS">
 </p>
 
-## Section 8: Functional and Non Functional Requirements
+## Section 9: Functional and Non Functional Requirements
 
 ### Functional Requirements
 
@@ -147,13 +150,13 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 
 প্রতিটা হচ্ছে এক একটি Non Functional Requirement।
 
-## Section 9: Back Of the Envelope Estimation
+## Section 10: Back Of the Envelope Estimation
 
 এটি একটি টেকনিক যা আমাদেরকে সিস্টেম ডিজাইন এর Load Balancer, CDN ইত্যাদি ব্যবহার করবো কি না তার আনুমানিক ধারনা হিসাব করে বলে দিতে পারে।
 
 🔗 [**আরও পড়ুন: ব্যাক অফ দা এনভেলপ এস্টিমেশন**](./sections/back-of-the-envelop-estimation/README.md)
 
-## Section 10: Stateful and Stateless Architecture
+## Section 11: Stateful and Stateless Architecture
 
 ### Stateful
 
@@ -169,7 +172,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: স্টেটলেস-স্টেটফুল আর্কিটেকচার**](./sections/stateless-stateful-architecture/README.md)
 
-## Section 11: Proxy
+## Section 12: Proxy
 
 ক্লায়েন্ট যখন সার্ভারকে রিকুয়েস্ট পাঠানোর সময় সরাসরি সার্ভারকে রিকুয়েস্ট না করে অন্য একটি সার্ভাররের মাধ্যমে রিকুয়েস্ট করলে, সেই প্রসেস হচ্ছে প্রক্সি এবং যে সার্ভার দিয়ে রিকুয়েস্ট করবে সেটা হচ্ছে প্রক্সি সার্ভার।
 
@@ -177,7 +180,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: প্রক্সি**](./sections/proxy/README.md)
 
-## Section 12: REST Api
+## Section 13: REST Api
 
 REST Api জানার পূর্বে আমাদের বুঝতে হবে রেস্ট(REST) মানে কি, REST মানে হল Representational State Transfer যার মানে দাড়ায় এটি একটি আর্কিটেকচারাল স্টাইল যা ব্যবহার করা হয় স্টেট ট্রান্সফার এর জন্য। এখন REST Api হল, এক প্রকারের এপিআই কনভেনশন যা ব্যবহার করা হয় দুটি এন্ড(যেমনঃ ক্লায়েন্ট এবং সার্ভার) এর মধ্যে স্টেট ট্রান্সফার করাকে নিশ্চিত করার জন্য।
 
@@ -185,7 +188,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: রেস্ট এপিআই**](./sections/rest-api/README.md)
 
-## Section 13: Scalability
+## Section 14: Scalability
 
 স্কেলেবিলিটি সাধারণত সিস্টেমের ক্ষমতাকে বুঝায় যখন সিস্টেমে ট্রাফিকের পরিমাণ বাড়তে থাকে। উদাহরণ বলা যেতে পারে, একটি ওয়েবসাইটের ডাটাবেসে এখন একটি নির্দিষ্ট পরিমাণ রিকুয়েস্ট করা হচ্ছে কিন্তু আজ থেকে ৫ মাস পর রিকুয়েস্ট ২ গুণ হয়ে গেল তার ঠিক আরও ৫ মাস পর রিকুয়েস্ট ৪ গুণ হয়ে গেল, একটা সময় দেখা যেতে পারে ডাটাবেস সার্ভার এত পরিমাণ রিকুয়েস্ট লোড নিতে পারছে না, এই সমস্যার সমাধানের জন্য স্কেল করাকে স্কেলেবিলিটি বলে।
 
@@ -193,7 +196,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: স্কেলেবিলিটি**](./sections/scalability/README.md)
 
-## Section 14: Database Sharding
+## Section 15: Database Sharding
 
 Database Sharding হল টেবিল থেকে ডেটা পৃথক করা। উদাহরণ বলা যায়, ডাটাবেসের ডেটা/row যদি বাড়তে থাকে এবং এত পরিমাণ ডেটা/row বেড়ে গেল যার ফলে ডাটাবেস টেবিলে আর স্টোর করা যায় না তখন আমরা ডেটাগুলোকে মূল টেবিল থেকে পৃথক করে অন্যান্য shard টেবিলে distribute করে রাখি সেটাই Database Sharding। একাধিক সার্ভার এই ডিস্ট্রিবিউশন হবে।
 
@@ -203,7 +206,7 @@ Database Sharding হল টেবিল থেকে ডেটা পৃথক 
 
 🔗 [**আরও পড়ুন: ডেটাবেস সাৰ্ডিং**](./sections/database-sharding/README.md)
 
-## Section 15: Database Replication
+## Section 16: Database Replication
 
 Database Replication এক প্রকারের Strategy, যেখানে একটি Master Database এবং একটি কিংবা একাধিক Slave Database থাকবে। Master Database এর মধ্যে Insert, Delete এবং Update এর কাজ হবে এবং Slave Database মধ্যে Master Database এর ডেটাগুলোর Copy থাকবে এবং তার মধ্যে শুধু Read Operation হবে।
 
@@ -215,7 +218,7 @@ Database Replication, SQL এবং NoSQL দুটি ডেটাবেসে 
 
 🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/db_replication/README.md)
 
-## Section 16: Caching
+## Section 17: Caching
 
 Caching একটি কৌশল যা দ্বারা কোন Expensive Response'কে কোনো মেমোরিতে রাখা হয়, যাতে বার বার আসা সেই রেস্পন্সের রিকোয়েস্ট কে দ্রুত রেসপন্সটি দিতে পারি। মূল সার্ভারে (যেমন ডাটাবেস) হিট করার পরিবর্তে ক্যাশিং সার্ভারে রিকোয়েস্ট করবে। এতে করে যে সুবিধাটুকু হবে,
 
@@ -229,7 +232,7 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 
 🔗 [**আরও পড়ুন: ক্যাশিং**](./sections/caching/README.md)
 
-## Section 17: Content Delivery Network
+## Section 18: Content Delivery Network
 
 Content Delivery Network অথবা CDN, এটি একটি সিস্টেম যেখানে একাধিক সার্ভার আমাদের ভৌগোলিক এর আসেপাশে থাকে, যাতে আমরা খুব দ্রুত কন্টেন্ট পেতে পারি। কন্টেন্টটি হতে পারে JS, CSS, Images কিংবা Videos।
 
@@ -244,7 +247,7 @@ Content Delivery Network অথবা CDN, এটি একটি সিস্�
 
 🔗 [**আরও পড়ুন: কনটেন্ট ডেলিভারি নেটওয়ার্ক**](./sections/cdn/README.md)
 
-## Section 18: CAP Theorem
+## Section 19: CAP Theorem
 
 এটি একটি কনসেপ্ট বা থিওরি যা দ্বারা বুজা যায়, একটি Distributed Database System এ উল্লিখিত তিনটি প্রোপার্টি থেকে দুইটি প্রোপার্টি সবসময় মেনে চলবে।
 
@@ -260,7 +263,7 @@ Partition Tolerance হচ্ছে একাধিক নোড একে অ�
 
 🔗 [**আরও পড়ুন: ক্যাপ থিওরাম**](./sections/cap-theorem/README.md)
 
-## Section 20: Polling and Streaming
+## Section 21: Polling and Streaming
 
 Polling মানে হচ্ছে client regular interval এ server কে বার বার ডেটার জন্য রিকোয়েস্ট করবে। যেমন, ক্লায়েন্ট প্রতি ৫ সেকেন্ড পর পর সার্ভার কে রিকোয়েস্ট করবে আর সার্ভার তার রেসপন্স দিবে।
 
@@ -276,7 +279,7 @@ Streaming মানে হচ্ছে Socket এর মাধ্যমে স�
 
 🔗 [**আরও পড়ুন: পোলিং স্ট্রিমিং**](./sections/polling-and-streaming/README.md)
 
-## Section 29: Resources
+## Section 32: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
