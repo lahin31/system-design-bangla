@@ -146,7 +146,9 @@ TCP Reliability নিশ্চিত করে সাধারণত Acknowledg
   <img src="./images/tcp-1.png" alt="tcp">
 </p>
 
-TCP মূলত Networking এর OSI Model এর Practical Form। এটি Transport Layer থেকে শুরু হয় এবং Application Layer এ কাজ করে। 
+TCP মূলত Networking এর OSI Model এর Practical Form। এটি Transport Layer থেকে শুরু হয় এবং Application Layer এ কাজ করে।
+
+HTTP, Web Socket, FTP ইত্যাদি মূলত TCP তে চলে। 
 
 ## Section 9: HTTP and HTTPS
 
