@@ -128,11 +128,23 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 
 ## Section 8: Transmission Control Protocol
 
-Transmission Control Protocol অথবা TCP হচ্ছে একটি নেটওয়ার্ক প্রোটোকল যেখানে একাধিক Devices একে অপরের সাথে মেসেজ আদান-প্রধান করতে পারে।
+Transmission Control Protocol অথবা TCP হচ্ছে একটি নেটওয়ার্ক প্রোটোকল যেখানে একাধিক Device একে অপরের সাথে মেসেজ আদান-প্রধান করতে পারে।
 
-TCP সাধারণত IP based কাজ করে। TCP কে Reliable বলা হয় কারণ যতক্ষণ পর্যন্ত ডিভাইসগুলো একে অপরের সাথে মেসেজ অদান-প্রধান শেষ হবে না ততক্ষন connection বন্ধ হবে না।
+TCP কে Reliable বলা হয় কারণ যতক্ষণ পর্যন্ত ডিভাইসগুলো একে অপরের সাথে মেসেজ অদান-প্রধান শেষ হবে না ততক্ষন connection বন্ধ হবে না।
 
-(বিস্তারিত চলমান)
+Transmission শুরু হওয়ার পূর্বে TCP 3-way-handshake ব্যবহার করে connection established করে। এটি ৩টি স্টেপে হয়ে থাকে,
+
+* SYN (synchronize)
+* SYN-ACK (synchronize-acknowledge) 
+* ACK (acknowledge)
+
+এই 3-way-handshake নিশ্চিত করে Device/ক্লায়েন্ট-সার্ভার একে অপরের সাথে মেসেজ আদান-প্রধান করতে পারবে। 
+
+TCP Reliability নিশ্চিত করে সাধারণত Acknowledgments এবং Retransmissions পদ্ধতি ব্যবহার করে। TCP তে মূলত যখন ক্লায়েন্ট ডেটা send করে সার্ভার রিকোয়েস্ট টি কে Acknowledge করে। ক্লায়েন্ট যদি Acknowledge না পায় তখন ক্লায়েন্ট আবার রিকোয়েস্ট Retransmission করবে। এরকম Reliability নিশ্চিত হয়ে থাকে। 
+
+<p align="center">
+  <img src="./images/tcp-1.png" alt="tcp">
+</p>
 
 ## Section 9: HTTP and HTTPS
 
