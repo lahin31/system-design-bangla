@@ -138,7 +138,7 @@ Transmission শুরু হওয়ার পূর্বে TCP 3-way-handshake
 * SYN-ACK (synchronize-acknowledge) 
 * ACK (acknowledge)
 
-এই 3-way-handshake নিশ্চিত করে Device/ক্লায়েন্ট-সার্ভার একে অপরের সাথে মেসেজ আদান-প্রধান করতে পারবে। 
+এই 3-way-handshake নিশ্চিত করে Device'গুলো(ক্লায়েন্ট-সার্ভার) একে অপরের সাথে মেসেজ আদান-প্রধান করতে পারবে কি না। 
 
 TCP Reliability নিশ্চিত করে সাধারণত Acknowledgments এবং Retransmissions পদ্ধতি ব্যবহার করে। TCP তে মূলত যখন ক্লায়েন্ট ডেটা send করে সার্ভার রিকোয়েস্ট টি কে Acknowledge করে। ক্লায়েন্ট যদি Acknowledge না পায় তখন ক্লায়েন্ট আবার রিকোয়েস্ট Retransmission করবে। এরকম Reliability নিশ্চিত হয়ে থাকে। 
 
