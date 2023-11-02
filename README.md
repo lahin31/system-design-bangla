@@ -160,6 +160,8 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
   <img src="./images/http-https.png" alt="http and https">
 </p>
 
+🔗 [**আরও পড়ুন: এইচটিটিপি এবং এইচটিটিপি'এস**](./sections/http-and-https/README.md)
+
 ## Section 10: Functional and Non Functional Requirements
 
 ### Functional Requirements
