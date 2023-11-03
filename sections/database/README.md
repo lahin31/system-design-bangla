@@ -63,6 +63,7 @@ Query লিখার সময় আমরা Query Optimize ভাবে লি�
 - Complex Query এর জন্য Stored Procedure ব্যবহার করা। এতে করে আমরা Network Traffic কমাতে পারি।
 - WHERE clause এর ভিতর Scaler Function ব্যবহার না করা। WHERE clause এর ভিতর Scaler Function ব্যবহার করলে Query Optimizer, Index কে ব্যবহার করতে পারে না।
 - Normalize অথবা Denormalize অনুযায়ী Schema Design করা।
+- n+1 query execute না করা।
 
 ### Database Sharding
 
