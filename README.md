@@ -46,7 +46,8 @@
 - [Section 30: Design High Availability & Resilience System] (চলমান)
 - [Section 31: How Discord Stores Trillions of Messages] (চলমান)
 - [Section 32: How Grab stores and processes millions of orders daily] (চলমান)
-- [Section 33: Resources](#section-33-resources)
+- [Section 33: Design Distributed Key-Value store Database] (চলমান)
+- [Section 34: Resources](#section-34-resources)
 
 ## Section 1: System Design
 
@@ -334,7 +335,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 33: Resources
+## Section 34: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
