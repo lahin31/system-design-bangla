@@ -24,9 +24,21 @@ Software এর কোনো বাগ (bug) যদি আমাদের সি
   <img src="./images/high-availability.png" alt="High Availability">
 </p>
 
+Load Balancer Health Check ব্যবহার করে ট্র্যাক করবে কোন কোন Server Instance ঠিকভাবে কাজ করছে কি না। Load Balancer যখন দেখবে যে Server Instance ঠিকভাবে কাজ করছে না সে সার্ভারে আর রিকোয়েস্ট ফরওয়ার্ড করবে না।
+
+## Fault Tolerant
+
+যখন কোনো সার্ভারের ডিপেন্ডেন্সি failure হয় তখন সার্ভারের এর ডিপেন্ডেন্সি failure handle করাকে Fault Tolerant বলে।
+
+<p align="center">
+  <img src="./images/ft.png" alt="Fault Tolerant">
+</p>
+
+Server 1 যদি Server 2 এর সাথে ডিপেন্ডেন্ট থাকে, আর কোনো কারণে Server 2 ক্র্যাশ হয় তখন Server 1 এর সেই situation handle করাকে Fault Tolerant বলে। 
+
 ## Single Point of Failure
 
-যদি সিস্টেমের কোনো পার্ট নষ্ট হয়ে যায় এবং এর জন্য সম্পূর্ণ সিস্টেম বন্ধ হয়ে যায় তাহলে সেই নষ্ট হয়ে যাওয়া পার্ট হল Single Point of Failure।
+যদি সিস্টেমের কোনো পার্ট নষ্ট হয়ে যায় এবং সিস্টেম যদি Fault Tolerant না হয় তাহলে এর জন্য সম্পূর্ণ সিস্টেম বন্ধ হয়ে যায় তাহলে সেই নষ্ট হয়ে যাওয়া পার্ট হল Single Point of Failure।
 
 উদাহরণ, ডাটাবেস সার্ভার নষ্ট হয়ে গেলে সম্পূর্ণ সিস্টেম কাজ করা বন্ধ হয়ে যেতে পারে,
 
