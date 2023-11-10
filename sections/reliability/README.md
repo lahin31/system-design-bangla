@@ -34,7 +34,27 @@ Load Balancer Health Check ব্যবহার করে ট্র্যাক
   <img src="./images/ft.png" alt="Fault Tolerant">
 </p>
 
-Server 1 যদি Server 2 এর সাথে ডিপেন্ডেন্ট থাকে, আর কোনো কারণে Server 2 ক্র্যাশ হয় তখন Server 1 এর সেই situation handle করাকে Fault Tolerant বলে। 
+Server 1 যদি Server 2 এর সাথে ডিপেন্ডেন্ট থাকে, আর কোনো কারণে Server 2 ক্র্যাশ হয় তখন Server 1 এর সেই situation handle করাকে Fault Tolerant বলে।
+
+## Downtime
+
+কোনো সার্ভার যতসময় বন্ধ(down) থাকে সেই সময়টুকুকে Downtime বলে।
+
+## The x-9 structure of Availability
+
+যখন বলা হয় সিস্টেমের availability 99.99% তারমানে হল এক বছরে সিস্টেমের ডাউনটাইম হবে 52.60 minutes। AWS এর Availability বলা হয় 99.99%। 
+
+| Availability %  | Downtime per year |
+| ------------- | ------------- |
+| 90% (one nine)  | 36.53 days  |
+| 99% (two nines)  | 3.65 days  |
+| 99.9% (three nines) | 8.77 hours |
+| 99.99% (four nines) | 52.60 minutes |
+| 99.999% (five nines) | 5.26 minutes |
+| 99.9999% (six nines) | 31.56 seconds |
+| 99.99999% (seven nines) | 3.16 seconds | 
+| 99.999999% (eight nines) | 315.58 milliseconds |
+| 99.9999999% (nine nines) | 31.56 milliseconds |
 
 ## Single Point of Failure
 
