@@ -31,7 +31,9 @@
 রিভার্স প্রক্সির ব্যবহার করার সুবিধা হল,
 
 - Load Distribution: Reverse proxy সবসময় client থেকে আসা request গুলোকে multiple backend server এর মধ্যে distribute করে।
-- High Availability: multiple backend সার্ভারে distribute করার মাধ্যমে আমরা High Availability নিশ্চিত করতে পারি।
+- High Availability: Multiple সার্ভার থাকার ফলে Distribution করার মাধ্যমে আমরা High Availability নিশ্চিত করতে পারি।
+- Security: Reverse Proxy তে যখন রেসপন্স ক্লায়েন্ট কে দেয়া হয় তখন সার্ভারের ইনফরমেশন/ip সাথে করে দেয়া হয় না সেজন্য সার্ভার secured থাকে।
+- SSL/TLS Encryption and Decryption: Reverse Proxy SSL/TLS Encryption এবং Decryption করে থাকে।
 
 ### Load Balancing
 
