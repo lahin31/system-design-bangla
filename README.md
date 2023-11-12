@@ -36,7 +36,7 @@
 - [Section 20: CAP Theorem](#section-20-cap-theorem)
 - [Section 21: Consistent Hashing] (চলমান)
 - [Section 22: Polling and Streaming](#section-22-polling-and-streaming)
-- [Section 23: Distributed Messaging System] (চলমান)
+- [Section 23: Message Queue](#section-23-message-queue)
 - [Section 24: How Live Streaming works] (চলমান)
 - [Section 25: How OAuth2 works](#section-25-how-oauth2-works)
 - [Section 26: Design URL Shortener] (চলমান)
@@ -316,6 +316,16 @@ Streaming মানে হচ্ছে Socket এর মাধ্যমে স�
 </p>
 
 🔗 [**আরও পড়ুন: পোলিং স্ট্রিমিং**](./sections/polling-and-streaming/README.md)
+
+## Section 23: Message Queue
+
+এটি একটি প্রসেস যেখানে এক বা একাধিক Producer থাকবে, যাদের কাজ হচ্ছে Message(এখানে message মানে রিকোয়েস্ট) Queue এর মধ্যে send করা এবং queue সেই রিকোয়েস্টগুলোকে প্রসেস করে বিভিন্ন consumer এর কাছে পাঠিয়ে দেয়া।
+
+<p align="center">
+  <img src="./images/mq-1.png" alt="Message Queue">
+</p>
+
+সিস্টেমের Throughput বৃদ্ধি করার জন্য Message Queue ব্যবহার করা হয়। 
 
 ## Section 25: How OAuth2 works
 
