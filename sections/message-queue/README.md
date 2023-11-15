@@ -6,10 +6,10 @@ Kafka খুবই পপুলার Message Queue। High-performance data pip
 
 - Producer: Producer কিংবা Publisher যার কাজ হচ্ছে message pass করা। এখানে message হতে পারে API রিকোয়েস্ট।
 
-- Broker: Producer message টি Broker এ pass করবে। Broker কে Kafka Server বলা হয়।
+- Cluster: Producer message টি Cluster এ pass করবে। Cluster এর ভিতর Topics, Broker এবং ZooKeeper থাকবে।
 
 <p align="center">
-  <img src="./images/broker.png" alt="Publisher and Broker">
+  <img src="./images/cluster.png" alt="Cluster">
 </p>
 
 - Topic: Topic মূলত Broker এর একটি Core Section, যার কাজ হল মেসেজগুলোকে Organize করা। Broker এর ভিতর এক বা একাধিক Topic থাকবে।
