@@ -1,6 +1,6 @@
 ## Kafka
 
-Kafka খুবই পপুলার Message Queue। High-performance data pipelines, streaming analytics, data integration, এবং mission-critical applications গুলোর জন্য Kafka ব্যবহার করা হয়। 
+Kafka খুবই জনপ্রিয় Message Queue। High-performance data pipelines, streaming analytics, data integration, এবং mission-critical applications গুলোর জন্য Kafka ব্যবহার করা হয়। 
 
 ## Components of Kafka
 
@@ -29,5 +29,7 @@ Topic এর ভিতর Data Partitioning হয়ে থাকে। প্র�
 <p align="center">
   <img src="./images/partition.png" alt="Partition">
 </p>
+
+প্রতিটি মেসেজ একটি Dedicated Partition এ চলে যাবে। 
 
 (চলমান)
