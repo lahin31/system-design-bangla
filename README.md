@@ -150,7 +150,21 @@ TCP Reliability নিশ্চিত করে সাধারণত Acknowledg
 
 TCP মূলত Networking এর OSI Model এর Practical Form। এটি Transport Layer থেকে শুরু হয় এবং Application Layer এ কাজ করে।
 
-HTTP, Web Socket, FTP ইত্যাদি মূলত TCP তে চলে। 
+HTTP, Web Socket, FTP ইত্যাদি মূলত TCP তে চলে।
+
+## Section 9: User Datagram Protocol
+
+UDP মূলত OSI Model এর Transport Layer-এ অবস্থান করে। TCP এর মত এটি reliable না। এতে কোনো 3-way handshake তৈরী হয় না। এটি মূলত Low Latency এবং unreliable connection তৈরী করে।
+
+UDP Process to Process communication establish করে।
+
+TCP তে যেহেতু 3-way handshake তৈরীর মাধ্যমে reliable connection তৈরী হয়, কিন্তু এই 3-way handshake তৈরী করতে সময়ের প্রয়োজন হয় সেজন্য performance কম পাওয়া যায়। Performance এর কথা বিবেচনা করলে UDP একটি better choice।
+
+UDP তে কোনো Error checking হয় না।
+
+<p align="center">
+  <img src="./images/udp.png" alt="udp">
+</p>
 
 ## Section 10: HTTP and HTTPS
 
