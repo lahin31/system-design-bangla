@@ -40,7 +40,7 @@
 - [Section 24: Message Queue](#section-24-message-queue)
 - [Section 25: How Live Streaming works] (চলমান)
 - [Section 26: How OAuth2 works](#section-26-how-oauth2-works)
-- [Section 27: High Availability best practices by Netflix] (চলমান)
+- [Section 27: High Availability best practices by Netflix](#section-27-high-availability-best-practices-by-netflix)
 - [Section 28: Design URL Shortener] (চলমান)
 - [Section 29: Design a Rate Limiter] (চলমান)
 - [Section 30: Design a Chat System] (চলমান)
@@ -374,6 +374,20 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
 <p align="center">
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
+
+## Section 27: High Availability best practices by Netflix
+
+Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
+
+- Regional deployment over global ones: Deployment আমরা region by region করবো, যাতে region এ impact টি observe করতে পারি। কোনো প্রকারের সমস্যা হলে আমরা Rollback করে পূর্বের স্টেট এ চলে যেতে পারবো, তখন অন্য region এর উপর কোনো নেগেটিভ ইমপ্যাক্ট পরবে না।
+
+- Use Blue/Green deployment strategy: এই strategy তে Deploy করার সময় সিস্টেমের দুটি ভার্সন থাকে, Blue হল বর্তমান ভার্সন এবং green হল নতুন ভার্সন। Green ভার্সন টেস্ট করা হয়ে গেলে, সবকিছু ঠিক থাকলে আমরা Blue ভার্সন থেকে সবকিছু Green ভার্সনে নিয়ে যাব।
+
+- Use deployment windows: Deployment আমরা office hour এবং off-peak এর সময় করব।
+
+- Enable Chaos Monkey: এটি একটি Tool যা আমাদের production সার্ভারকে ক্র্যাশ করে দিতে পারে। এতে করে আমরা নিশ্চিত হতে পারব আমাদের সিস্টেমটি কত resilience।
+
+(চলমান)
 
 ## Section 35: Resources
 
