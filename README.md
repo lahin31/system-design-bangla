@@ -387,7 +387,9 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 - Enable Chaos Monkey: এটি একটি Tool যা আমাদের production সার্ভারকে ক্র্যাশ করে দিতে পারে। এতে করে আমরা নিশ্চিত হতে পারব আমাদের সিস্টেমটি কত resilience।
 
-(চলমান)
+- Deploy exactly what you tested to production: যে পার্ট এর টেস্টিং করা হয় সেই পার্ট Deploy করা হবে।
+
+Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
 ## Section 35: Resources
 
