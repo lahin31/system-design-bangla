@@ -38,13 +38,13 @@
 - [Section 22: Consistent Hashing] (চলমান)
 - [Section 23: Polling and Streaming](#section-23-polling-and-streaming)
 - [Section 24: Message Queue](#section-24-message-queue)
-- [Section 25: How Live Streaming works] (চলমান)
-- [Section 26: How OAuth2 works](#section-26-how-oauth2-works)
-- [Section 27: High Availability best practices by Netflix](#section-27-high-availability-best-practices-by-netflix)
-- [Section 28: Design URL Shortener] (চলমান)
-- [Section 29: Design a Rate Limiter] (চলমান)
-- [Section 30: Design a Chat System] (চলমান)
-- [Section 31: Design a Notification System] (চলমান)
+- [Section 25: rpc, gRpc] (চলমান)
+- [Section 26: Load Balancing Algorithms] (চলমান)
+- [Section 27: How Live Streaming works] (চলমান)
+- [Section 28: How OAuth2 works](#section-28-how-oauth2-works)
+- [Section 29: High Availability best practices by Netflix](#section-29-high-availability-best-practices-by-netflix)
+- [Section 30: Reasons behind Uber migrated to MySQL over Postgres] (চলমান)
+- [Section 31: How Canva scale from zero to 50 million uploads per Day] (চলমান)
 - [Section 32: How Discord Stores Trillions of Messages] (চলমান)
 - [Section 33: How Grab stores and processes millions of orders daily] (চলমান)
 - [Section 34: Design Distributed Key-Value store Database] (চলমান)
@@ -357,7 +357,7 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
 
-## Section 26: How OAuth2 works
+## Section 28: How OAuth2 works
 
 OAuth2 হল এক প্রকারের Authorization Grant Technique। এটি Google, Facebook এর মত ওয়েবসাইট থেকে নির্দিষ্ট information আনতে পারে কোনো প্রকারের password এবং অন্যান্য sensitive information ছাড়া। এই নির্দিষ্ট information এ একটি Access Token থাকে যা দ্বারা আমরা নির্দিষ্ট রিসোর্স(হতে পারে কোনো ওয়েবসাইট এ Login) ব্যবহার করতে পারবো।
 
@@ -375,7 +375,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 27: High Availability best practices by Netflix
+## Section 29: High Availability best practices by Netflix
 
 Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
 
