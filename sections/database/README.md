@@ -29,9 +29,9 @@ SQL এবং NoSQL কিছু বৈশিষ্ট্য আছে যার
 - একাধিক Transection আলাদাভাবে concurrently কাজ করতে পারবে। তাকে Isolation বলে।
 - Transection এর মাধ্যমে changes permanent হবে। তাকে Durability বলে।
 
-NoSQL ভিত্তিক Database ACID properties সম্পূর্ণ সাপোর্ট করে না।
+NoSQL ভিত্তিক Database, BASE মানে (Basically Available, Soft state, Eventual consistency)  সাপোর্ট করে।
 
-এখন আমাদের সিস্টেমে Data Integrity/Consistency(Eventual Consistency) বজায় রাখতে চাইলে আমরা **SQL ভিত্তিক Database ব্যবহার করব**, না হয় **NoSQL ভিত্তিক Database**।
+এখন আমাদের সিস্টেমে Data Integrity/Consistency(Strong Consistency) বজায় রাখতে চাইলে আমরা **SQL ভিত্তিক Database ব্যবহার করব**, না হয় **NoSQL ভিত্তিক Database**।
 
 ## Database Performance
 
