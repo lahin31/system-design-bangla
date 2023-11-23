@@ -28,4 +28,17 @@ HTTP 2 এর সবচেয়ে বড় Limitation হল, যখন Stream of R
 
 ## HTTP 3
 
-(বিস্তারিত চলমান)
+এই Head of Line Blocking সমস্যা সমাধানের জন্য Google একটি নতুন প্রোটোকল তৈরী করেছিল যার নাম QUIC(Quick UDP Internet Connections)। এখানে আমরা TCP ব্যবহার না করে QUIC ব্যবহার করলে যা সুবিধাটি পাবো তা হল যখন packet loss হবে তখন অন্য packet/request এ কোনো প্রভাব ফেলবে না।
+
+<p align="center">
+  <img src="./images/quic.png" alt="QUIC">
+</p>
+
+QUIC মূলত UDP প্রটোকলের উপর ব্যবহার হয়ে থাকে। সেজন্য এখানে Reliability নিশ্চিত করা যায়। 
+
+এখানে TCP এর মত 3-way handshake তৈরী হয় না, QUIC নিজের initial handshake এ সব encryption সহ TLS এর কাজ হয়ে থাকে। 
+
+<p align="center">
+  <img src="./images/quic-2.png" alt="QUIC">
+</p>
+
