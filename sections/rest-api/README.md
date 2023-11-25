@@ -115,6 +115,14 @@ router.get("/users", (req, res) => {
 
 ? এর পরের অংশটুকু হল Query Parameters.
 
+### Rest API security best practices
+
+- HTTPS ব্যবহার করা।
+- properly Authorization implement করা।
+- Rate Limiter ব্যবহার করা।
+- Input Validate করা।
+- OWASP API Security Risks নিয়ে সাবধান থাকা।
+
 ### HTTP Status Code
 
 HTTP Status Code আমাদেরকে বলে দেয় একটি নির্দিষ্ট HTTP Method(GET, POST, PUT) এর রিকুয়েস্ট সাকসেসফুল হয়েছে কি না।

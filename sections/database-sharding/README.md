@@ -35,3 +35,11 @@ Directory Based Sharding এ মূলত একটি Lookup table থাকব
 <p align="center">
   <img src="./images/directory-based-sharding.png" alt="directory based sharding">
 </p>
+
+## Sharding in SQL, NoSQL and Cloud
+
+সব SQL এবং NoSQL ডাটাবেস Sharding সাপোর্ট করে থাকে। AWS Sharding <a href="https://aws.amazon.com/blogs/database/sharding-with-amazon-relational-database-service/" target="_blank">যেভাবে করে</a>
+
+## Difference between Sharding and Partitioning
+
+Sharding মূলত ডাটাবেসের ডেটাগুলোকে একাধিক সার্ভারের ভিতর একাধিক টেবিল এর মধ্যে ডিস্ট্রিবিউট করে থাকে অন্যদিকে Partition একটি সার্ভারের ভিতর একাধিক টেবিল এর মধ্যে ডিস্ট্রিবিউট করে। 

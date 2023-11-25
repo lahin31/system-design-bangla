@@ -49,7 +49,7 @@
 - [Section 32: How Discord Stores Trillions of Messages] (চলমান)
 - [Section 33: How Grab stores and processes millions of orders daily] (চলমান)
 - [Section 34: Design Distributed Key-Value store Database] (চলমান)
-- [Section 35: Resources](#section-35-resources)
+- [Section 36: Resources](#section-36-resources)
 
 ## Section 1: System Design
 
