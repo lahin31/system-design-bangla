@@ -39,6 +39,7 @@
 - [Section 23: Polling and Streaming](#section-23-polling-and-streaming)
 - [Section 24: Message Queue](#section-24-message-queue)
 - [Section 25: rpc, gRpc] (চলমান)
+- [Section 26: Bloom Filter] (চলমান)
 - [Section 26: Load Balancing Algorithms] (চলমান)
 - [Section 27: How Live Streaming works] (চলমান)
 - [Section 28: How OAuth2 works](#section-28-how-oauth2-works)
@@ -269,7 +270,7 @@ Database Replication এক প্রকারের Strategy, যেখান�
 
 Database Replication, SQL এবং NoSQL দুটি ডেটাবেসে করা যায়।
 
-🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/db_replication/README.md)
+🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/db-replication/README.md)
 
 ## Section 19: Caching
 
@@ -361,7 +362,7 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
 
-## Section 28: How OAuth2 works
+## Section 29: How OAuth2 works
 
 OAuth2 হল এক প্রকারের Authorization Grant Technique। এটি Google, Facebook এর মত ওয়েবসাইট থেকে নির্দিষ্ট information আনতে পারে কোনো প্রকারের password এবং অন্যান্য sensitive information ছাড়া। এই নির্দিষ্ট information এ একটি Access Token থাকে যা দ্বারা আমরা নির্দিষ্ট রিসোর্স(হতে পারে কোনো ওয়েবসাইট এ Login) ব্যবহার করতে পারবো।
 
@@ -379,7 +380,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 29: High Availability best practices by Netflix
+## Section 30: High Availability best practices by Netflix
 
 Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
 
@@ -395,7 +396,7 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 35: Resources
+## Section 36: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
