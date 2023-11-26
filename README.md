@@ -39,7 +39,7 @@
 - [Section 23: Polling and Streaming](#section-23-polling-and-streaming)
 - [Section 24: Message Queue](#section-24-message-queue)
 - [Section 25: rpc, gRpc] (চলমান)
-- [Section 26: Bloom Filter] (চলমান)
+- [Section 26: Bloom Filter](#section-26-bloom-filter)
 - [Section 26: Load Balancing Algorithms] (চলমান)
 - [Section 27: How Live Streaming works] (চলমান)
 - [Section 28: How OAuth2 works](#section-28-how-oauth2-works)
@@ -361,6 +361,39 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 - RabbitMQ
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
+
+## Section 26: Bloom Filter
+
+Bloom Filter একটি Probabilistic Data Structure। Hashing টেকনিক ব্যবহার করে এখানে ডেটা insert করা হয়। এটি খুবই Faster এবং মেমোরি Efficient। 
+
+Bloom Filter এর ব্যাপারে জানার পূর্বে Hashing কি জানা নেয়া যাক। একটি Hash Function নিজের প্যারামিটারে input নিয়ে থাকে এবং সেই input কে প্রসেস করে একটি ফিক্সড length এর unique identifier রিটার্ন করে। 
+
+উদাহরণ, ইনপুট 'david' হলে আউটপুট হবে 10
+
+```js
+// hash function
+function generateHash(table_size, user) {
+  let index;
+  let user_length = user.length;
+
+  index = user_length % table_size;
+  return index;
+}
+
+generateHash(10, 'david'); // 5
+```
+
+Bloom Filter Data Structure এ Hash function ব্যবহার করে আমরা set এর মধ্যে specific position এ element insert করতে পারি। তারপর set এর মধ্যে specific element সার্চ করতে পারি।
+
+এর মধ্যে যখন আমরা নির্দিষ্ট element সার্চ করি তখন আমরা দুটি জিনিসের মধ্যে একটি পাবো,
+
+হয় possibly yes - মানে এলিমেন্ট থাকবে তবে না থাকার সামান্য কিছু সম্ভাবনা আছে। 
+
+না হয় no - মানে এলিমেন্ট সেট এর মধ্যে নাই।
+
+এজন্য তাকে Probabilistic Data Structure বলা হয়।
+
+(চলমান)
 
 ## Section 29: How OAuth2 works
 
