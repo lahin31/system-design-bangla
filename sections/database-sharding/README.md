@@ -38,12 +38,12 @@ Directory Based Sharding এ মূলত একটি Lookup table থাকব
 
 ## Sharding in SQL, NoSQL and Cloud
 
-AWS Sharding <a href="https://aws.amazon.com/blogs/database/sharding-with-amazon-relational-database-service/" target="_blank">যেভাবে করে</a>
+AWS Database Sharding <a href="https://aws.amazon.com/blogs/database/sharding-with-amazon-relational-database-service/" target="_blank">যেভাবে করে</a>
 
-কিছু কিছু ডেটাবেস ইঞ্জিন natively Sharding সাপোর্ট করে না। সেজন্য আমরা Connection Proxy ব্যবহার করে আমরা ডেটা বিভিন্ন shard এর মধ্যে ডিস্ট্রিবিউট করতে পারি। PostgreSQL এর জন্য pgcat, pgbouncer রয়েছে।
+কিছু কিছু ডেটাবেস ইঞ্জিন natively Sharding সাপোর্ট করে না। সেজন্য আমরা Connection Proxy ব্যবহার করে আমরা ডেটা বিভিন্ন shard এর মধ্যে ডিস্ট্রিবিউট করতে পারি, এই Connection Proxy মূলত Load Balancing এর কাজ করে থাকে। PostgreSQL এর জন্য pgcat, pgbouncer রয়েছে।
 
 <p align="center">
-  <img src="./images/sharding-2.png" alt="sharding">
+  <img src="./images/sharding-1.png" alt="sharding">
 </p>
 
 ## Difference between Sharding and Partitioning
