@@ -1,4 +1,4 @@
-## How insertion works in bloom filter
+## How insertion works in Bloom Filter
 
 - শুরুতে bucket এর সব index এর ভ্যালু 0। 
 
@@ -17,3 +17,19 @@
 <p align="center">
   <img src="./images/bf-3.png" alt="bloom filter">
 </p>
+
+## Search in Bloom Filter
+
+আমরা যদি lahin সার্চ করতে যাই, `generateHash(10, 'david')` 5 রিটার্ন করবে। এখন index 5 এ কিন্তু david, lahin দুটি আছে এখানে Bloom Filter accurately বলতে পারবে না, সেজন্য বলবে থাকতেও পারে আবার নাও থাকতে পারে। 
+
+কিন্তু আমরা যদি john সার্চ করি তাহলে `generateHash(10, 'john')` 4 রিটার্ন করবে। যেহেতু index 4 এর ভ্যালু 0 সেজন্য Bloom Filter accurately বলতে পারবে john পাওয়া যায়নি।
+
+## Delete in Bloom Filter
+
+যেহেতু index 5 এ দুটি ভ্যালুর রেফারেন্স আছে সেহেতু এখানে কোনো ভ্যালু Delete করা যাবে না।
+
+## Advantages of Bloom Filter
+
+- constant time complexity
+- constant space complexity
+- no false negative
