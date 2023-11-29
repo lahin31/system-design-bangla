@@ -57,3 +57,11 @@ Topic এর ভিতর Data Partitioning হয়ে থাকে। প্র�
 <p align="center">
   <img src="./images/zookeeper.png" alt="zookeeper">
 </p>
+
+## Real life Kafka use-cases
+
+- Real-time Data Processing.
+- Messaging System.
+- Stream Processing.
+- Event-driven Architecture.
+- Log Aggregation.
