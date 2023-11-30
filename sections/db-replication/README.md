@@ -1,4 +1,8 @@
-## Database Replication
+## Replication Lag
+
+সর্বমোট যত সময় Master Database এর update কিংবা insert গুলোকে Replica ডাটাবেসগুলোতে replicate করতে লাগে, সেই সময়টি Replication Lag হচ্ছে।  
+
+## Benefits of Database Replication
 
 Database Replication এর সুবিধা,
 
@@ -10,7 +14,7 @@ Database Replication এর সুবিধা,
 
 - Reduce Latency: একাধিক Database Server(Slave Database) থাকার ফলে Latency Time reduce হয়। 
 
-কিছু Facts,
+## Some facts
 
 - কোনো কারণে যেকোনো Slave Database নষ্ট হয়ে গেলে অন্য Slave Database থেকে ডেটা নেয়া যায়।
 
