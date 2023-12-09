@@ -127,6 +127,10 @@ router.get("/users", (req, res) => {
 
 <a href="https://github.com/lahin31/system-design-bangla#section-19-caching">Caching নিয়ে আমার লিখা পড়তে পারেন</a>
 
+### CDN
+
+<a href="https://github.com/lahin31/system-design-bangla#section-20-content-delivery-network">Caching নিয়ে আমার লিখা পড়তে পারেন</a>
+
 ### Pagination
 
 ২ রকমের pagination techniques আমাদের কাছে আছে। Offset এবং Cursor। আমাদের requirements এর উপর ভিত্তি করে আমরা pagination technique ব্যবহার করব।  
@@ -137,7 +141,7 @@ Data Compressed করলে আমরা API response এর size কমাত�
 
 ### Unnecessary property send to payload and response
 
-Payload এবং Response এর মধ্যে অপ্রয়োজনীয় প্রপার্টি(object, array) পাঠাবো না।  
+Payload এবং Response এর মধ্যে অপ্রয়োজনীয় প্রপার্টি(object, array) পাঠাবো না।
 
 ## HTTP Status Code
 
