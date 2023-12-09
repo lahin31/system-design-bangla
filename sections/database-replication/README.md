@@ -18,7 +18,7 @@ Replication Lag এর জন্য একটি সমস্যা তৈরী
   <img src="./images/db-replication-2.png" alt="replication">
 </p>
 
-কোনো কারণে ভ্যালু update করার সময় কোনো replica ডাটাবেস নষ্ট কিংবা বন্ধ হয়ে গেলে, master database যখন দেখবে সেই নষ্ট হওয়া ডাটাবেস থেকে কোনো acknowledgement আসছে না তখন সেই ভ্যালুর আপডেট নিজের এবং বাকি replica ডাটাবেসগুলোতে করবে না। 
+কোনো কারণে ভ্যালু update করার সময় কোনো replica ডাটাবেস নষ্ট কিংবা বন্ধ হয়ে গেলে, master database যখন দেখবে সেই নষ্ট হওয়া ডাটাবেস থেকে কোনো acknowledgement আসছে না তখন সেই ভ্যালুর আপডেট নিজের এবং বাকি replica ডাটাবেসগুলোতে করবে না কিংবা রিভার্ট করা হতে পারে।
 
 ### Asynchronous Replication
 
