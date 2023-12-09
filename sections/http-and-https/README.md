@@ -36,7 +36,7 @@ HTTP 2 এর সবচেয়ে বড় Limitation হল, যখন Stream of R
   <img src="./images/quic.png" alt="QUIC">
 </p>
 
-QUIC মূলত UDP প্রটোকলের উপর ব্যবহার হয়ে থাকে। সেজন্য এখানে Reliability নিশ্চিত করা যায়। 
+QUIC মূলত UDP প্রটোকলের উপর ব্যবহার হয়ে থাকে। সেজন্য এখানে TCP মত Reliability নিশ্চিত করা যায় না। 
 
 এখানে TCP এর মত 3-way handshake তৈরী হয় না, QUIC নিজের initial handshake এ সব encryption সহ TLS এর কাজ হয়ে থাকে। 
 

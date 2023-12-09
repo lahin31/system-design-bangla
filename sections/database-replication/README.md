@@ -42,7 +42,7 @@ Database Replication এর সুবিধা,
 
 - Master Database নষ্ট হয়ে গেলে, কোনো Slave Database সেই নষ্ট Master Database কে Replace করবে। পরে নতুন Slave Database তৈরি হয়ে পুরনো Slave Database কে Replace করবে।
 
-## How does AWS RDS multi az read replicas works to recover disaster?
+## How does AWS RDS multi az read replicas work to recover from disaster?
 
 ডাটাবেস সিস্টেমকে disaster recover করতে আমরা AWS RDS এর multi-az read replica feature ব্যবহার করতে পারি। 
 
