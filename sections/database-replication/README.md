@@ -8,6 +8,22 @@ Replication Lag এর জন্য একটি সমস্যা তৈরী
   <img src="./images/db-replication-1.png" alt="replication">
 </p>
 
+## Consistency Model
+
+### Synchronous Replication
+
+নতুন কোনো write অপারেশন যখন Master ডাটাবেসে প্রয়োগ করা হয়, তখন Master ডাটাবেস প্রথমে সেই ভ্যালু নিজের মধ্যে আপডেট করবে, তারপর (read) replica ডাটাবেসগুলোতে write অপারেশন প্রয়োগ করতে বলবে, replica ডাটাবেসগুলোতে write অপারেশন হয়ে গেলে তখন এরা Master ডাটাবেসকে acknowledgement পাঠাবে, তখন Master ডাটাবেস নিশ্চিত হবে সব replica ডাটাবেসে consistent ভ্যালু আছে।
+
+<p align="center">
+  <img src="./images/db-replication-2.png" alt="replication">
+</p>
+
+কোনো কারণে ভ্যালু update করার সময় কোনো replica ডাটাবেস নষ্ট কিংবা বন্ধ হয়ে গেলে, master database যখন দেখবে সেই নষ্ট হওয়া ডাটাবেস থেকে কোনো acknowledgement আসছে না তখন সেই ভ্যালুর আপডেট নিজের এবং বাকি replica ডাটাবেসগুলোতে করবে না। 
+
+### Asynchronous Replication
+
+(চলমান)
+
 ## Benefits of Database Replication
 
 Database Replication এর সুবিধা,
