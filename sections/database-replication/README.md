@@ -41,3 +41,15 @@ Database Replication এর সুবিধা,
 - কোনো কারণে যেকোনো Slave Database নষ্ট হয়ে গেলে অন্য Slave Database থেকে ডেটা নেয়া যায়।
 
 - Master Database নষ্ট হয়ে গেলে, কোনো Slave Database সেই নষ্ট Master Database কে Replace করবে। পরে নতুন Slave Database তৈরি হয়ে পুরনো Slave Database কে Replace করবে।
+
+## How does AWS RDS multi az read replicas works to recover disaster?
+
+ডাটাবেস সিস্টেমকে disaster recover করতে আমরা AWS RDS এর multi-az read replica feature ব্যবহার করতে পারি। 
+
+একই region এর মধ্যে আমরা একাধিক Availability Zone থাকবে এবং তাদের ভিতর আমরা Database Instance রাখতে পারি। একটি Availability Zone এ আমরা Master Database রাখবো এবং বাকিগুলোতে Read Replica Database থাকবে। 
+
+<p align="center">
+  <img src="./images/db-replication-3.png" alt="replication">
+</p>
+
+AWS RDS Synchronous Replication করে থাকে। কোনো কারণে Read Replica নষ্ট/বন্ধ হয়ে গেলে, AWS RDS নতুন Read রেপ্লিকা তৈরী করে নষ্ট কিংবা বন্ধ হয়ে যাওয়া Replica ডাটাবেসকে replace (প্রতিস্থাপন) করবে। 
