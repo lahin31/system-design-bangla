@@ -47,7 +47,7 @@
 - [Section 31: High Availability best practices by Netflix](#section-31-high-availability-best-practices-by-netflix)
 - [Section 32: Reasons behind Uber migrated to MySQL over Postgres] (চলমান)
 - [Section 33: How Canva scale from zero to 50 million uploads per Day] (চলমান)
-- [Section 34: How Discord Stores Trillions of Messages] (চলমান)
+- [Section 34: How Discord Stores Trillions of Messages] (#section-34-how-discord-stores-trillions-of-messages)
 - [Section 35: How Grab stores and processes millions of orders daily] (চলমান)
 - [Section 36: Design Distributed Key-Value store Database] (চলমান)
 - [Section 37: Resources](#section-37-resources)
@@ -429,6 +429,14 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 - Deploy exactly what you tested to production: যে পার্ট এর টেস্টিং করা হয় সেই পার্ট Deploy করা হবে।
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
+
+## Section 34: How Discord Stores Trillions of Messages
+
+Discord প্রথম NoSQL MongoDB ডাটাবেস দিয়ে যাত্রা শুরু করে, কিন্তু একটা সময় দেখা গেল তাদের Scalability, Fault-tolerent issue তৈরী হল। যার ফলে এরা এদের database MongoDB থেকে Cassendra DB তে নিয়ে আসল। Cassendra একটি NoSQL distributed database।
+
+Discord team ভেবেছিলো Database যত বড় হবে Cassendra ভালোভাবে মেইনটেইন করতে পারবে। কিন্তু দেখা গেল ডাটাবেস যত বড় হচ্ছে নতুন নতুন  performance issue তৈরী হচ্ছে।
+
+(চলমান)
 
 ## Section 37: Resources
 
