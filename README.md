@@ -47,7 +47,7 @@
 - [Section 31: High Availability best practices by Netflix](#section-31-high-availability-best-practices-by-netflix)
 - [Section 32: Reasons behind Uber migrated to MySQL over Postgres] (চলমান)
 - [Section 33: How Canva scale from zero to 50 million uploads per Day] (চলমান)
-- [Section 34: How Discord Stores Trillions of Messages] (#section-34-how-discord-stores-trillions-of-messages)
+- [Section 34: How Discord Stores Trillions of Messages](#section-34-how-discord-stores-trillions-of-messages)
 - [Section 35: How Grab stores and processes millions of orders daily] (চলমান)
 - [Section 36: Design Distributed Key-Value store Database] (চলমান)
 - [Section 37: Resources](#section-37-resources)
