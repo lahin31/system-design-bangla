@@ -39,7 +39,7 @@
 - [Section 23: Polling and Streaming](#section-23-polling-and-streaming)
 - [Section 24: Message Queue](#section-24-message-queue)
 - [Section 25: rpc, gRpc] (চলমান)
-- [Section 26: Elasticsearch] (চলমান)
+- [Section 26: Elasticsearch](#section-26-elasticsearch)
 - [Section 27: Bloom Filter](#section-27-bloom-filter)
 - [Section 28: Load Balancing Algorithms] (চলমান)
 - [Section 29: How Live Streaming works] (চলমান)
@@ -362,6 +362,12 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 - RabbitMQ
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
+
+## Section 26: Elasticsearch
+
+এটি একটি NoSQL ভিত্তিক ডেটাবেস। মূলত এটিকে Distributed Search এবং Aggregation Engine হিসেবে ব্যবহার করা হয়। Elasticsearch এর ভিতর structured এবং unstructured data স্টোর করে রাখা যায়।
+
+🔗 [**আরও পড়ুন: ইলাস্টিকসার্চ**](./sections/elasticsearch/README.md)
 
 ## Section 27: Bloom Filter
 

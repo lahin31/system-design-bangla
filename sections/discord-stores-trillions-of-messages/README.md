@@ -1,6 +1,6 @@
 ## Cassendra issue
 
-Discord ২০১৭ সালে ১২ Cassandra নোড এর মধ্যে billions of messages স্টোরে করে রেখেছিলো। ২০২২ সালে নোডের সংখ্যা দাঁড়ায় ১৭৭। 
+Discord ২০১৭ সালে ১২ Cassandra নোড এর মধ্যে billions of messages স্টোর করে রেখেছিলো। ২০২২ সালে নোডের সংখ্যা দাঁড়ায় ১৭৭। 
 
 <p align="center">
   <img src="./images/cassendra-nodes.png" alt="cassendra-nodes">
