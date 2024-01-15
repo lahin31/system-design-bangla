@@ -35,4 +35,8 @@ Elasticsearch এর Mapping হল index এর মধ্যে কিভাব
 }
 ```
 
-Elasticsearch এ সাধারণত সব field এ ইনডেক্স করা থাকে, আমরা চাইলে { index: false } দিতে পারব যদি নির্দিষ্ট field এর জন্য index প্রয়োজন না হয়। 
+Elasticsearch এ সাধারণত সব field এ ইনডেক্স করা থাকে, আমরা চাইলে { index: false } দিতে পারব যদি নির্দিষ্ট field এর জন্য index প্রয়োজন না হয়।
+
+## DSL Query
+
+(চলমান)
