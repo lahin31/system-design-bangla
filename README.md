@@ -39,18 +39,19 @@
 - [Section 23: Polling and Streaming](#section-23-polling-and-streaming)
 - [Section 24: Message Queue](#section-24-message-queue)
 - [Section 25: rpc, gRpc] (চলমান)
-- [Section 26: Elasticsearch](#section-26-elasticsearch)
-- [Section 27: Bloom Filter](#section-27-bloom-filter)
-- [Section 28: Load Balancing Algorithms] (চলমান)
-- [Section 29: How Live Streaming works] (চলমান)
-- [Section 30: How OAuth2 works](#section-30-how-oauth2-works)
-- [Section 31: High Availability best practices by Netflix](#section-31-high-availability-best-practices-by-netflix)
-- [Section 32: Reasons behind Uber migrated to MySQL over Postgres] (চলমান)
-- [Section 33: How Canva scale from zero to 50 million uploads per Day] (চলমান)
-- [Section 34: How Discord Stores Trillions of Messages](#section-34-how-discord-stores-trillions-of-messages)
-- [Section 35: How Grab stores and processes millions of orders daily] (চলমান)
-- [Section 36: Design Distributed Key-Value store Database] (চলমান)
-- [Section 37: Resources](#section-37-resources)
+- [Section 26: Single Sign-On] (চলমান)
+- [Section 27: Elasticsearch](#section-27-elasticsearch)
+- [Section 28: Bloom Filter](#section-28-bloom-filter)
+- [Section 29: Load Balancing Algorithms] (চলমান)
+- [Section 30: How Live Streaming works] (চলমান)
+- [Section 31: How OAuth2 works](#section-31-how-oauth2-works)
+- [Section 32: High Availability best practices by Netflix](#section-32-high-availability-best-practices-by-netflix)
+- [Section 33: Reasons behind Uber migrated to MySQL over Postgres] (চলমান)
+- [Section 34: How Canva scale from zero to 50 million uploads per Day] (চলমান)
+- [Section 35: How Discord Stores Trillions of Messages](#section-35-how-discord-stores-trillions-of-messages)
+- [Section 36: How Grab stores and processes millions of orders daily] (চলমান)
+- [Section 37: Design Distributed Key-Value store Database] (চলমান)
+- [Section 38: Resources](#section-38-resources)
 
 ## Section 1: System Design
 
@@ -363,13 +364,13 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
 
-## Section 26: Elasticsearch
+## Section 27: Elasticsearch
 
 এটি একটি NoSQL ভিত্তিক ডেটাবেস। মূলত এটিকে Distributed Search এবং Aggregation Engine হিসেবে ব্যবহার করা হয়। Elasticsearch এর ভিতর structured এবং unstructured data স্টোর করে রাখা যায়।
 
 🔗 [**আরও পড়ুন: ইলাস্টিকসার্চ**](./sections/elasticsearch/README.md)
 
-## Section 27: Bloom Filter
+## Section 28: Bloom Filter
 
 Bloom Filter একটি Probabilistic Data Structure। Hashing টেকনিক ব্যবহার করে এখানে ডেটা insert করা হয়। এটি খুবই Faster এবং মেমোরি Efficient। 
 
@@ -402,7 +403,7 @@ Bloom Filter Data Structure এ Hash function ব্যবহার করে �
 
 🔗 [**আরও পড়ুন: ব্লুম ফিল্টার**](./sections/bloom-filter/README.md)
 
-## Section 30: How OAuth2 works
+## Section 31: How OAuth2 works
 
 OAuth2 হল এক প্রকারের Authorization Grant Technique। এটি Google, Facebook এর মত ওয়েবসাইট থেকে নির্দিষ্ট information আনতে পারে কোনো প্রকারের password এবং অন্যান্য sensitive information ছাড়া। এই নির্দিষ্ট information এ একটি Access Token থাকে যা দ্বারা আমরা নির্দিষ্ট রিসোর্স(হতে পারে কোনো ওয়েবসাইট এ Login) ব্যবহার করতে পারবো।
 
@@ -420,7 +421,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 31: High Availability best practices by Netflix
+## Section 32: High Availability best practices by Netflix
 
 Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
 
@@ -436,7 +437,7 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 34: How Discord Stores Trillions of Messages
+## Section 35: How Discord Stores Trillions of Messages
 
 Discord প্রথম NoSQL MongoDB ডাটাবেস দিয়ে যাত্রা শুরু করে, কিন্তু একটা সময় দেখা গেল তাদের Scalability, Fault-tolerent issue তৈরী হল। যার ফলে এরা এদের database MongoDB থেকে Cassendra DB তে নিয়ে আসল। Cassendra একটি NoSQL distributed database।
 
@@ -444,7 +445,7 @@ Discord team ভেবেছিলো Database যত বড় হবে Cassendra
 
 🔗 [**আরও পড়ুন: কিভাবে Discord Trillions of Messages স্টোর করেছে?**](./sections/discord-stores-trillions-of-messages/README.md)
 
-## Section 37: Resources
+## Section 38: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
