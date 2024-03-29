@@ -57,3 +57,5 @@ Domain Specific Language সংক্ষেপে DSL যা একটি JSON b
 - match: কোন রকমের query থাকবে Full Text Search এর জন্য।
 - field_name: কোন ফিল্ড search হবে এখানে বলে দিতে হয়। যদি আমরা description নামের field search করি তাহলে description দিতে হবে।
 - search_term: যে টার্ম আমরা search করব তা এখানে বলে দিব।
+
+DSL Query insertion এর জন্য সরাসরি ব্যবহৃত হয় না, আপনি Elasticsearch এর client library ব্যবহার করে insertion করতে পারবেন।
