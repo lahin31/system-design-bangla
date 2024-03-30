@@ -35,20 +35,21 @@
 - [Section 19: Database Replication](#section-19-database-replication)
 - [Section 20: Caching](#section-20-caching)
 - [Section 21: Content Delivery Network](#section-21-content-delivery-network)
-- [Section 22: CAP Theorem](#section-22-cap-theorem)
-- [Section 23: Consistent Hashing] (চলমান)
-- [Section 24: Polling and Streaming](#section-24-polling-and-streaming)
-- [Section 25: Message Queue](#section-25-message-queue)
-- [Section 26: rpc, gRpc] (চলমান)
-- [Section 27: Single Sign-On] (চলমান)
-- [Section 28: Elasticsearch](#section-28-elasticsearch)
-- [Section 29: Bloom Filter](#section-29-bloom-filter)
-- [Section 30: Load Balancing Algorithms] (চলমান)
-- [Section 31: How Live Streaming works] (চলমান)
-- [Section 32: How OAuth2 works](#section-32-how-oauth2-works)
+- [Section 22: Rate Limiter]
+- [Section 23: CAP Theorem](#section-23-cap-theorem)
+- [Section 24: Consistent Hashing] (চলমান)
+- [Section 25: Polling and Streaming](#section-25-polling-and-streaming)
+- [Section 26: Message Queue](#section-26-message-queue)
+- [Section 27: rpc, gRpc] (চলমান)
+- [Section 28: Single Sign-On] (চলমান)
+- [Section 29: Elasticsearch](#section-29-elasticsearch)
+- [Section 30: Bloom Filter](#section-30-bloom-filter)
+- [Section 31: Load Balancing Algorithms] (চলমান)
+- [Section 32: How Live Streaming works] (চলমান)
+- [Section 33: How OAuth2 works](#section-33-how-oauth2-works)
 - [Section 33: Serverless Architecture]
-- [Section 34: High Availability best practices by Netflix](#section-34-high-availability-best-practices-by-netflix)
-- [Section 35: Resources](#section-35-resources)
+- [Section 35: High Availability best practices by Netflix](#section-35-high-availability-best-practices-by-netflix)
+- [Section 36: Resources](#section-36-resources)
 
 ## Section 1: System Design
 
@@ -300,7 +301,7 @@ Content Delivery Network অথবা CDN, এটি একটি সিস্�
 
 🔗 [**আরও পড়ুন: কনটেন্ট ডেলিভারি নেটওয়ার্ক**](./sections/cdn/README.md)
 
-## Section 22: CAP Theorem
+## Section 23: CAP Theorem
 
 এটি একটি কনসেপ্ট বা থিওরি যা দ্বারা বুজা যায়, একটি Distributed System এ উল্লিখিত তিনটি প্রোপার্টি থেকে দুইটি প্রোপার্টি সবসময় মেনে চলবে।
 
@@ -316,7 +317,7 @@ Partition Tolerance হচ্ছে একাধিক নোড একে অ�
 
 🔗 [**আরও পড়ুন: ক্যাপ থিওরাম**](./sections/cap-theorem/README.md)
 
-## Section 24: Polling and Streaming
+## Section 25: Polling and Streaming
 
 Polling মানে হচ্ছে client regular interval এ server কে বার বার ডেটার জন্য রিকোয়েস্ট করবে। যেমন, ক্লায়েন্ট প্রতি ৫ সেকেন্ড পর পর সার্ভার কে রিকোয়েস্ট করবে আর সার্ভার তার রেসপন্স দিবে।
 
@@ -336,7 +337,7 @@ Streaming কিংবা Pushing এ সার্ভার এবং ক্ল�
 
 🔗 [**আরও পড়ুন: পোলিং স্ট্রিমিং**](./sections/polling-and-streaming/README.md)
 
-## Section 25: Message Queue
+## Section 26: Message Queue
 
 এটি একটি প্রসেস যেখানে এক বা একাধিক Producer থাকবে, যাদের কাজ হচ্ছে Message(এখানে message মানে রিকোয়েস্ট) Queue এর মধ্যে send করা এবং queue সেই রিকোয়েস্টগুলোকে প্রসেস করে বিভিন্ন consumer এর কাছে পাঠিয়ে দেয়।
 
@@ -361,13 +362,13 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
 
-## Section 28: Elasticsearch
+## Section 29: Elasticsearch
 
 এটি একটি NoSQL ভিত্তিক ডেটাবেস। মূলত এটিকে Distributed Search এবং Aggregation Engine হিসেবে ব্যবহার করা হয়। Elasticsearch এর ভিতর structured এবং unstructured data স্টোর করে রাখা যায়।
 
 🔗 [**আরও পড়ুন: ইলাস্টিকসার্চ**](./sections/elasticsearch/README.md)
 
-## Section 29: Bloom Filter
+## Section 30: Bloom Filter
 
 Bloom Filter একটি Probabilistic Data Structure। Hashing টেকনিক ব্যবহার করে এখানে ডেটা insert করা হয়। এটি খুবই Faster এবং মেমোরি Efficient।
 
@@ -400,7 +401,7 @@ Bloom Filter Data Structure এ Hash function ব্যবহার করে �
 
 🔗 [**আরও পড়ুন: ব্লুম ফিল্টার**](./sections/bloom-filter/README.md)
 
-## Section 32: How OAuth2 works
+## Section 33: How OAuth2 works
 
 OAuth2 হল এক প্রকারের Authorization Grant Technique। এটি Google, Facebook এর মত ওয়েবসাইট থেকে নির্দিষ্ট information আনতে পারে কোনো প্রকারের password এবং অন্যান্য sensitive information ছাড়া। এই নির্দিষ্ট information এ একটি Access Token থাকে যা দ্বারা আমরা নির্দিষ্ট রিসোর্স(হতে পারে কোনো ওয়েবসাইট এ Login) ব্যবহার করতে পারবো।
 
@@ -418,7 +419,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 34: High Availability best practices by Netflix
+## Section 35: High Availability best practices by Netflix
 
 Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
 
@@ -434,7 +435,7 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 35: Resources
+## Section 36: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive pplications (paid)</a>
