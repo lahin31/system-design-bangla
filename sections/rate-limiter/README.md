@@ -18,3 +18,33 @@
 ## Rate Limiter এর Throttle কিসের উপর নির্ভর করে তৈরী করবো?
 
 আপনি চাইলে নির্দিষ্ট IP ধরে কিংবা নির্দিষ্ট user ID ধরে rate limiter এর throttle তৈরী করতে পারেন। IP ধরে করলে করলে নির্দিষ্ট সময়ের ভিতর নির্দিষ্ট IP থেকে নির্দিষ্ট পরিমাণের থেকে বেশি রিকোয়েস্ট আসলে তা block হয়ে যাবে।
+
+## Rate Limiting Algorithms
+
+কিছু Algorithm যা ব্যবহার করে আমরা Rate Limit ইমপ্লিমেন্ট করতে পারব।
+
+* Token Bucket
+* Leaking Bucket
+* Fixed Window Counter
+* Sliding Window Log
+* Sliding Window Counter
+
+এখানে আমরা শুধু Token Bucket এবং Leaking Bucket সম্পর্কে জানব।
+
+### Token Bucket
+
+Rate Limit ইমপ্লিমেন্ট করার জন্য এটি খুবই জনপ্রিয় algorithm। এটি যেরকম কাজ করে থাকে,
+
+নির্দিষ্ট capacity সম্পন্ন একটি bucket থাকবে। bucket এর ভিতর নির্দিষ্ট পরিমান token থাকবে।
+
+যখন একটি request আসবে bucket থেকে একটি token বাদ দেয়া হবে। এরকম আরেকটি request আসলে আরেকটি token বাদ দেয়া হবে।
+
+এরকম bucket থেকে সব token শেষ হয়ে গেলে তখন আর কোনো রিকোয়েস্ট নেওয়া হবে না কিংবা প্রসেস করা হবে না।
+
+<p align="center">
+  <img src="./images/token-bucket.png" alt="token bucket">
+</p>
+
+এরকম আমরা অতিরিক্ত রিকোয়েস্টগুলোকে আমাদের সিস্টেম থেকে বিরত রাখতে পারবো।
+
+একবার bucket খালি হয়ে গেলে আমরা আবার bucket এর মধ্যে token দিয়ে পূর্ণ করে রিকোয়েস্টগুলোকে প্রসেস করতে পারবো।
