@@ -51,9 +51,7 @@ Rate Limit ইমপ্লিমেন্ট করার জন্য এটি
 
 ### Leaky Bucket
 
-Leaky Bucket algorithm কিন্তু Token Bucket algorithm এর মত। পার্থক্য হল Leaky Bucket algorithm এ রিকোয়েস্টগুলো একটি constant rate এ প্রসেস হয়ে থাকে।
-
-রিকোয়েস্টগুলো FIFO মানে First-in-first-out মেনে প্রসেস হয়ে থাকে।
+Leaky Bucket algorithm কিন্তু Token Bucket algorithm এর মত। পার্থক্য হল Leaky Bucket algorithm এ রিকোয়েস্টগুলো একটি constant rate এ প্রসেস হয়ে থাকে, মানে রিকোয়েস্টগুলো FIFO মানে First-in-first-out মেনে প্রসেস হয়ে থাকে।
 
 <p align="center">
   <img src="./images/leaky-bucket.png" alt="leaky bucket">

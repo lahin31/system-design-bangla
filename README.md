@@ -41,13 +41,13 @@
 - [Section 25: Polling and Streaming](#section-25-polling-and-streaming)
 - [Section 26: Message Queue](#section-26-message-queue)
 - [Section 27: rpc, gRpc] (চলমান)
-- [Section 28: Single Sign-On] (চলমান)
+- [Section 28: Single Sign-On](#section-28-single-sign-on)
 - [Section 29: Elasticsearch](#section-29-elasticsearch)
 - [Section 30: Bloom Filter](#section-30-bloom-filter)
 - [Section 31: Load Balancing Algorithms] (চলমান)
 - [Section 32: How Live Streaming works] (চলমান)
 - [Section 33: How OAuth2 works](#section-33-how-oauth2-works)
-- [Section 33: Serverless Architecture]
+- [Section 34: Serverless Architecture]
 - [Section 35: High Availability best practices by Netflix](#section-35-high-availability-best-practices-by-netflix)
 - [Section 36: Resources](#section-36-resources)
 
@@ -375,6 +375,16 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 - RabbitMQ
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
+
+## Section 28: Single Sign-On
+
+Single Sign-On কিংবা SSO হল একটি Authentication Mechanism। যা user কে একাধিক প্লাটফর্ম (গুগল, ফেইসবুক, টুইটার) দিয়ে Authenticate করে দেয়, একটি নির্দিষ্ট credential মাধ্যমে।
+
+<p align="center">
+  <img src="./images/sso.png" alt="sso">
+</p>
+
+(বিস্তারিত চলমান)
 
 ## Section 29: Elasticsearch
 
