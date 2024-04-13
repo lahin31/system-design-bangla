@@ -24,12 +24,12 @@
 কিছু Algorithm যা ব্যবহার করে আমরা Rate Limit ইমপ্লিমেন্ট করতে পারব।
 
 * Token Bucket
-* Leaking Bucket
+* Leaky Bucket
 * Fixed Window Counter
 * Sliding Window Log
 * Sliding Window Counter
 
-এখানে আমরা শুধু Token Bucket এবং Leaking Bucket সম্পর্কে জানব।
+এখানে আমরা শুধু Token Bucket এবং Leaky Bucket সম্পর্কে জানব।
 
 ### Token Bucket
 
@@ -48,3 +48,17 @@ Rate Limit ইমপ্লিমেন্ট করার জন্য এটি
 এরকম আমরা অতিরিক্ত রিকোয়েস্টগুলোকে আমাদের সিস্টেম থেকে বিরত রাখতে পারবো।
 
 একবার bucket খালি হয়ে গেলে আমরা আবার bucket এর মধ্যে token দিয়ে পূর্ণ করে রিকোয়েস্টগুলোকে প্রসেস করতে পারবো।
+
+### Leaky Bucket
+
+Leaky Bucket algorithm কিন্তু Token Bucket algorithm এর মত। পার্থক্য হল Leaky Bucket algorithm এ রিকোয়েস্টগুলো একটি constant rate এ প্রসেস হয়ে থাকে।
+
+রিকোয়েস্টগুলো FIFO মানে First-in-first-out মেনে প্রসেস হয়ে থাকে।
+
+<p align="center">
+  <img src="./images/leaky-bucket.png" alt="leaky bucket">
+</p>
+
+Bucket এ যদি তার capacity থেকে কম Token থাকে তাহলে নতুন Token কিংবা request bucket এর ভিতর প্রবেশ করবে আর তারপর FIFO অনুযায়ী প্রসেস হবে।
+
+এখন bucket এ যদি capacity অনুযায়ী Token থাকে তাহলে নতুন টোকেন আর bucket এ প্রবেশ করতে পারবে না।
