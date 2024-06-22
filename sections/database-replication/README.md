@@ -2,7 +2,7 @@
 
 সর্বমোট যত সময় Master Database এর update কিংবা insert গুলোকে Replica ডাটাবেসগুলোতে replicate করতে লাগে, সেই সময়টি হচ্ছে Replication Lag।
 
-Replication Lag এর জন্য একটি সমস্যা তৈরী হয়। যেমন, Master Database এ update কিংবা insert হলে তা replica ডাটাবেসগুলোতে replicate করতে গেলে যদি Replication Lag এর সময় বেশি হয়, তাহলে replicate করার সময় যদি read (replica database এ) read request আসে তখন different value অর্থাৎ inconsistent data রিড করার সুযোগ থাকে। 
+Replication Lag এর জন্য একটি সমস্যা তৈরী হয়। যেমন, Master Database এ update কিংবা insert হলে তা replica ডাটাবেসগুলোতে replicate করতে গেলে যদি Replication Lag এর সময় বেশি হয়, তাহলে replicate করার সময় যদি read (replica database এ) read request আসে তখন different value অর্থাৎ inconsistent data রিড করার সুযোগ থাকে।
 
 <p align="center">
   <img src="./images/db-replication-1.png" alt="replication">
@@ -22,19 +22,21 @@ Replication Lag এর জন্য একটি সমস্যা তৈরী
 
 ### Asynchronous Replication
 
-(চলমান)
+এতে নতুন কোনো write অপারেশন যখন Master ডাটাবেসে প্রয়োগ করা হয়, তখন Master ডাটাবেস প্রথমে সেই ভ্যালু নিজের মধ্যে আপডেট করবে, তারপর (read) replica ডাটাবেসগুলোতে write অপারেশন প্রয়োগ করতে বলবে, কিন্তু Master ডাটাবেস কোনো acknowledgement এর অপেক্ষা করবে না।
+
+Master ডাটাবেস ডেটা নিজের মধ্যে আপডেট করে বাকি Read Replica ডাটাবেসে আপডেট করার জন্য বলে দিবে, এতে করে Master ডাটাবেস কোনো Read ডাটাবেসের সাথে নির্ভর থাকবে না।
 
 ## Benefits of Database Replication
 
 Database Replication এর সুবিধা,
 
-- Performance: যেহেতু সবধরনের Write, Update and Delete Master Database এ হবে এবং সবধরনের Read Slave Database এ হবে সেহেতু একাধিক Query Parallely সংঘটিত হবে যার ফলে Performance Better হবে। 
+- Performance: যেহেতু সবধরনের Write, Update and Delete Master Database এ হবে এবং সবধরনের Read Slave Database এ হবে সেহেতু একাধিক Query Parallely সংঘটিত হবে যার ফলে Performance Better হবে।
 
 - Reliability: যদি কোনো Database Server নষ্ট হয়ে যায় তবুও আমরা সেই ডেটা অন্য কোনো Database Server এ পাব। ডেটা নষ্ট হওয়ার কোনো সুযোগ নেই।
 
 - Availability: কোনো Database Server নষ্ট হয়ে যায় তখন আমরা অন্য Database Server থেকে ডেটা নিয়ে আমাদের System/Website কে সচল রাখতে পারি।
 
-- Reduce Latency: একাধিক Database Server(Slave Database) থাকার ফলে Latency Time reduce হয়। 
+- Reduce Latency: একাধিক Database Server(Slave Database) থাকার ফলে Latency Time reduce হয়।
 
 ## Some facts
 
@@ -44,12 +46,12 @@ Database Replication এর সুবিধা,
 
 ## How does AWS RDS multi az read replicas work to recover from disaster?
 
-ডাটাবেস সিস্টেমকে disaster recover করতে আমরা AWS RDS এর multi-az read replica feature ব্যবহার করতে পারি। 
+ডাটাবেস সিস্টেমকে disaster recover করতে আমরা AWS RDS এর multi-az read replica feature ব্যবহার করতে পারি।
 
-একই region এর মধ্যে আমরা একাধিক Availability Zone থাকবে এবং তাদের ভিতর আমরা Database Instance রাখতে পারি। একটি Availability Zone এ আমরা Master Database রাখবো এবং বাকিগুলোতে Read Replica Database থাকবে। 
+একই region এর মধ্যে আমরা একাধিক Availability Zone থাকবে এবং তাদের ভিতর আমরা Database Instance রাখতে পারি। একটি Availability Zone এ আমরা Master Database রাখবো এবং বাকিগুলোতে Read Replica Database থাকবে।
 
 <p align="center">
   <img src="./images/db-replication-3.png" alt="replication">
 </p>
 
-AWS RDS Synchronous Replication করে থাকে। কোনো কারণে Read Replica নষ্ট/বন্ধ হয়ে গেলে, AWS RDS নতুন Read রেপ্লিকা তৈরী করে নষ্ট কিংবা বন্ধ হয়ে যাওয়া Replica ডাটাবেসকে replace (প্রতিস্থাপন) করবে। 
+AWS RDS Synchronous Replication করে থাকে। কোনো কারণে Read Replica নষ্ট/বন্ধ হয়ে গেলে, AWS RDS নতুন Read রেপ্লিকা তৈরী করে নষ্ট কিংবা বন্ধ হয়ে যাওয়া Replica ডাটাবেসকে replace (প্রতিস্থাপন) করবে।
