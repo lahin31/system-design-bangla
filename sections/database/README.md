@@ -54,8 +54,8 @@ Database Indexing একটি সাধারণ টেকনিক যা আ�
 
 বিস্তারিত জানতে চাইলে আমার ব্লগ দেখতে পারেন,
 
-- https://codemacaw.com/2023/04/04/database-indexing-makes-db-query-faster/
-- https://codemacaw.com/2023/06/24/what-is-b-tree-b-tree-in-dbms/
+- https://codemacaw.com/database-indexing-makes-db-query-faster/
+- https://codemacaw.com/what-is-b-tree-b-tree-in-dbms/
 
 ### Query Optimization
 
