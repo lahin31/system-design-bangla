@@ -26,7 +26,7 @@
 - [Section 10: HTTP and HTTPS](#section-10-http-and-https)
 - [Section 11: Functional and Non Functional Requirements](#section-11-functional-and-non-functional-requirements)
 - [Section 12: Back Of the Envelope Estimation](#section-12-back-of-the-envelope-estimation)
-- [Section 13: Authentication and Authorization]
+- [Section 13: Authentication and Authorization](#section-13-authentication-and-authorization)
 - [Section 14: Stateful and Stateless Architecture](#section-14-stateful-and-stateless-architecture)
 - [Section 15: Proxy](#section-15-proxy)
 - [Section 16: REST API](#section-16-rest-api)
@@ -215,6 +215,8 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
 একটি secured সিস্টেম design করতে হলে Authentication এবং Authorization জানা অত্যন্ত গুরুত্বপূর্ণ। Authentication মূলত identity verify করাকে বুজায়। আমরা যখন কোনো সিস্টেমে গিয়ে ইমেইল এবং পাসওয়ার্ড দিয়ে লগইন করার চেষ্টা করি, সেই ইমেইল আর পাসওয়ার্ড ভেরিফাই করে হচ্ছে Authentication।
 
 Authorization হলো কোনো নির্দিষ্ট রিসোর্সে নির্দিষ্ট user এক্সেস করতে পারবে কি না তা বুজায়। যেমন কোনো এপ্লিকেশন এ নির্দিষ্ট API থাকে যা শুধুমাত্ৰ এডমিনিস্ট্রেটর মানুষ ছাড়া ব্যবহার করতে পারবে না, এখন যদি কেউ এক্সেস করতে চায় তাহলে সেই মানুষটা Authorize আছে কি না সেটাই যাচাই করা হচ্ছে Authorization।
+
+(বিস্তারিত চলমান)
 
 ## Section 14: Stateful and Stateless Architecture
 
