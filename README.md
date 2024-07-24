@@ -15,7 +15,7 @@
 ### সূচিপত্র
 
 - [Section 1: System Design](#section-1-system-design)
-- [Section 2: Database - SQL and NoSQL](#section-2-database---sql-and-nosql)
+- [Section 2: Database Engineering](#section-2-database-engineering)
 - [Section 3: Client Server Architecture](#section-3-client-server-architecture)
 - [Section 4: Reliability](#section-4-reliability)
 - [Section 5: Performance Metrics](#section-5-performance-metrics)
@@ -57,7 +57,9 @@
 
 (এই স্পেসিফিক সিস্টেম ডিজাইন মূলত ব্যাকএন্ড ইঞ্জিনিয়ারিং এর সাথে সম্পৃক্ত।)
 
-## Section 2: Database - SQL and NoSQL
+## Section 2: Database Engineering
+
+সিস্টেম ডিসাইন করার সময় ডেটাবেস খুবই গুরুত্বপূর্ণ বিষয়। কোন কোন রকমের এপ্লিকেশন এর জন্য কোন কোন রকমের ডেটাবেস ব্যবহার করবেন, ডেটাবেসের টেবিলের স্ট্রাকচার কেমন, টেবিল কলাম এর ডেটা টাইপ, টেবিল size ইত্যাদি জানা আমাদের দরকার।
 
 এপ্লিকেশন ডেভেলপ করার সময় আমাদের কাজ অনুযায়ী ডেটাবেস নির্বাচন করতে হয়। সাধারণত, আমরা প্রধান দুই ধরনের ডেটাবেস ব্যাবহার করে থাকি - SQL(রিলেশনাল) ডেটাবেস এবং NoSQL(নন-রিলেশনাল) ডেটাবেস। আমরা কেমন বা কোন ধরণের ডাটা ষ্টোর করতে চাই, কিভাবে ষ্টোর করতে চাই, আমাদের কাজের পদ্ধতি ইত্যাদি প্রয়োজন অনুযায়ী ডেটাবেস বাছাই করতে হয়। ডাটার ধরন অনুযায়ী ডেটাবেসগুলো আমাদের ভিন্ন ভিন্ন সুবিধা দিয়ে থাকে।
 
