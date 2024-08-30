@@ -24,32 +24,33 @@
 - [Section 8: Transmission Control Protocol](#section-8-transmission-control-protocol)
 - [Section 9: User Datagram Protocol](#section-9-user-datagram-protocol)
 - [Section 10: HTTP and HTTPS](#section-10-http-and-https)
-- [Section 11: Functional and Non Functional Requirements](#section-11-functional-and-non-functional-requirements)
-- [Section 12: Back Of the Envelope Estimation](#section-12-back-of-the-envelope-estimation)
-- [Section 13: Authentication and Authorization](#section-13-authentication-and-authorization)
-- [Section 14: Stateful and Stateless Architecture](#section-14-stateful-and-stateless-architecture)
-- [Section 15: Proxy](#section-15-proxy)
-- [Section 16: REST API](#section-16-rest-api)
-- [Section 17: Scalability](#section-17-scalability)
-- [Section 18: Database Sharding](#section-18-database-sharding)
-- [Section 19: Database Replication](#section-19-database-replication)
-- [Section 20: Caching](#section-20-caching)
-- [Section 21: Content Delivery Network](#section-21-content-delivery-network)
-- [Section 22: Rate Limiter](#section-22-rate-limiter)
-- [Section 23: CAP Theorem](#section-23-cap-theorem)
-- [Section 24: Consistent Hashing] (চলমান)
-- [Section 25: Polling and Streaming](#section-25-polling-and-streaming)
-- [Section 26: Message Queue](#section-26-message-queue)
-- [Section 27: rpc, gRpc] (চলমান)
-- [Section 28: Single Sign-On](#section-28-single-sign-on)
-- [Section 29: Elasticsearch](#section-29-elasticsearch)
-- [Section 30: Bloom Filter](#section-30-bloom-filter)
-- [Section 31: Load Balancing Algorithms] (চলমান)
-- [Section 32: How Live Streaming works] (চলমান)
-- [Section 33: How OAuth2 works](#section-33-how-oauth2-works)
-- [Section 34: Serverless Architecture]
-- [Section 35: High Availability best practices by Netflix](#section-35-high-availability-best-practices-by-netflix)
-- [Section 36: Resources](#section-36-resources)
+- [Section 11: High Concurrency Control]
+- [Section 12: Functional and Non Functional Requirements](#section-12-functional-and-non-functional-requirements)
+- [Section 13: Back Of the Envelope Estimation](#section-13-back-of-the-envelope-estimation)
+- [Section 14: Authentication and Authorization](#section-14-authentication-and-authorization)
+- [Section 15: Stateful and Stateless Architecture](#section-15-stateful-and-stateless-architecture)
+- [Section 16: Proxy](#section-16-proxy)
+- [Section 17: REST API](#section-17-rest-api)
+- [Section 18: Scalability](#section-18-scalability)
+- [Section 19: Database Sharding](#section-19-database-sharding)
+- [Section 20: Database Replication](#section-20-database-replication)
+- [Section 21: Caching](#section-21-caching)
+- [Section 22: Content Delivery Network](#section-22-content-delivery-network)
+- [Section 23: Rate Limiter](#section-23-rate-limiter)
+- [Section 24: CAP Theorem](#section-24-cap-theorem)
+- [Section 25: Consistent Hashing] (চলমান)
+- [Section 26: Polling and Streaming](#section-26-polling-and-streaming)
+- [Section 27: Message Queue](#section-27-message-queue)
+- [Section 28: rpc, gRpc] (চলমান)
+- [Section 29: Single Sign-On](#section-29-single-sign-on)
+- [Section 30: Elasticsearch](#section-30-elasticsearch)
+- [Section 31: Bloom Filter](#section-31-bloom-filter)
+- [Section 32: Load Balancing Algorithms] (চলমান)
+- [Section 33: How Live Streaming works] (চলমান)
+- [Section 34: How OAuth2 works](#section-34-how-oauth2-works)
+- [Section 35: Serverless Architecture] (চলমান)
+- [Section 36: High Availability best practices by Netflix](#section-36-high-availability-best-practices-by-netflix)
+- [Section 37: Resources](#section-37-resources)
 
 ## Section 1: System Design
 
@@ -183,7 +184,7 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
 
 🔗 [**আরও পড়ুন: এইচটিটিপি এবং এইচটিটিপি'এস**](./sections/http-and-https/README.md)
 
-## Section 11: Functional and Non Functional Requirements
+## Section 12: Functional and Non Functional Requirements
 
 ### Functional Requirements
 
@@ -208,13 +209,13 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
 
 প্রতিটা হচ্ছে এক একটি Non Functional Requirement।
 
-## Section 12: Back Of the Envelope Estimation
+## Section 13: Back Of the Envelope Estimation
 
 এটি একটি টেকনিক যা আমাদেরকে সিস্টেম ডিজাইন এর Load Balancer, CDN ইত্যাদি ব্যবহার করবো কি না তার আনুমানিক ধারনা হিসাব করে বলে দিতে পারে।
 
 🔗 [**আরও পড়ুন: ব্যাক অফ দা এনভেলপ এস্টিমেশন**](./sections/back-of-the-envelop-estimation/README.md)
 
-## Section 13: Authentication and Authorization
+## Section 14: Authentication and Authorization
 
 একটি secured সিস্টেম design করতে হলে Authentication এবং Authorization জানা অত্যন্ত গুরুত্বপূর্ণ। Authentication মূলত identity verify করাকে বুজায়। আমরা যখন কোনো সিস্টেমে গিয়ে ইমেইল এবং পাসওয়ার্ড দিয়ে লগইন করার চেষ্টা করি, সেই ইমেইল আর পাসওয়ার্ড ভেরিফাই করে হচ্ছে Authentication।
 
@@ -222,7 +223,7 @@ Authorization হলো কোনো নির্দিষ্ট রিসোর
 
 (বিস্তারিত চলমান)
 
-## Section 14: Stateful and Stateless Architecture
+## Section 15: Stateful and Stateless Architecture
 
 ### Stateful
 
@@ -238,7 +239,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: স্টেটলেস-স্টেটফুল আর্কিটেকচার**](./sections/stateless-stateful-architecture/README.md)
 
-## Section 15: Proxy
+## Section 16: Proxy
 
 ক্লায়েন্ট যখন সার্ভারকে রিকুয়েস্ট পাঠানোর সময় সরাসরি সার্ভারকে রিকুয়েস্ট না করে অন্য একটি সার্ভাররের মাধ্যমে রিকুয়েস্ট করলে, সেই প্রসেস হচ্ছে প্রক্সি এবং যে সার্ভার দিয়ে রিকুয়েস্ট করবে সেটা হচ্ছে প্রক্সি সার্ভার।
 
@@ -246,7 +247,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: প্রক্সি**](./sections/proxy/README.md)
 
-## Section 16: REST Api
+## Section 17: REST Api
 
 REST Api জানার পূর্বে আমাদের বুঝতে হবে রেস্ট(REST) মানে কি, REST মানে হল Representational State Transfer যার মানে দাড়ায় এটি একটি আর্কিটেকচারাল স্টাইল যা ব্যবহার করা হয় স্টেট ট্রান্সফার এর জন্য। এখন REST Api হল, এক প্রকারের এপিআই কনভেনশন যা ব্যবহার করা হয় দুটি এন্ড(যেমনঃ ক্লায়েন্ট এবং সার্ভার) এর মধ্যে স্টেট ট্রান্সফার করাকে নিশ্চিত করার জন্য।
 
@@ -254,7 +255,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: রেস্ট এপিআই**](./sections/rest-api/README.md)
 
-## Section 17: Scalability
+## Section 18: Scalability
 
 স্কেলেবিলিটি সাধারণত সিস্টেমের ক্ষমতাকে বুঝায় যখন সিস্টেমে ট্রাফিকের পরিমাণ বাড়তে থাকে। উদাহরণ বলা যেতে পারে, একটি ওয়েবসাইটের ডাটাবেসে এখন একটি নির্দিষ্ট পরিমাণ রিকুয়েস্ট করা হচ্ছে কিন্তু আজ থেকে ৫ মাস পর রিকুয়েস্ট ২ গুণ হয়ে গেল তার ঠিক আরও ৫ মাস পর রিকুয়েস্ট ৪ গুণ হয়ে গেল, একটা সময় দেখা যেতে পারে ডাটাবেস সার্ভার এত পরিমাণ রিকুয়েস্ট লোড নিতে পারছে না, এই সমস্যার সমাধানের জন্য স্কেল করাকে স্কেলেবিলিটি বলে।
 
@@ -262,7 +263,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: স্কেলেবিলিটি**](./sections/scalability/README.md)
 
-## Section 18: Database Sharding
+## Section 19: Database Sharding
 
 Database Sharding হল টেবিল থেকে ডেটা পৃথক করা। উদাহরণ বলা যায়, ডাটাবেসের ডেটা/row যদি বাড়তে থাকে এবং এত পরিমাণ ডেটা/row বেড়ে গেল যার ফলে ডাটাবেস টেবিলে আর স্টোর করা যায় না তখন আমরা ডেটাগুলোকে মূল টেবিল থেকে পৃথক করে অন্যান্য shard টেবিলে distribute করে রাখি সেটাই Database Sharding। একাধিক সার্ভার এই ডিস্ট্রিবিউশন হবে।
 
@@ -272,7 +273,7 @@ Database Sharding হল টেবিল থেকে ডেটা পৃথক 
 
 🔗 [**আরও পড়ুন: ডেটাবেস সাৰ্ডিং**](./sections/database-sharding/README.md)
 
-## Section 19: Database Replication
+## Section 20: Database Replication
 
 Database Replication এক প্রকারের Strategy, যেখানে একটি Master Database এবং একটি কিংবা একাধিক Slave Database থাকবে। Master Database এর মধ্যে Insert, Delete এবং Update এর কাজ হবে এবং Slave Database মধ্যে Master Database এর ডেটাগুলোর Copy থাকবে এবং তার মধ্যে শুধু Read Operation হবে।
 
@@ -284,7 +285,7 @@ Database Replication, SQL এবং NoSQL দুটি ডেটাবেসে 
 
 🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/database-replication/README.md)
 
-## Section 20: Caching
+## Section 21: Caching
 
 Caching একটি কৌশল যা দ্বারা কোন Expensive Response'কে কোনো মেমোরিতে রাখা হয়, যাতে বার বার আসা সেই রেস্পন্সের রিকোয়েস্ট কে দ্রুত রেসপন্সটি দিতে পারি। মূল সার্ভারে (যেমন ডাটাবেস) হিট করার পরিবর্তে ক্যাশিং সার্ভারে রিকোয়েস্ট করবে। এতে করে যে সুবিধাটুকু হবে,
 
@@ -298,7 +299,7 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 
 🔗 [**আরও পড়ুন: ক্যাশিং**](./sections/caching/README.md)
 
-## Section 21: Content Delivery Network
+## Section 22: Content Delivery Network
 
 Content Delivery Network অথবা CDN, এটি একটি সিস্টেম যেখানে একাধিক সার্ভার আমাদের ভৌগোলিক এর আসেপাশে থাকে, যাতে আমরা খুব দ্রুত কন্টেন্ট পেতে পারি। কন্টেন্টটি হতে পারে JS, CSS, Images কিংবা Videos।
 
@@ -313,7 +314,7 @@ Content Delivery Network অথবা CDN, এটি একটি সিস্�
 
 🔗 [**আরও পড়ুন: কনটেন্ট ডেলিভারি নেটওয়ার্ক**](./sections/cdn/README.md)
 
-## Section 22: Rate Limiter
+## Section 23: Rate Limiter
 
 Rate Limiter একটি প্রসেস, যেখানে ক্লায়েন্ট থেকে আসা রিকোয়েস্ট সার্ভারে যাওয়ার পূর্বে রিকোয়েস্টটি কন্ট্রোল করা হয়। একটি নির্দিষ্ট সময়ের মধ্যে একটি নির্দিষ্ট পরিমাণ রিকোয়েস্ট Rate Limiter এর মাধ্যমে সার্ভার রিকোয়েস্ট গ্রহণ করে থাকে। নির্দিষ্ট পরিমানের চেয়ে রিকোয়েস্ট বেশি হয়ে গেলে Rate Limiter রিকোয়েস্টগুলোকে block করে ফেলে, যার ফলে রিকোয়েস্টগুলো আর সার্ভারে যেতে পারে না।
 
@@ -327,7 +328,7 @@ Rate Limiter একটি প্রসেস, যেখানে ক্লায়
 
 🔗 [**আরও পড়ুন: রেইট লিমিটার**](./sections/rate-limiter/README.md)
 
-## Section 23: CAP Theorem
+## Section 24: CAP Theorem
 
 এটি একটি কনসেপ্ট বা থিওরি যা দ্বারা বুজা যায়, একটি Distributed System এ উল্লিখিত তিনটি প্রোপার্টি থেকে দুইটি প্রোপার্টি সবসময় মেনে চলবে।
 
@@ -343,7 +344,7 @@ Partition Tolerance হচ্ছে একাধিক নোড একে অ�
 
 🔗 [**আরও পড়ুন: ক্যাপ থিওরাম**](./sections/cap-theorem/README.md)
 
-## Section 25: Polling and Streaming
+## Section 26: Polling and Streaming
 
 Polling মানে হচ্ছে client regular interval এ server কে বার বার ডেটার জন্য রিকোয়েস্ট করবে। যেমন, ক্লায়েন্ট প্রতি ৫ সেকেন্ড পর পর সার্ভার কে রিকোয়েস্ট করবে আর সার্ভার তার রেসপন্স দিবে।
 
@@ -363,7 +364,7 @@ Streaming কিংবা Pushing এ সার্ভার এবং ক্ল�
 
 🔗 [**আরও পড়ুন: পোলিং স্ট্রিমিং**](./sections/polling-and-streaming/README.md)
 
-## Section 26: Message Queue
+## Section 27: Message Queue
 
 এটি একটি প্রসেস যেখানে এক বা একাধিক Producer থাকবে, যাদের কাজ হচ্ছে Message(এখানে message মানে রিকোয়েস্ট) Queue এর মধ্যে send করা এবং queue সেই রিকোয়েস্টগুলোকে প্রসেস করে বিভিন্ন consumer এর কাছে পাঠিয়ে দেয়।
 
@@ -388,7 +389,7 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
 
-## Section 28: Single Sign-On
+## Section 29: Single Sign-On
 
 Single Sign-On কিংবা SSO হল একটি Authentication Mechanism। যা user কে একাধিক প্লাটফর্ম (গুগল, ফেইসবুক, টুইটার) দিয়ে Authenticate করে দেয়, একটি নির্দিষ্ট credential মাধ্যমে।
 
@@ -398,13 +399,13 @@ Single Sign-On কিংবা SSO হল একটি Authentication Mechanism�
 
 (বিস্তারিত চলমান)
 
-## Section 29: Elasticsearch
+## Section 30: Elasticsearch
 
 এটি একটি NoSQL ভিত্তিক ডেটাবেস। মূলত এটিকে Distributed Search এবং Aggregation Engine হিসেবে ব্যবহার করা হয়। Elasticsearch এর ভিতর structured এবং unstructured data স্টোর করে রাখা যায়।
 
 🔗 [**আরও পড়ুন: ইলাস্টিকসার্চ**](./sections/elasticsearch/README.md)
 
-## Section 30: Bloom Filter
+## Section 31: Bloom Filter
 
 Bloom Filter একটি Probabilistic Data Structure। Hashing টেকনিক ব্যবহার করে এখানে ডেটা insert করা হয়। এটি খুবই Faster এবং মেমোরি Efficient।
 
@@ -437,7 +438,7 @@ Bloom Filter Data Structure এ Hash function ব্যবহার করে �
 
 🔗 [**আরও পড়ুন: ব্লুম ফিল্টার**](./sections/bloom-filter/README.md)
 
-## Section 33: How OAuth2 works
+## Section 34: How OAuth2 works
 
 OAuth2 হল এক প্রকারের Authorization Grant Technique। এটি Google, Facebook এর মত ওয়েবসাইট থেকে নির্দিষ্ট information আনতে পারে কোনো প্রকারের password এবং অন্যান্য sensitive information ছাড়া। এই নির্দিষ্ট information এ একটি Access Token থাকে যা দ্বারা আমরা নির্দিষ্ট রিসোর্স(হতে পারে কোনো ওয়েবসাইট এ Login) ব্যবহার করতে পারবো।
 
@@ -455,7 +456,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 35: High Availability best practices by Netflix
+## Section 36: High Availability best practices by Netflix
 
 Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
 
@@ -471,7 +472,7 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 36: Resources
+## Section 37: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive Applications (paid)</a>
