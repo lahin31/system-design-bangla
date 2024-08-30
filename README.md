@@ -24,7 +24,7 @@
 - [Section 8: Transmission Control Protocol](#section-8-transmission-control-protocol)
 - [Section 9: User Datagram Protocol](#section-9-user-datagram-protocol)
 - [Section 10: HTTP and HTTPS](#section-10-http-and-https)
-- [Section 11: High Concurrency Control]
+- [Section 11: High Concurrency Control](#section-11-high-concurrency-control)
 - [Section 12: Functional and Non Functional Requirements](#section-12-functional-and-non-functional-requirements)
 - [Section 13: Back Of the Envelope Estimation](#section-13-back-of-the-envelope-estimation)
 - [Section 14: Authentication and Authorization](#section-14-authentication-and-authorization)
@@ -183,6 +183,12 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
 </p>
 
 🔗 [**আরও পড়ুন: এইচটিটিপি এবং এইচটিটিপি'এস**](./sections/http-and-https/README.md)
+
+## Section 11: High Concurrency Control
+
+High Concurrency মানে হচ্ছে, যখন একাধিক user কিংবা একাধিক process একই সময়/একই মুহূর্তে একটি নির্দিষ্ট রিসোর্স কিংবা একটি নির্দিষ্ট ডাটা modify করতে যায়। এর দ্বারা অনেক সমস্যা সৃষ্টি হতে পারে, যার মধ্যে সবচেয়ে গুরুত্বপূর্ণ সমস্যা হচ্ছে Data Inconsistency।
+
+(চলমান)
 
 ## Section 12: Functional and Non Functional Requirements
 
