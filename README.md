@@ -15,59 +15,68 @@
 ### সূচিপত্র
 
 **System Design and Architecture**
-  - [Section 1: System Design](#section-1-system-design)
-  - [Section 3: Client Server Architecture](#section-3-client-server-architecture)
-  - [Section 15: Stateful and Stateless Architecture](#section-15-stateful-and-stateless-architecture)
-  - [Section 14: Authentication and Authorization](#section-14-authentication-and-authorization)
-  - [Section 29: Single Sign-On](#section-29-single-sign-on)
-  - [Section 35: Serverless Architecture] (চলমান)
+
+- [Section 1: System Design](#section-1-system-design)
+- [Section 3: Client Server Architecture](#section-3-client-server-architecture)
+- [Section 15: Stateful and Stateless Architecture](#section-15-stateful-and-stateless-architecture)
+- [Section 14: Authentication and Authorization](#section-14-authentication-and-authorization)
+- [Section 29: Single Sign-On](#section-29-single-sign-on)
+- [Section 35: Serverless Architecture] (চলমান)
 
 **Data Management**
-  - [Section 2: Database Engineering](#section-2-database-engineering)
-  - [Section 19: Database Sharding](#section-19-database-sharding)
-  - [Section 20: Database Replication](#section-20-database-replication)
-  - [Section 21: Caching](#section-21-caching)
-  - [Section 30: Elasticsearch](#section-30-elasticsearch)
-  - [Section 31: Bloom Filter](#section-31-bloom-filter)
+
+- [Section 2: Database Engineering](#section-2-database-engineering)
+- [Section 19: Database Sharding](#section-19-database-sharding)
+- [Section 20: Database Replication](#section-20-database-replication)
+- [Section 21: Caching](#section-21-caching)
+- [Section 30: Elasticsearch](#section-30-elasticsearch)
+- [Section 31: Bloom Filter](#section-31-bloom-filter)
 
 **Computer Network Concepts**
-  - [Section 7: Domain Name System](#section-7-domain-name-system)
-  - [Section 8: Transmission Control Protocol](#section-8-transmission-control-protocol)
-  - [Section 9: User Datagram Protocol](#section-9-user-datagram-protocol)
-  - [Section 10: HTTP and HTTPS](#section-10-http-and-https)
-  - [Section 34: How OAuth2 works](#section-34-how-oauth2-works)
+
+- [Section 7: Domain Name System](#section-7-domain-name-system)
+- [Section 8: Transmission Control Protocol](#section-8-transmission-control-protocol)
+- [Section 9: User Datagram Protocol](#section-9-user-datagram-protocol)
+- [Section 10: HTTP and HTTPS](#section-10-http-and-https)
+- [Section 34: How OAuth2 works](#section-34-how-oauth2-works)
 
 **Networking Techniques**
-  - [Section 16: Proxy](#section-16-proxy)
-  - [Section 17: REST API](#section-17-rest-api)
-  - [Section 23: Rate Limiter](#section-23-rate-limiter)
-  - [Section 26: Polling and Streaming](#section-26-polling-and-streaming)
-  - [Section 32: Load Balancing Algorithms] (চলমান)
-  - [Section 33: How Live Streaming works] (চলমান)
+
+- [Section 16: Proxy](#section-16-proxy)
+- [Section 17: REST API](#section-17-rest-api)
+- [Section 23: Rate Limiter](#section-23-rate-limiter)
+- [Section 26: Polling and Streaming](#section-26-polling-and-streaming)
+- [Section 32: Load Balancing Algorithms] (চলমান)
+- [Section 33: How Live Streaming works] (চলমান)
 
 **Reliability and Performance**
-  - [Section 4: Reliability](#section-4-reliability)
-  - [Section 5: Performance Metrics](#section-5-performance-metrics)
-  - [Section 11: High Concurrency Control](#section-11-high-concurrency-control)
-  - [Section 36: High Availability best practices by Netflix](#section-36-high-availability-best-practices-by-netflix)
+
+- [Section 4: Reliability](#section-4-reliability)
+- [Section 5: Performance Metrics](#section-5-performance-metrics)
+- [Section 11: High Concurrency Control](#section-11-high-concurrency-control)
+- [Section 36: High Availability best practices by Netflix](#section-36-high-availability-best-practices-by-netflix)
 
 **Scalability**
-  - [Section 18: Scalability](#section-18-scalability)
+
+- [Section 18: Scalability](#section-18-scalability)
 
 **Distributed System**
-  - [Section 6: Distributed System](#section-6-distributed-system)
-  - [Section 24: CAP Theorem](#section-24-cap-theorem)
-  - [Section 22: Content Delivery Network](#section-22-content-delivery-network)
-  - [Section 25: Consistent Hashing] (চলমান)
-  - [Section 27: Message Queue](#section-27-message-queue)
-  - [Section 28: rpc, gRpc] (চলমান)
+
+- [Section 6: Distributed System](#section-6-distributed-system)
+- [Section 22: Content Delivery Network](#section-22-content-delivery-network)
+- [Section 24: CAP Theorem](#section-24-cap-theorem)
+- [Section 25: Consistent Hashing] (চলমান)
+- [Section 27: Message Queue](#section-27-message-queue)
+- [Section 28: rpc, gRpc] (চলমান)
 
 **Estimation and Planning**
-  - [Section 12: Functional and Non Functional Requirements](#section-12-functional-and-non-functional-requirements)
-  - [Section 13: Back Of the Envelope Estimation](#section-13-back-of-the-envelope-estimation)
+
+- [Section 12: Functional and Non Functional Requirements](#section-12-functional-and-non-functional-requirements)
+- [Section 13: Back Of the Envelope Estimation](#section-13-back-of-the-envelope-estimation)
 
 **Resources**
-  - [Section 37: Resources](#section-37-resources)
+
+- [Section 37: Resources](#section-37-resources)
 
 ## Section 1: System Design
 
@@ -141,8 +150,14 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 এই রূপান্তর করার পদ্ধতিটা শুরু হয় DNS Resolver দিয়ে,
 
 - DNS Resolver মূলত Human Readable Domain কে নির্দিষ্ট IP-তে রূপান্তর করে থাকে। এর ৩টি পার্ট আছে,
+
   - Root Server, এই সার্ভার মূলত .com, .org, .net ইত্যাদির তথ্য রাখে এবং সেগুলোর IP সেই DNS Resolver কে দিয়ে থাকে যেমন .com এর জন্য .com এর IP, .org এর জন্য .org এর IP
+
   - Top Level Domain Server, এই সার্ভার মূলত প্রতিটি Top Level Domain (www.google.com এর TLD হল .com) এর Authoritative Server এর তথ্য নিজের মধ্যে রাখে।
+
+    - সাধারণ top-level domains: .com, .org, .gov
+    - দেশীয় code top-level domains: .jp, .uk, .bd
+
   - Authoritative Server, এই সার্ভারের মধ্যে সেই Human Readable Domain (যেমন www.google.com) এর IP পাওয়া যায়।
 
 <p align="center">
