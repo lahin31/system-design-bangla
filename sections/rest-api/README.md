@@ -113,6 +113,12 @@ router.get("/users", (req, res) => {
 
 ? এর পরের অংশটুকু হল Query Parameters.
 
+- Health check endpoint তৈরী করে রাখা। উদাহরণ, /health - যা বলে দিবে সার্ভিস healthy আছে কি না।
+
+- ISO 8601 UTC dates ব্যবহার করা। যখন আমরা Time এবং Date নিয়ে কাজ করবো তখন ISO 8601 UTC dates আকারে সার্ভার থেকে ক্লায়েন্টের কাছে পাঠিয়ে দিবো। নির্দিষ্ট time-zone এ দেখানো তা ক্লায়েন্ট সাইড এর বিষয়।
+
+- নির্দিষ্ট রেস্পন্সের জন্য নির্দিষ্ট Status Code ব্যবহার করা।
+
 ## Rest API security best practices
 
 - HTTPS ব্যবহার করা।
@@ -133,11 +139,11 @@ router.get("/users", (req, res) => {
 
 ### Pagination
 
-২ রকমের pagination techniques আমাদের কাছে আছে। Offset এবং Cursor। আমাদের requirements এর উপর ভিত্তি করে আমরা pagination technique ব্যবহার করব।  
+২ রকমের pagination techniques আমাদের কাছে আছে। Offset এবং Cursor। আমাদের requirements এর উপর ভিত্তি করে আমরা pagination technique ব্যবহার করব।
 
 ### Data Compression
 
-Data Compressed করলে আমরা API response এর size কমাতে পারবো। 
+Data Compressed করলে আমরা API response এর size কমাতে পারবো।
 
 ### Unnecessary property send to payload and response
 
