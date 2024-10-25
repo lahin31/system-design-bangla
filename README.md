@@ -24,7 +24,7 @@
 - [Section 8: Transmission Control Protocol](#section-8-transmission-control-protocol)
 - [Section 9: User Datagram Protocol](#section-9-user-datagram-protocol)
 - [Section 10: HTTP and HTTPS](#section-10-http-and-https)
-- [Section 11: What will happen when you type "https://www.google.com" in your browser?] (চলমান)
+- [Section 11: What happens when you type a URL in your browser](#section-11-what-happens-when-you-type-a-url-in-your-browser)
 - [Section 12: High Concurrency Control](#section-12-high-concurrency-control)
 - [Section 13: Functional and Non Functional Requirements](#section-13-functional-and-non-functional-requirements)
 - [Section 14: Back Of the Envelope Estimation](#section-14-back-of-the-envelope-estimation)
@@ -190,6 +190,20 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
 </p>
 
 🔗 [**আরও পড়ুন: এইচটিটিপি এবং এইচটিটিপি'এস**](./sections/http-and-https/README.md)
+
+## Section 11: What happens when you type a URL in your browser
+
+<p align="center">
+  <img src="./images/what-happens.jpeg" alt="what happens">
+</p>
+
+(ছবিটি ইন্টারনেট থেকে ডাউনলোড করা)। আপনি যখন আপনার ব্রাউসার এর Address Bar এ URL টাইপ করে enter press করবেন, আপনার ব্রাউসার প্রথমে আপনার রিকোয়েস্টটিকে DNS সার্ভার এ পাঠিয়ে দিবে তারপর দেখবে DNS cache এর ভিতর সেই URL এর IP এড্রেস আছে কি না। যদি না থাকে তাহলে বিভিন্ন steps শেষ করার পর DNS সেই URL এর IP রিটার্ন করবে।
+
+তারপর 3-way handshake এর মাধ্যমে IP address এর সার্ভার এর সাথে TCP কানেকশন তৈরী হবে।
+
+পরবর্তীতে browser TCP কানেকশন এর সাহায্যে সেই সার্ভারে HTTP রিকোয়েস্ট করে।
+
+সার্ভার রিকোয়েস্ট প্রসেস করে তারপর রেসপন্স রিটার্ন করে থাকে। ব্রাউসার সেই রেসপন্স কে বিভিন্ন স্টেপ শেষ করে ব্রাউজারে দেখায়।
 
 ## Section 12: High Concurrency Control
 
