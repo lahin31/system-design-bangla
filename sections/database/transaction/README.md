@@ -12,4 +12,34 @@
 
 - ক্লায়েন্টদের মধ্যে concurrency বা race condition এর কারণে অপ্রত্যাশিত বাগ তৈরি হতে পারে।
 
+উপরের পয়েন্টগুলোর উত্তর পেতে হলে নিচের টপিকগুলো বুজতে হবে।
+
+### Transection কী?
+
+ডাটাবেস এ Transaction মানে হচ্ছে, একাধিক READ এবং WRITE অপারেশনগুলোকে একটি লজিকাল ইউনিট এর ভিতর রেখে দেয়া, যার মানে দাঁড়ায় সকল READ এবং WRITE অপারেশনগুলোকে একটি অপারেশন হিসেবে গণ্য করবে।
+
+সাধারণত Transaction এভাবে শুরু হয়,
+
+```sql
+BEGIN
+
+SELECT * FROM users
+UPDATE users SET username=“lahin” WHERE id=224
+
+COMMIT
+```
+
+Transaction মূলত ৪'টি features দিয়ে থাকে আমাদের।
+
+- Atomicity
+- Consistency
+- Isolation
+- Durability
+
+#### Atomicity
+
+যখন কোনো(/একটি) ক্লায়েন্ট একাধিক WRITE অপারেশন চালাতে যায় অর্থাৎ যদি ৪ টি WRITE অপারেশন এর মধ্যে ২ টি WRITE অপারেশন successfully চালানোর পর কোনো Fault সংগঠিত হয়, (যেমন- process crushes, network communication interrupt হলে কিংবা ডিস্ক সাইজ full হয়ে গেলে।) তখন successfully সংগঠিত হওয়া অপারেশনগুলোকে রিভার্ট করে দিবে। কারণ তখন ৪ টি অপারেশন একটি সিঙ্গেল লজিকাল ইউনিট এর ভিতর থাকবে।
+
+Atomicity ছাড়া কোন query সাকসেস কিংবা fail হয়েছে তা বের করা অসম্ভব।
+
 (চলমান)
