@@ -23,7 +23,7 @@
 - [Section 7: Domain Name System](#section-7-domain-name-system)
 - [Section 8: Transmission Control Protocol](#section-8-transmission-control-protocol)
 - [Section 9: User Datagram Protocol](#section-9-user-datagram-protocol)
-- [Section 10: HTTP and HTTPS](#section-10-http-and-https)
+- [Section 10: HTTP, TLS and HTTPS](#section-10-http-tls-and-https)
 - [Section 11: What happens when you type a URL in your browser](#section-11-what-happens-when-you-type-a-url-in-your-browser)
 - [Section 12: High Concurrency Control](#section-12-high-concurrency-control)
 - [Section 13: Functional and Non Functional Requirements](#section-13-functional-and-non-functional-requirements)
@@ -179,17 +179,19 @@ UDP তে কোনো Error checking হয় না।
   <img src="./images/udp.png" alt="udp">
 </p>
 
-## Section 10: HTTP and HTTPS
+## Section 10: HTTP, TLS and HTTPS
 
 HTTP অর্থাৎ Hyper Text Transfer Protocol, HTTP এক প্রকারের বৈশিষ্ট প্রদান করে থাকে, যার মাধ্যমে Web Browser এবং Web Server নিজেদের ভিতর communication করে থাকে। এটি এক প্রকারের set of rules যা ডেটা ক্লায়েন্ট থেকে সার্ভারে পাঠানো সাহায্য করে। ডেটা হতে পারে Text, Image ইত্যাদি। ক্লায়েন্ট এবং সার্ভারের ভিতর ডেটা আদান প্রধান plain-text এ হয়ে থাকে, এর ফলে HTTP secured না।
 
-HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নিজে HTTP এর সকল বৈশিষ্ট বহন করে শুধু SSL/TLS যোগ করে ক্লায়েন্ট এবং সার্ভারের মধ্যে ডেটা ট্রান্সফার Encrypted হয়ে থাকে।
+TLS কিংবা Transport Layer Security, এটি হলো Cryptographic Protocol যা মূলত communication সুরক্ষিত করার জন্য ব্যবহার করা হয়। এটি ডাটা এনক্রিপ্ট করে থাকে ডাটা ক্লায়েন্ট থেকে সার্ভারে ট্রান্সমিট হওয়ার সময়।
+
+HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নিজে HTTP এর সকল বৈশিষ্ট বহন করে শুধু SSL/TLS যোগ করে, ক্লায়েন্ট এবং সার্ভারের মধ্যে ডেটা ট্রান্সফার Encrypted হয়ে থাকে।
 
 <p align="center">
   <img src="./images/http-https.png" alt="http and https">
 </p>
 
-🔗 [**আরও পড়ুন: এইচটিটিপি এবং এইচটিটিপি'এস**](./sections/http-and-https/README.md)
+🔗 [**আরও পড়ুন: এইচটিটিপি, টিএলএস এবং এইচটিটিপি'এস**](./sections/http-tls-and-https/README.md)
 
 ## Section 11: What happens when you type a URL in your browser
 
