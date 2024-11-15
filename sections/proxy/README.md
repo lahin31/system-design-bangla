@@ -170,10 +170,10 @@ http {
 
 ### NGINX Load Balancer এবং AWS Elastic Load Balancer
 
-NGINX Load Balancer মূলত একাধিক ইনকামিং রিকোয়েস্টগুলোকে একাধিক সার্ভারের মধ্যে এক একটি সার্ভারে ডিস্ট্রিবিউট করে দেয়।
+NGINX Load Balancer মূলত একাধিক ইনকামিং রিকোয়েস্টগুলোকে একাধিক সার্ভারের মধ্য থেকে এক একটি সার্ভারে ডিস্ট্রিবিউট করে দেয়।
 
 <p align="center">
-  <img src="./images/ngins_lb.png" alt="Load Balancing">
+  <img src="./images/nginx_lb.png" alt="Load Balancing">
 </p>
 
 AWS ELB মূলত ইনকামিং ট্রাফিকগুলোকে এক একটি নির্দিষ্ট টার্গেট এর মধ্যে ডিস্ট্রিবিউট করে। এখানে টার্গেট হতে পারে EC2 Instance।
