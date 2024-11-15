@@ -1,13 +1,4 @@
-## Proxy
-
-এখানে আমরা উক্ত বিষয়গুলো আলোচনা করব।
-
-- [Forward Proxy and Reverse Proxy](#forward-proxy-and-reverse-proxy)
-- [Load Balancing](#load-balancing)
-- [Why Load Balancing](#why-load-balancing)
-- [Advantages of Load Balancer](#advantages-of-load-balancer)
-
-### Forward Proxy and Reverse Proxy
+## Forward Proxy এবং Reverse Proxy
 
 প্রক্সি কে ২ ভাগে ভাগ করা যায়, ফরওয়ার্ড প্রক্সি এবং রিভার্স প্রক্সি।
 
@@ -39,7 +30,7 @@
 
 আমরা যদি প্রাক্টিকালি বলতে যাই, লোড ব্যালেন্সিং একটি টেকনিক যা আমাদের ক্লায়েন্ট রিকুয়েস্টগুলোকে একাধিক সার্ভারের মধ্য থেকে এক একটি সার্ভারে ডিসট্রিবিউট করতে পারে। উদাহরণ হল, NGINX।
 
-### Why Load Balancing
+### কেন Load Balancing
 
 ধরুন আমাদের একটি ওয়েবসাইট আছে, যেখানে ইউজাররা ভালোভাবে ব্যবহার করতে পারছে,
 
@@ -65,14 +56,118 @@
 
 Load Balancer সাধারণত ৩টি পদ্ধতিতে মেনে চলে লোড ডিসট্রিবিউট করতে পারে, রাউন্ড রবিন, লোড বেইজড ডিসট্রিবিউশন এবং রিসোর্স বেইজড ডিসট্রিবিউশন।
 
-### Advantages of Load Balancer
+### Load Balancer এর সুবিধাগুলো
 
 লোড ব্যালেন্সার ব্যবহারের সুবিধা হল,
 
 - স্কেলেবিলিটি (Scalability), লোড ব্যালেন্সার হরাইজন্টাল স্কেলিং পদ্ধতি ব্যবহার করে আমাদের ওয়েবসাইটকে স্কেল করে থাকে।
 - এভাইল্যাবিলিটি (Availability), কোন সার্ভার যদি কোন কারণে নষ্ট হয়ে যায় লোড ব্যালেন্সারের সেই রিকুয়েস্টকে অন্য সার্ভারে ট্রান্সফার করতে পারবে।
 
-### Resources
+### রিভার্স প্রক্সি হিসেবে NGINX
 
-- <a href="https://youtu.be/ozhe__GdWC8" target="_blank">Proxy vs. Reverse Proxy (Explained by Example)</a>
-- <a href="https://youtu.be/Nu-4Q3OoR4E" target="_blank">Proxies by sudoCODE</a>
+NGINX একটি জনপ্রিয় রিভার্স প্রক্সি। এর মত আরো কিছু রিভার্স প্রক্সি রয়েছে। সাধারণত NGINX রিকোয়েস্টকে একাধিক সার্ভার এর মধ্য থেকে একটি সার্ভারে ফরওয়ার্ড করে দেয়, প্রসেসিং এর জন্য।
+
+NGINX এর কনফিগারেশন ফাইল সাধারণত এরকম থাকে।
+
+```nginx
+worker_processes 1;  # Number of worker processes
+events {
+  worker_connections 1024;  # Maximum number of simultaneous connections per worker
+}
+
+http {
+  include       mime.types;  # Include MIME types
+  default_type  application/octet-stream;  # Default MIME type
+
+  sendfile          on;  # Enable efficient file transfers
+  keepalive_timeout 65;  # Timeout for persistent connections
+
+  server {
+    listen 80;  # Listen on port 80 (HTTP)
+    server_name example.com www.example.com;  # Your domain names
+
+    location / {
+      root /var/www/html;  # Root directory for your files
+      index index.html;  # Default file to serve
+    }
+
+    error_page 404 /404.html;  # Custom error page
+  }
+}
+```
+
+এখানে / সংযুক্ত রিকোয়েস্টগুলোকে /var/www/html ডিরেক্টরির index.html ফাইল দেখাবে।
+
+এখন আপনি যদি Node.js NGINX দ্বারা পয়েন্ট করে দিতে চান,
+
+```nginx
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  server_name  localhost;
+
+  # Load configuration files for the default server block.
+  include /etc/nginx/default.d/*.conf;
+
+  location /api/ {
+    proxy_pass http://localhost:4000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}
+```
+
+উপরের server ব্লক এর মধ্যে দেখা যাচ্ছে, রিকোয়েস্ট এর মধ্যে /api থাকলে তা আমাদের node.js ইনস্ট্যান্স কে হিট করবে, যার পোর্ট হচ্ছে 4000।
+
+আমরা চাইলে NGINX এর Load Balancing এর সুবিধা নিতে পারবো, যদি আমরা Performance, Reliability এবং Scalability চিন্তা করি।
+
+NGINX Load Balancer ব্যবহারের সর্বোত্তম সময় আমাদের consider করতে হবে,
+
+- যখন দেখবো আমাদের সিস্টেম ট্রাফিক রিকোয়েস্ট হ্যান্ডেল করতে scalability প্রয়োজন।
+- আমাদের সিস্টেমে Downtime কমানোর প্রয়োজন।
+- যখন আমরা Distributed System তৈরী করবো।
+
+এসব ক্ষেত্রে লোড ব্যালেন্সিং করবো।
+
+উপরের NGINX কোড কে লোড ব্যালেন্সিং করলে,
+
+```nginx
+http {
+  upstream backend_servers {
+    # Define the backend servers
+    server 127.0.0.1:4000;  # Primary backend server
+    server 127.0.0.1:4001;  # Secondary backend server
+    server 127.0.0.1:4002;  # Tertiary backend server
+  }
+
+  server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name localhost;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location /api/ {
+      proxy_pass http://backend_servers;  # Pass requests to the load balancer
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+
+      # Additional settings for proxying
+      proxy_connect_timeout 60s;
+      proxy_read_timeout 60s;
+      proxy_send_timeout 60s;
+    }
+  }
+}
+```
+
+### NGINX Load Balance এবং AWS Elastic Load Balancer
+
+(চলমান)
