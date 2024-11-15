@@ -1,8 +1,8 @@
 ## DNS Query Types
 
-DNS এ তিন প্রকারের query থাকে, যার মাধ্যমে DNS সার্ভার কে রিকোয়েস্ট করতে পারে।
+DNS এ তিন প্রকারের query থাকে, যার মাধ্যমে DNS সার্ভার রিকোয়েস্ট কে প্রসেস করতে পারে।
 
-- Recursive Query: এতে DNS resolver থেকে যতক্ষণ না পর্যন্ত রেসপন্স না পাওয়া যায় ততক্ষন DNS সার্চ query মানে Root সার্ভার থেকে শুরু করে Authoritative সার্ভার পর্যন্ত প্রসেস চলতে থাকবে। যদি NXDOMAIN (Non-Existent Domain) পায় তাহলে আর করি করবে না directly "not found" মেসেজ পাঠিয়ে দিবে। মনে করি, আমাদের ডোমেইন `www.notfound.com`
+- Recursive Query: এতে DNS resolver থেকে যতক্ষণ না পর্যন্ত রেসপন্স না পাওয়া যায় ততক্ষন DNS সার্চ query মানে Root সার্ভার থেকে শুরু করে Authoritative সার্ভার পর্যন্ত প্রসেস চলতে থাকবে। যদি NXDOMAIN (Non-Existent Domain) পায় তাহলে আর সার্চ করবে না সরাসরি "not found" মেসেজ পাঠিয়ে দিবে। মনে করি, আমাদের ডোমেইন `www.notfound.com`
 
   - প্রথমে Recursive Root Server .com এর TLD বের করবে।
   - তারপর TLD তে চেক করা হবে, যদি কিছু না পাওয়া যায় তাহলে ক্লায়েন্ট এর কাছে NXDOMAIN (Non-Existent Domain) পাঠিয়ে দিবে। (NXDOMAIN পাঠিয়ে দেয়ার পর Recursive Root Server আর check করবে না।)
