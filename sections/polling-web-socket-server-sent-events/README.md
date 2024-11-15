@@ -16,6 +16,16 @@
   <img src="./images/long-polling.png" alt="long-polling">
 </p>
 
-### Web Socket কিভাবে কাজ করে?
+## Web Socket কিভাবে কাজ করে?
+
+Web Socket একটি single TCP কানেকশন এর মাধ্যমে তৈরী হওয়া Bidirectional Communication Protocol। প্রসেস শুরু হয়,
+
+- TCP Connection: client প্রথমে সার্ভার এর সাথে TCP Connection তৈরী করবে।
+
+- Connection সবসময় open থাকা: TCP Connection তৈরী হওয়ার পরে, কানেকশন সবসময় ওপেন থাকবে। Open কানেকশন এর মধ্যে Data Transmit হবে।
+
+- Connection বন্ধ: যখন কোনো এন্ড(client কিংবা server) নির্দিষ্টভাবে কানেকশন বন্ধ করলে, তখন কানেকশন সিস্টেম বন্ধ হবে। অন্যথায় কানেকশন সবসময় Open থাকবে।
+
+## Server-Sent Events
 
 (চলমান)
