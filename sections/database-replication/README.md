@@ -26,9 +26,7 @@ Replication Lag এর জন্য একটি সমস্যা তৈরী
 
 Master ডাটাবেস ডেটা নিজের মধ্যে আপডেট করে বাকি Read Replica ডাটাবেসে আপডেট করার জন্য বলে দিবে, কোনো প্রকারের acknowledgement ছাড়া। এতে করে Master ডাটাবেস কোনো Read ডাটাবেসের সাথে নির্ভর থাকবে না।
 
-## Benefits of Database Replication
-
-Database Replication এর সুবিধা,
+## Database Replication এর সুবিধাগুলো
 
 - Performance: যেহেতু সবধরনের Write, Update and Delete Master Database এ হবে এবং সবধরনের Read Slave Database এ হবে সেহেতু একাধিক Query Parallely সংঘটিত হবে যার ফলে Performance Better হবে।
 
@@ -38,13 +36,13 @@ Database Replication এর সুবিধা,
 
 - Reduce Latency: একাধিক Database Server(Slave Database) থাকার ফলে Latency Time reduce হয়।
 
-## Some facts
+## কিছু ফ্যাক্টগুলো
 
 - কোনো কারণে যেকোনো Slave Database নষ্ট হয়ে গেলে অন্য Slave Database থেকে ডেটা নেয়া যায়।
 
 - Master Database নষ্ট হয়ে গেলে, কোনো Slave Database সেই নষ্ট Master Database কে Replace করবে। পরে নতুন Slave Database তৈরি হয়ে পুরনো Slave Database কে Replace করবে।
 
-## How does AWS RDS multi az read replicas work to recover from disaster?
+## কিভাবে AWS RDS multi az read replicas; disaster recovery জন্য কাজ করে?
 
 ডাটাবেস সিস্টেমকে disaster recover করতে আমরা AWS RDS এর multi-az read replica feature ব্যবহার করতে পারি।
 
