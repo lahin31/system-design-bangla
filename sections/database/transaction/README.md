@@ -28,6 +28,18 @@ UPDATE users SET username=“lahin” WHERE id=224
 
 COMMIT
 ```
+আপনি Prisma দিয়ে লিখতে গেলে,
+
+```js
+await prisma.$transaction(async (prisma) => {
+  const users = await prisma.users.findMany();
+
+  await prisma.user.update({
+    where: { id: 224 },
+    data: { username: 'lahin' },
+  });
+});
+```
 
 Transaction মূলত ৪'টি features দিয়ে থাকে আমাদের।
 
@@ -119,5 +131,15 @@ Isolation Level বুঝার পূর্বে ৩ প্রকারের 
 </p>
 
 যেকোনো Data Modification Operations মানে Insert, Update কিংবা Delete এর কারণে Phantom Read anomalie হতে পারে।
+
+এখন আমরা Isolation Level বুঝবো সাথে তাও বুঝবো কোন Isolation Level কোন Anomalie তৈরী করে।
+
+##### Read Uncommitted
+
+একে Lowest Isolation Level হিসেবে বিবেচনা করা হয়। একে Lowest বলার কারণ হচ্ছে, Transaction ডাটা read করতে পারে যা অন্য Transaction এর দ্বারা manipulate হয়েছে, এমনকি সেই Transaction committed না হলেও।
+
+তাই এই লেভেলে Dirty Read anomalie থাকতে পারে। কারণ কোনো transaction এমন কোনো ডাটা read করতে পারে যা অন্য transaction সেই manipulate হওয়া এবং যে Transaction manipulate করেছে সেই Transaction নিজ থেকে Rolled Back করে দিতে পারে।
+
+এই লেভেলে মূলত Consistency কে গুরুত্ব দেয়া হয় নি।
 
 (চলমান...)

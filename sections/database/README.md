@@ -29,9 +29,9 @@
 
 - ACID: SQL ভিত্তিক Database সাধারণত ACID property follow করে থাকে। যেখানে A মানে Atomicity, C মানে Consistency, I মানে Isolation এবং D মানে Durability। এগুলোর উদ্দেশ্য হল Data Integrity এবং Consistency বজায় রাখা। যেমন Banking Software/ATM Vendor Machine এগুলোর জন্য ACID খুব গুরুত্বপূর্ণ।
 
-ACID খুবই গুরুত্বপূর্ণ বিষয়। ACID বুজতে হলে আমাদেরকে Transaction বুজতে হবে।
+ACID খুবই গুরুত্বপূর্ণ বিষয়। ACID বুজতে হলে আমাদেরকে **Transaction** বুঝতে হবে।
 
-Transaction বুজতে হলে এখানে [ক্লিক করুন](https://github.com/lahin31/system-design-bangla/blob/master/sections/database/transaction/README.md)।
+**Transaction বুজতে হলে এখানে [ক্লিক করুন](https://github.com/lahin31/system-design-bangla/blob/master/sections/database/transaction/README.md)।**
 
 NoSQL ভিত্তিক Database, BASE মানে (Basically Available, Soft state, Eventual consistency) সাপোর্ট করে।
 
