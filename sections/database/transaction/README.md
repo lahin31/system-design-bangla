@@ -142,4 +142,10 @@ Isolation Level বুঝার পূর্বে ৩ প্রকারের 
 
 এই লেভেলে মূলত Consistency কে গুরুত্ব দেয়া হয় নি।
 
+##### Read Committed
+
+এতে কোনো Transaction মনে করুন, Transaction-A যখন read করবে তখন সবসময় সে Committed ভ্যালু দেখবে। যার ফলে Dirty Read হওয়ার সুযোগ থাকে না। অন্য Transaction-B দ্বারা তৈরী কোনো Data Modification Operations যতক্ষণ না পর্যন্ত commit হচ্ছে ততক্ষন সেই Transaction-A কোনো Read করতে পারবে না।
+
+Database Table read block করা থাকবে Transaction-A এর জন্য।
+
 (চলমান...)
