@@ -148,4 +148,14 @@ Isolation Level বুঝার পূর্বে ৩ প্রকারের 
 
 Database Table read block করা থাকবে Transaction-A এর জন্য।
 
+##### Repeatable Read
+
+যখন কোনো Transaction-A যতবার read query চালাবে ততবার Transaction-A একই ডাটা দেখবে, এমনকি অন্য কোনো Transaction-B দ্বারা ডাটা মোডিফাই করে থাকলেও। কিন্তু অন্য Transaction-B দ্বারা কোনো row insert হলে কিংবা delete হলে তা যখন একবার কমিট হয়ে যাবে তখন Transaction-A তা দেখতে পারবে।
+
+Repeatable Read মূলত Row-level consistency বজায় রাখে। সেজন্য নতুন row insert কিংবা row delete হলে তা দেখা যায়।
+
+তাহলে আমরা বলতে পারি, Repeatable Read এ Dirty Read এবং Non-Repeatable Read হবে না তবে Phantom Read anomalie হবে।
+
+MySQL database এর default Isolation Level হচ্ছে Repeatable Read।
+
 (চলমান...)

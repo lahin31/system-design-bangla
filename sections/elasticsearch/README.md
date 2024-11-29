@@ -1,4 +1,4 @@
-## Why Elasticserach?
+## কেনো Elasticserach?
 
 আমরা একটি scenario চিন্তা করি, আমাদের একটি e-commerce application আছে। যেখানে ৮০ লক্ষ প্রোডাক্ট আছে। এখন end user কোনো একটি প্রোডাক্ট এর keyword দিয়ে যখন সার্চ করবে তখন response time 400ms বা তার থেকেও বেশি হতে পারে।
 
@@ -6,7 +6,7 @@
 
 এরকম আরো অনেক scenario আছে। এসবের জন্য Elasticserach খুবই প্রয়োজনীয়।
 
-## Structure of Elasticsearch
+## Elasticsearch এর structure
 
 Elasticsearch এ কালামগুলোকে সাধারণত Field এবং Row গুলোকে Document বলে। এখানে মানে Elasticsearch এ টেবিলগুলোকে index বলা হয়।
 
