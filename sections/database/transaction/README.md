@@ -172,14 +172,19 @@ MySQL database এর default Isolation Level হচ্ছে Repeatable Read।
 
 #### Serializable
 
-একে Highest Level এর Isolation হিসেবে গণ্য করা হয়। এতে প্রতিটা Transaction গুলোর ফলাফল সিরিয়াল (একটি একটি করে) এক্সেকিউশন এর মতো হয়ে থাকে।
+একে Highest Level এর Isolation হিসেবে গণ্য করা হয়। এতে প্রতিটা Transaction গুলোর ফলাফল সিরিয়াল (একটি একটি করে) এক্সেকিউশন এর মতো দেখানো হয়ে থাকে।
 
 এতে করে আমরা Dirty Read, Non-repeatable Read এবং Phantom Read anomalie থেকে বিরত থাকতে পারবো।
 
 কেন আমরা কোনো Anomalie পাবো না?
 
-কারণ কোনো Transaction অন্য কোনো Transaction এর স্টেট/ডাটা দেখতে পারবে না।
+* Dirty Read: কোনো Transaction আরেকটির Transaction দ্বারা তৈরী হওয়া uncommitted data পড়তে পারে না।
+* Non-repeatable Read: একই query multiple times চালালে একি ডেটা রিটার্ন হয়।
+* Phantom Read: নতুন বা মুছে ফেলার Transaction মধ্যে ভিন্ন ফলাফল দেখায় না।
 
-যেহেতু Transaction গুলোর ফলাফল serially দেখানো হবে সেহেতু এই Isolation Level এ Conflict হতে পারে।
+যেহেতু Transaction গুলোর ফলাফল serially দেখানো হবে সেহেতু এই Isolation Level এ Conflict হতে পারে। দুটি কিংবা তার থেকে বেশি Concurrent Transaction একই ডেটার উপর কাজ করার চেষ্টা করে তাহলে conflict হওয়ার সুযোগ খুব বেশি। তখন,
+
+* একটি Transaction কে rollback করা হয়।
+* অথবা একটি Transaction কে wait করতে বাধ্য করা হয়।
 
 (চলমান...)
