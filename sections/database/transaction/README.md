@@ -187,4 +187,19 @@ MySQL database এর default Isolation Level হচ্ছে Repeatable Read।
 * একটি Transaction কে rollback করা হয়।
 * অথবা একটি Transaction কে wait করতে বাধ্য করা হয়।
 
+<p align="center">
+  <img src="./images/serializable.png" alt="Serializable">
+</p>
+
+* Transaction 2 এর SELECT স্টেটমেন্ট 2000 দেখতে পাবে কারণ Transaction 1 এখনও COMMIT করেনি।
+* Transaction 2 এর UPDATE Conflicts করবে কারণ Transaction 1 COMMIT করার পরে balance এর মান 1950 হয়ে যায়।
+* (one-after-another) অর্ডার মেইনটেইন করলে, Transaction 2 ROLLBACK হবে।
+* Balance হবে 1950।
+
+একটি গুরুত্বপূর্ণ প্রশ্ন রয়ে যায়,
+
+Transaction 2 update অপারেশন চালানোর সময় কেনো Transaction 1 এর দ্বারা কমিট করা ভ্যালু দেখতে পায় না?
+
+প্রতিটা Transaction তাদের Transaction এর শুরুতে টেবিলের একটি consistent snapshot capture করে এবং read queries এই snapshot থেকে কাজ করে। এজন্য read queries অন্য Transaction দ্বারা commit করা ভ্যালু দেখতে পায় না। তবে write queries এর ক্ষেত্রে ডাটাবেস serializability বজায় রাখার জন্য conflict detection প্রয়োগ করে।
+
 (চলমান...)
