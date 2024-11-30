@@ -158,9 +158,11 @@ PostgreSQL এর default Isolation Level হচ্ছে Read Committed।
 
 Repeatable Read মূলত Row-level consistency বজায় রাখে। সেজন্য নতুন row insert কিংবা row delete হলে তা দেখা যায়।
 
-তাহলে আমরা বলতে পারি, Repeatable Read এ Dirty Read এবং Non-Repeatable Read হবে না তবে Phantom Read anomalie হবে।
+তাহলে আমরা বলতে পারি, Repeatable Read এ Dirty Read এবং Non-Repeatable Read হবে না তবে Phantom Read anomalie হতে পারে।
 
 MySQL database এর default Isolation Level হচ্ছে Repeatable Read।
+
+(যদিও MySQL এর InnoDB "next-key locking" algorithm ব্যবহার করে যাতে Phantom Read anomalie না হয়।)
 
 #### Snapshot
 
