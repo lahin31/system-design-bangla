@@ -206,6 +206,34 @@ Transaction 2 update অপারেশন চালানোর সময় ক�
 
 যদি Transaction 2 কনফ্লিক্টের কারণে Rollback করা হয়, তবে Transaction 2 এর সব মধ্যবর্তী পরিবর্তন বাতিল হয়ে যাবে। যখন Transaction 2 restart হবে তখন সে নতুন consistent snapshot দেখবে যা Transaction 1 এর দ্বারা পরিবর্তিত।
 
+এখন একাধিক Transaction এর জন্য আমরা practically কিভাবে consistency বজায় রাখতে পারবো?
+
+আমাদের কাছে ২ টি option আছে,
+
+* Pessimistic Locking
+* Optimistic Locking
+
 ## Pessimistic Locking
+
+Pessimistic Locking এ যখন কোনো ডাটা access কিংবা update করা হয় তখন সেই row কিংবা সেই ডাটাকে lock করে রাখা হয়, যাতে অন্য Transaction তা কোনো প্রকারের মোডিফাই করতে না পারে।
+
+### Pessimistic Locking এবং Serializable Isolation level
+
+যদিও Serializable isolation level নিশ্চিত করে Serializability, তবুও আমাদের Locking Mechanism ব্যবহার করা লাগে।
+
+যেমন: একটি Transaction নির্দিষ্ট row এর উপর কাজ চলাকালীন, অন্য Transaction সেই row read করতে না পারে সেজন্য Pessimistic Locking কাজে আসবে।
+
+MySQL এ আমরা যেভাবে Isolation Level Serializable বাছাই করে Pessimistic Locking ব্যবহার করতে পারি।
+
+```sql
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+START TRANSACTION;
+
+SELECT balance FROM accounts WHERE id=1 FOR UPDATE;
+
+UPDATE accounts SET balance=balance-50 WHERE id=1;
+
+COMMIT;
+```
 
 (চলমান...)
