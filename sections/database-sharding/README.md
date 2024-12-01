@@ -40,18 +40,18 @@ Directory Based Sharding এ মূলত একটি Lookup table থাকব
 
 AWS Database Sharding <a href="https://aws.amazon.com/blogs/database/sharding-with-amazon-relational-database-service/" target="_blank">যেভাবে করে</a>
 
-PostgreSQL এ natively Database Sharding সাপোর্ট করে না তবে PostgreSQL 11 Foreign Data Wrappers এর মাধ্যমে আমরা ডাটা বিভিন্ন সার্ভারে ডিস্ট্রিবিউট এবং read করতে পারি। 
+PostgreSQL এ natively Database Sharding সাপোর্ট করে না তবে PostgreSQL 11 Foreign Data Wrappers এর মাধ্যমে আমরা ডাটা বিভিন্ন সার্ভারে ডিস্ট্রিবিউট এবং read করতে পারি।
 
-আমরা Connection Pool এবং Proxy হিসেবে Pgcat ব্যবহার করে আমরা ডেটা বিভিন্ন shard এর মধ্যে ডিস্ট্রিবিউট করতে পারি। 
+আমরা Connection Pool এবং Proxy হিসেবে Pgcat ব্যবহার করে আমরা ডেটা বিভিন্ন shard এর মধ্যে ডিস্ট্রিবিউট করতে পারি।
 
 <p align="center">
   <img src="./images/sharding-1.png" alt="sharding">
 </p>
 
-## When not to shard a table
+## কখন সার্ড করবো না?
 
 (চলমান)
 
-## Difference between Sharding and Partitioning
+## Sharding এবং Partitioning এর পার্থক্য
 
 Sharding মূলত ডাটাবেসের ডেটাগুলোকে একাধিক সার্ভারের ভিতর একাধিক টেবিল এর মধ্যে ডিস্ট্রিবিউট করে থাকে অন্যদিকে Partition একটি সার্ভারের ভিতর একাধিক টেবিল এর মধ্যে ডিস্ট্রিবিউট করে।

@@ -163,7 +163,7 @@ RAM যদি ৪ GB হয়?
   <img src="./images/read-query-execution.png" alt="Read Query Execution">
 </p>
 
-ছবিটি Step wise step বিশ্লেষণ করলে,
+ছবিটি বিশ্লেষণ করলে,
 
 * User একটি GET query রিকুয়েস্ট করলো। শর্ত username="lahin"।
 * Page Filtering নামক অংশটি প্রথমে Buffer Pool এর ভিতর খুঁজবে username=lahin সম্বলিত page আছে কি না। যদি থাকে তাহলে, সেই page থেকে row কে filter করে user এর কাছে পাঠিয়ে দিবে। অন্যথায় Disk এর pages এর মধ্য one-by-one করে I/O request চালাবে।
