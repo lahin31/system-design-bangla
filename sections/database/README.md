@@ -160,7 +160,7 @@ RAM যদি ৪ GB হয়?
 ## Read query, indexing ছাড়া কিভাবে execute হয়?
 
 <p align="center">
-  <img src="../images/read-query-execution.png" alt="Read Query Execution">
+  <img src="./images/read-query-execution.png" alt="Read Query Execution">
 </p>
 
 ছবিটি Step wise step বিশ্লেষণ করলে,
