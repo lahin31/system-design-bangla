@@ -109,7 +109,7 @@ Isolation Level বুঝার পূর্বে ৩ প্রকারের 
   <img src="./images/dirty-read.webp" alt="Dirty Read">
 </p>
 
-Transaction A এর দ্বারা Rollback হওয়ার কারণে, ০১:১৫ ঘটিকার Transaction B এর দ্বারা Read query-টি Dirty Read হয়েছে।
+Transaction A এর দ্বারা Rollback হওয়ার কারণে, ০১:১৫ ঘটিকার সময় Transaction B এর দ্বারা Read query-টি Dirty Read হয়ে গিয়েছে।
 
 #### Non-Repeatable Read
 
