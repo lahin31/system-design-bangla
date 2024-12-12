@@ -39,17 +39,18 @@
 - [Section 25: CAP Theorem](#section-25-cap-theorem)
 - [Section 26: Consistent Hashing] (চলমান)
 - [Section 27: Polling, Web Socket and Server-Sent Events](#section-27-polling-web-socket-and-server-sent-events)
-- [Section 28: Message Queue](#section-28-message-queue)
-- [Section 29: rpc, gRpc] (চলমান)
-- [Section 30: Single Sign-On](#section-30-single-sign-on)
-- [Section 31: Elasticsearch](#section-31-elasticsearch)
-- [Section 32: Bloom Filter](#section-32-bloom-filter)
-- [Section 33: Load Balancing Algorithms] (চলমান)
-- [Section 34: How Live Streaming works] (চলমান)
-- [Section 35: How OAuth2 works](#section-35-how-oauth2-works)
-- [Section 36: Serverless Architecture] (চলমান)
-- [Section 37: High Availability best practices by Netflix](#section-37-high-availability-best-practices-by-netflix)
-- [Section 38: Resources](#section-38-resources)
+- [Section 28: Stream and Batch Processing] (চলমান)
+- [Section 29: Message Queue](#section-29-message-queue)
+- [Section 30: rpc, gRpc] (চলমান)
+- [Section 31: Single Sign-On](#section-31-single-sign-on)
+- [Section 32: Elasticsearch](#section-32-elasticsearch)
+- [Section 33: Bloom Filter](#section-33-bloom-filter)
+- [Section 34: Load Balancing Algorithms] (চলমান)
+- [Section 35: How Live Streaming works] (চলমান)
+- [Section 36: How OAuth2 works](#section-36-how-oauth2-works)
+- [Section 37: Serverless Architecture] (চলমান)
+- [Section 38: High Availability best practices by Netflix](#section-38-high-availability-best-practices-by-netflix)
+- [Section 39: Resources](#section-39-resources)
 
 ## Section 1: System Design
 
@@ -391,7 +392,7 @@ Web Socket এ সার্ভার এবং ক্লায়েন্টের
 
 🔗 [**আরও পড়ুন: পোলিং, ওয়েব সকেট এবং সার্ভার সেন্ট ইভেন্টস**](./sections/polling-web-socket-server-sent-events/README.md)
 
-## Section 28: Message Queue
+## Section 29: Message Queue
 
 এটি একটি প্রসেস যেখানে এক বা একাধিক Producer থাকবে, যাদের কাজ হচ্ছে Message(এখানে message মানে রিকোয়েস্ট) Queue এর মধ্যে send করা এবং queue সেই রিকোয়েস্টগুলোকে প্রসেস করে বিভিন্ন consumer এর কাছে পাঠিয়ে দেয়।
 
@@ -416,7 +417,7 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
 
-## Section 30: Single Sign-On
+## Section 31: Single Sign-On
 
 Single Sign-On কিংবা SSO হল একটি Authentication Mechanism। যা user কে একাধিক প্লাটফর্ম (গুগল, ফেইসবুক, টুইটার) দিয়ে Authenticate করে দেয়, একটি নির্দিষ্ট credential মাধ্যমে।
 
@@ -426,13 +427,13 @@ Single Sign-On কিংবা SSO হল একটি Authentication Mechanism�
 
 (বিস্তারিত চলমান)
 
-## Section 31: Elasticsearch
+## Section 32: Elasticsearch
 
 এটি একটি NoSQL ভিত্তিক ডেটাবেস। মূলত এটিকে Distributed Search এবং Aggregation Engine হিসেবে ব্যবহার করা হয়। Elasticsearch এর ভিতর structured এবং unstructured data স্টোর করে রাখা যায়।
 
 🔗 [**আরও পড়ুন: ইলাস্টিকসার্চ**](./sections/elasticsearch/README.md)
 
-## Section 32: Bloom Filter
+## Section 33: Bloom Filter
 
 Bloom Filter একটি Probabilistic Data Structure। Hashing টেকনিক ব্যবহার করে এখানে ডেটা insert করা হয়। এটি খুবই Faster এবং মেমোরি Efficient।
 
@@ -465,7 +466,7 @@ Bloom Filter Data Structure এ Hash function ব্যবহার করে �
 
 🔗 [**আরও পড়ুন: ব্লুম ফিল্টার**](./sections/bloom-filter/README.md)
 
-## Section 35: How OAuth2 works
+## Section 36: How OAuth2 works
 
 OAuth2 হল এক প্রকারের Authorization Grant Technique। এটি Google, Facebook এর মত ওয়েবসাইট থেকে নির্দিষ্ট information আনতে পারে কোনো প্রকারের password এবং অন্যান্য sensitive information ছাড়া। এই নির্দিষ্ট information এ একটি Access Token থাকে যা দ্বারা আমরা নির্দিষ্ট রিসোর্স(হতে পারে কোনো ওয়েবসাইট এ Login) ব্যবহার করতে পারবো।
 
@@ -483,7 +484,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 37: High Availability best practices by Netflix
+## Section 38: High Availability best practices by Netflix
 
 Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
 
@@ -499,7 +500,7 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 38: Resources
+## Section 39: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive Applications (paid)</a>
