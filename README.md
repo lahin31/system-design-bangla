@@ -178,6 +178,14 @@ UDP তে কোনো Error checking হয় না।
   <img src="./images/udp.png" alt="udp">
 </p>
 
+UDP এর use-cases:
+
+- Real-time Communication; উদাহরণ: Skype, Zoom.
+- Live Video Streaming; উদাহরণ: Twitch, ESPN+.
+- Online Gaming; উদাহরণ: Call of Duty.
+
+UDP লাইভ ভিডিও স্ট্রিমিংয়ের জন্য ব্যবহৃত হয়, কারণ Live ইভেন্টের সাথে সম্প্রচারটি sync রাখা বেশি গুরুত্বপূর্ণ। UDP ব্যবহার করার সময়, যদি কিছু ফ্রেম হারিয়ে যায়, সেগুলো পুনরায় প্রেরণ করা হয় না।
+
 ## Section 10: HTTP, TLS and HTTPS
 
 HTTP অর্থাৎ Hyper Text Transfer Protocol, HTTP এক প্রকারের বৈশিষ্ট প্রদান করে থাকে, যার মাধ্যমে Web Browser এবং Web Server নিজেদের ভিতর communication করে থাকে। এটি এক প্রকারের set of rules যা ডেটা ক্লায়েন্ট থেকে সার্ভারে পাঠানো সাহায্য করে। ডেটা হতে পারে Text, Image ইত্যাদি। ক্লায়েন্ট এবং সার্ভারের ভিতর ডেটা আদান প্রধান plain-text এ হয়ে থাকে, এর ফলে HTTP secured না।
