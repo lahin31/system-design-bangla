@@ -1,4 +1,4 @@
-### Vertical & Horizontal Scaling
+### Vertical এবং Horizontal Scaling
 
 #### Vertical Scaling
 
@@ -10,7 +10,7 @@
   <img src="./images/vertical-scaling.png" alt="Vertical Scaling">
 </p>
 
-### Horizontal Scaling
+#### Horizontal Scaling
 
 হরাইজন্টাল স্কেলিং হল, নতুন সার্ভার যোগ করে স্কেল করা। সার্ভারের Capacity বৃদ্ধি করার পরিবর্তে নতুন সার্ভার যোগ করাই হল হরাইজন্টাল স্কেলিং।
 
@@ -29,3 +29,11 @@ Real world system এর কথা চিন্তা করলে Horizontal Sc
 <p align="center">
   <img src="./images/practical-horizontal-scaling.png" alt="Horizontal Scaling">
 </p>
+
+### কখন Scalability নিয়ে চিন্তা করবো?
+
+যখন আপনি কোনো সিস্টেম তৈরী করবেন, তখন প্রথমে আপনার 0(zero) user থাকবে। অর্থাৎ Scalability কোনো issue না।
+
+আপনি 0 user থাকার সময় Scalability(Vertical/Horizontal) নিয়ে কাজ করলে, আপনি এমন একটি problem নিয়ে কাজ করছেন যার কোনো অস্তিত্ব নাই।
+
+Consistent মনিটরিং এর মাধ্যমে আপনি যখন দেখবেন ট্রাফিক বৃদ্ধি pacche tokhon Scalability নিয়ে কাজ করা ভালো।
