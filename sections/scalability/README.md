@@ -36,4 +36,4 @@ Real world system এর কথা চিন্তা করলে Horizontal Sc
 
 আপনি 0 user থাকার সময় Scalability(Vertical/Horizontal) নিয়ে কাজ করলে, আপনি এমন একটি problem নিয়ে কাজ করছেন যার কোনো অস্তিত্ব নাই।
 
-Consistent মনিটরিং এর মাধ্যমে আপনি যখন দেখবেন ট্রাফিক বৃদ্ধি pacche tokhon Scalability নিয়ে কাজ করা ভালো।
+Consistent মনিটরিং এর মাধ্যমে আপনি যখন দেখবেন user ট্রাফিক বৃদ্ধি পাচ্ছে তখন Scalability নিয়ে কাজ করা ভালো।
