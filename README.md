@@ -225,7 +225,7 @@ Thread কি? এটি মূলত Process এর Subset। একটি Proc
 
 Thread ভালোভাবে বুঝার জন্য Concurrency এবং Parallelism বুঝা যাক।
 
-Concurrency কি? একাধিক কাজ একসঙ্গে চালানোর ধারণা, তবে এটি একই সময়ে সব কাজ বাস্তবিকভাবে সম্পন্ন করছে এমন নয়।
+Concurrency কি? একাধিক কাজ থেমে থেমে একসঙ্গে চলছে, যদি ১টি CPU কোর থাকে।
 
 ধরুন CPU কোর হচ্ছে ১টি, একাধিক কাজ Thread এর মধ্যে যখন থাকে, তখন Context Switching এর মাধ্যমে CPU দ্রুতভাবে একে অপরকে সময় ভাগ করে, অর্থাৎ একটি কাজ থেমে CPU অন্য কাজ শুরু করে, তারপর আবার সেই কাজ চালু করে যতদূর সম্পন্ন হয়েছে, তারপরের অংশ থেকে আবার শুরু হয়।
 
@@ -233,7 +233,19 @@ Concurrency কি? একাধিক কাজ একসঙ্গে চাল
   <img src="./images/concurrency.png" alt="Concurrency">
 </p>
 
-(চলমান)
+Parallelism কি? একাধিক কাজ একই সময়ে আলাদাভাবে/স্বাধীনভাবে সম্পন্ন করা, এবং এটি সম্ভব যখন একাধিক CPU core থাকে।
+
+ধরুন CPU কোর হচ্ছে ২টি, একাধিক কাজ Thread গুলোর মধ্যে execute হবে।
+
+<p align="center">
+  <img src="./images/parallelism.png" alt="Parallelism">
+</p>
+
+একাধিক কোর এর মধ্যেও Concurrency হয়ে থাকে। কখন?
+
+যখন সব Thread ব্যস্ত হয়ে পড়বে তখন অন্য Task গুলোর জন্য Context Switching এর মাধ্যমে Task গুলো সম্পাদন করা হবে।
+
+I/O bound task 
 
 ## Section 13: High Concurrency Control
 
