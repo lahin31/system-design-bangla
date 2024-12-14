@@ -245,7 +245,27 @@ Parallelism কি? একাধিক কাজ একই সময়ে আল�
 
 যখন সব Thread ব্যস্ত হয়ে পড়বে তখন অন্য Task গুলোর জন্য Context Switching এর মাধ্যমে Task গুলো সম্পাদন করা হবে।
 
-I/O bound task 
+Parallelism উদাহরণ I/O bound task এর জন্য Node.js দিয়ে,
+
+```js
+const fetch = require("node-fetch");
+
+async function fetchData() {
+  const urls = [
+    "https://jsonplaceholder.typicode.com/posts/1",
+    "https://jsonplaceholder.typicode.com/posts/2",
+    "https://jsonplaceholder.typicode.com/posts/3",
+  ];
+
+  const promises = urls.map((url) => fetch(url).then((res) => res.json()));
+
+  const results = await Promise.all(promises); // Parallel Execution
+
+  console.log(results);
+}
+
+fetchData();
+```
 
 ## Section 13: High Concurrency Control
 
