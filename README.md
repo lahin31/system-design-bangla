@@ -223,9 +223,11 @@ Thread কি? এটি মূলত Process এর Subset। একে Indepen
 
 Thread ভালোভাবে বুঝার জন্য Concurrency এবং Parallelism বুঝা যাক।
 
-Concurrency কি? একাধিক কাজ থেমে থেমে একসঙ্গে চলছে, যদি ১টি CPU কোর থাকে।
+Concurrency কি? Concurrency হচ্ছে Thread এর মধ্যে একাধিক কাজ থেমে থেমে একসঙ্গে সম্পন্ন হচ্ছে, যদি ১টি CPU কোর থাকে।
 
-ধরুন CPU কোর হচ্ছে ১টি, একাধিক কাজ Thread এর মধ্যে যখন থাকে, তখন Context Switching এর মাধ্যমে CPU দ্রুতভাবে একে অপরকে সময় ভাগ করে, অর্থাৎ একটি কাজ থেমে CPU অন্য কাজ শুরু করে, তারপর আবার সেই কাজ চালু করে যতদূর সম্পন্ন হয়েছে, তারপরের অংশ থেকে আবার শুরু হয়।
+ধরুন CPU কোর হচ্ছে ১টি, একাধিক কাজ Thread এর মধ্যে যখন থাকে, তখন Context Switching এর মাধ্যমে CPU দ্রুতভাবে একে অপরকে সময় ভাগ করে, অর্থাৎ একটি কাজ থেমে CPU অন্য কাজ শুরু করে, তারপর আবার সেই কাজ পুনরায় চালু করে যতদূর পূর্বের execution এ সম্পন্ন হয়েছে, তারপরের অংশ থেকে আবার শুরু হয়।
+
+যতক্ষণ না পর্যন্ত সব কাজ শেষ হচ্ছে, এরকম চলতে থাকবে।
 
 <p align="center">
   <img src="./images/concurrency.png" alt="Concurrency">
@@ -264,6 +266,8 @@ async function fetchData() {
 
 fetchData();
 ```
+
+Node.js Parallel Execution এর জন্য Worker Threads, Child Processes, Cluster module রয়েছে।
 
 ## Section 13: High Concurrency Control
 
