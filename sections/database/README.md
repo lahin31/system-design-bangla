@@ -31,7 +31,7 @@
 
 ACID খুবই গুরুত্বপূর্ণ বিষয়। ACID বুঝতে হলে আমাদেরকে **Transaction** বুঝতে হবে।
 
-**Transaction বুজতে হলে এখানে [ক্লিক করুন](https://github.com/lahin31/system-design-bangla/blob/master/sections/database/transaction/README.md)।**
+**Transaction বুঝতে হলে এখানে [ক্লিক করুন](https://github.com/lahin31/system-design-bangla/blob/master/sections/database/transaction/README.md)।**
 
 NoSQL ভিত্তিক Database, BASE মানে (Basically Available, Soft state, Eventual consistency) সাপোর্ট করে।
 
