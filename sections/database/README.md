@@ -170,5 +170,4 @@ RAM যদি ৪ GB হয়?
 * যখন username=lahin সম্বলিত row পেয়ে যাবে তখন তা সম্পূর্ণ page কে Buffer Pool এ Cache করে রেখে দিবে।
 * তারপর সেই page থেকে ফিল্টার হয়ে নির্দিষ্ট row; user এর রিটার্ন করবে।
 
-[![YouTube Video](https://img.youtube.com/vi/fY-LGFSIkBw/0.jpg)](https://www.youtube.com/watch?v=fY-LGFSIkBw)
-
+[ইউটুবে দেখুন](https://youtu.be/fY-LGFSIkBw?si=f-R-W77xkFjxQ9_A)
