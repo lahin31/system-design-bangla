@@ -169,3 +169,6 @@ RAM যদি ৪ GB হয়?
 * Page Filtering নামক অংশটি প্রথমে Buffer Pool এর ভিতর খুঁজবে username=lahin সম্বলিত page আছে কি না। যদি থাকে তাহলে, সেই page থেকে row কে filter করে user এর কাছে পাঠিয়ে দিবে। অন্যথায় Disk এর pages এর মধ্য one-by-one করে I/O request চালাবে।
 * যখন username=lahin সম্বলিত row পেয়ে যাবে তখন তা সম্পূর্ণ page কে Buffer Pool এ Cache করে রেখে দিবে।
 * তারপর সেই page থেকে ফিল্টার হয়ে নির্দিষ্ট row; user এর রিটার্ন করবে।
+
+[![YouTube Video](https://img.youtube.com/vi/fY-LGFSIkBw/0.jpg)](https://www.youtube.com/watch?v=fY-LGFSIkBw)
+
