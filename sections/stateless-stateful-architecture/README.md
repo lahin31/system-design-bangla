@@ -14,7 +14,7 @@
 
 অতিরিক্ত Client Request এর ফলে Client 1 এর Data নষ্ট হওয়ার পর, সার্ভারে Client 1 এর ডেটা আর নাই।
 
-## Scalability - Stateful and Stateless Architecture
+## Scalability - Stateful এবং Stateless Architecture
 
 উপরের যে issue নিয়ে বলা হলো তা Stateful Architecture এ হয়ে থাকে। একই issue Stateless Architecture যেরকম কাজ করে,
 
@@ -32,7 +32,7 @@
 
 একই সমস্যা আমরা Stateful Architecture এ একইভাবে সমাধান করতে পারবো না, কারণ এই Architecture এ সার্ভারের ভিতর ক্লায়েন্টের ইনফরমেশন/ডেটা সংরক্ষন থাকে। তাহলে কিভাবে সমাধান করবো?
 
-## How to Scale Stateful Architecture
+## কিভাবে Stateful আর্কিটেকচার কে scale করা যায়?
 
 এই সমস্যা সমাধানের জন্য আমাদের কাছে দুটি options আছে। Message Queue এবং Pub-Sub।
 
@@ -46,10 +46,17 @@ Pub-sub দিয়ে যদি আমরা সমাধান করি, তা
 
 এরকম আমরা Stateful Architecture স্কেল করতে পারি।
 
-## Why TCP is Stateful and HTTP is Stateless
+## কেনো TCP স্টেটফুল এবং HTTP স্টেটলেস?
 
 একজন ইঞ্জিনিয়ার হিসেবে TCP কেন Stateful এবং HTTP কেন Stateless এটি জানা অত্যন্ত গুরুত্বপূর্ণ। TCP হলো Transmission প্রোটোকল এবং HTTP হলো (Hyper)Text Transfer প্রোটোকল।
 
 TCP তে একটি host যখন অন্য host এর সাথে কানেকশন তৈরী হয় তখন host'গুলোর বর্তমান অবস্থা অর্থাৎ এদের sequence number, এদের ভিতরের acknowledgment ট্র্যাক করে রাখা হয়। এজন্য TCP Stateful।
 
 HTTP Stateless কারণ প্রতিটা রিকোয়েস্ট তার পূর্বের রিকোয়েস্ট থেকে ভিন্ন। এখানে যেহেতু প্রতিটা রিকোয়েস্টগুলোর তথ্য সংরক্ষন করে রাখা হচ্ছে না, সেহেতু HTTP Stateless।
+
+## গুরুত্বপূর্ণ প্রশ্নগুলো
+
+- Stateless আর্কিটেকচার এর সুবিধাগুলো কি কি?
+- Stateful আর্কিটেকচার এর সুবিধাগুলো কি কি?
+- আপনি যদি একজন user লগইন অবস্থায় আছে কি না তা ট্র্যাক করতে চান তাহলে আপনি কোনো আর্কিটেকচার এবং কেনো ব্যবহার করবেন?
+- WebSocket কেনো Stateful?
