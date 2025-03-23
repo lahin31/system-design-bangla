@@ -149,9 +149,9 @@ RAM যদি ৪ GB হয়?
 
 যেসব জিনিসগুলো মনে রাখতে হবে,
 
-* বাফার পুল এর size নির্বাচন করার পূর্বে দেখতে হবে আমাদের সিস্টেম read-heavy নাকি write-heavy।
+- বাফার পুল এর size নির্বাচন করার পূর্বে দেখতে হবে আমাদের সিস্টেম read-heavy নাকি write-heavy।
 
-* বাফার পুল এর size বেশি বড় হয়ে গেলে, সার্ভার swapping করা শুরু করতে পারে। যার মানে অপারেটিং সিস্টেম ডিস্ক কে ভার্চুয়াল মেমরি হিসেবে বিবেচনা করবে। যা performance নামিয়ে দিতে পারে।
+- বাফার পুল এর size বেশি বড় হয়ে গেলে, সার্ভার swapping করা শুরু করতে পারে। যার মানে অপারেটিং সিস্টেম ডিস্ক কে ভার্চুয়াল মেমরি হিসেবে বিবেচনা করবে। যা performance নামিয়ে দিতে পারে।
 
 ### Hardware এবং Infrastructure
 
@@ -171,9 +171,29 @@ RAM যদি ৪ GB হয়?
 
 ছবিটি বিশ্লেষণ করলে,
 
-* User একটি GET query রিকুয়েস্ট করলো। শর্ত username="lahin"।
-* Page Filtering নামক অংশটি প্রথমে Buffer Pool এর ভিতর খুঁজবে username=lahin সম্বলিত page আছে কি না। যদি থাকে তাহলে, সেই page থেকে row কে filter করে user এর কাছে পাঠিয়ে দিবে। অন্যথায় Disk এর pages এর মধ্য one-by-one করে I/O request চালাবে।
-* যখন username=lahin সম্বলিত row পেয়ে যাবে তখন তা সম্পূর্ণ page কে Buffer Pool এ Cache করে রেখে দিবে।
-* তারপর সেই page থেকে ফিল্টার হয়ে নির্দিষ্ট row; user এর রিটার্ন করবে।
+- User একটি GET query রিকুয়েস্ট করলো। শর্ত username="lahin"।
+- Page Filtering নামক অংশটি প্রথমে Buffer Pool এর ভিতর খুঁজবে username=lahin সম্বলিত page আছে কি না। যদি থাকে তাহলে, সেই page থেকে row কে filter করে user এর কাছে পাঠিয়ে দিবে। অন্যথায় Disk এর pages এর মধ্য one-by-one করে I/O request চালাবে।
+- যখন username=lahin সম্বলিত row পেয়ে যাবে তখন তা সম্পূর্ণ page কে Buffer Pool এ Cache করে রেখে দিবে।
+- তারপর সেই page থেকে ফিল্টার হয়ে নির্দিষ্ট row; user এর রিটার্ন করবে।
 
 [ইউটুবে দেখুন](https://youtu.be/fY-LGFSIkBw?si=f-R-W77xkFjxQ9_A)
+
+## গুরুত্বপূর্ণ প্রশ্নগুলো
+
+- Data Integrity কি?
+- Schemaless কি?
+- Database Indexing কি?
+- কিভাবে ইনডেক্সিং query performance উন্নত করে?
+- b tree এবং b+ tree এর মধ্যে পার্থক্য কি?
+- Primary Key এবং Secondary Key এর মধ্যে পার্থক্য কি?
+- Cluster Index কি?
+- Unique এবং Non-unique index এর মধ্যে পার্থক্য কি?
+- কিভাবে একাধিক ইনডেক্স একসাথে একটি query তে কাজ করে?
+- Composite Index কিভাবে কাজ করে?
+- FULLTEXT index কি? কিভাবে কাজ করে?
+- কোন কোন column ইনডেক্সিং করবো কি না তা কিভাবে নির্ধারণ করবো?
+- INSERT, UPDATE, DELETE অপারেশনগুলোর ক্ষেত্রে ইনডেক্সিং এর প্রভাব কি?
+- Covering Index কি?
+- Connection Pool এর প্রয়োজনীয়তা কি?
+- কি হবে যদি Connection Pool এর মধ্যে কানেকশনগুলো ব্যস্ত থাকে?
+- select \* কেন slow?
