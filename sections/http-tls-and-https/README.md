@@ -1,6 +1,6 @@
 ## HTTP 1
 
-HTTP 1 ১৯৯৬ সালে এসেছে। এটি মূলত TCP এর উপর নির্ভর করে তৈরী করা হয়েছিল। এখানে প্রতিটি HTTP রিকোয়েস্ট এর জন্য ডেডিকেটেড TCP connection তৈরী হত। যেমন একটি পেজ এ যদি ১০ টি জাভাস্ক্রিপ্ট লোড করা লাগে তাহলে এই ১০ টি জাভাস্ক্রিপ্ট এর জন্য ১০ টি TCP Connection তৈরী হবে। 
+HTTP 1 ১৯৯৬ সালে এসেছে। এটি মূলত TCP এর উপর নির্ভর করে তৈরী করা হয়েছিল। এখানে প্রতিটি HTTP রিকোয়েস্ট এর জন্য ডেডিকেটেড TCP connection তৈরী হত। যেমন একটি পেজ এ যদি ১০ টি জাভাস্ক্রিপ্ট লোড করা লাগে তাহলে এই ১০ টি জাভাস্ক্রিপ্ট এর জন্য ১০ টি TCP Connection তৈরী হবে।
 
 ## HTTP 1.1
 
@@ -26,7 +26,7 @@ HTTP 2 এর একটি feature হল HPACK। HPACK মূলত HTTP heade
 
 HTTP 2 এর সবচেয়ে বড় Limitation হল, যখন Stream of Requests একটি single TCP connection এর মধ্য দিয়ে যায় তখন কোনো কারণে যদি একটি রিকোয়েস্টের Packet Loss হয় তাহলে সব রিকোয়েস্ট এর উপর নেগেটিভ ইমপ্যাক্ট পড়বে। তার মূল কারণ TCP এর কাজ হল একই order মেইনটেইন করে সব packet/request এক end থেকে অন্য end এ ডেলিভার করা, এখন যদি একটিও packet loss হয় তাহলে TCP আর order maintain করতে পারবে না।
 
-এই সমস্যাকে Head of Line Blocking বলে। 
+এই সমস্যাকে Head of Line Blocking বলে।
 
 ## HTTP 3
 
@@ -36,11 +36,19 @@ HTTP 2 এর সবচেয়ে বড় Limitation হল, যখন Stream of R
   <img src="./images/quic.png" alt="QUIC">
 </p>
 
-QUIC মূলত UDP প্রটোকলের উপর ব্যবহার হয়ে থাকে। সেজন্য এখানে TCP মত Reliability নিশ্চিত করা যায় না। 
+QUIC মূলত UDP প্রটোকলের উপর ব্যবহার হয়ে থাকে। সেজন্য এখানে TCP মত Reliability নিশ্চিত করা যায় না।
 
-এখানে TCP এর মত 3-way handshake তৈরী হয় না, QUIC নিজের initial handshake এ সব encryption সহ TLS এর কাজ হয়ে থাকে। 
+এখানে TCP এর মত 3-way handshake তৈরী হয় না, QUIC নিজের initial handshake এ সব encryption সহ TLS এর কাজ হয়ে থাকে।
 
 <p align="center">
   <img src="./images/quic-2.png" alt="QUIC">
 </p>
 
+## গুরুত্বপূর্ণ প্রশ্নগুলো
+
+- HTTP 1.1, HTTP 2, এবং HTTP 3 এগুলোর মধ্যে পার্থক্য কি?
+- HTTP এবং HTTPS মধ্যে পার্থক্য কি?
+- Pipelining কি?
+- TLS কিভাবে HTTP(S) কে সুরক্ষা করে থাকে?
+- SSL/TLS certificate কি?
+- আপনার ওয়েবসাইট HTTPS এ লোড না হয়ে থাকলে কিভাবে troubleshoot করবেন?

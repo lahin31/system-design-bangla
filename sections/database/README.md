@@ -196,4 +196,5 @@ RAM যদি ৪ GB হয়?
 - Covering Index কি?
 - Connection Pool এর প্রয়োজনীয়তা কি?
 - কি হবে যদি Connection Pool এর মধ্যে কানেকশনগুলো ব্যস্ত থাকে?
+- Buffer Pool এর প্রয়োজনীয়তা কি?
 - select \* কেন slow?
