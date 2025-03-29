@@ -170,7 +170,7 @@ http {
 
 ### কিভাবে রিভার্স প্রক্সিতে HTTPS কাজ করে?
 
-যখন প্রক্সি সার্ভার HTTPS রিকোয়েস্ট পেয়ে থাকে তখন ২টি ধাপ প্রসেস হয়।
+যখন প্রক্সি সার্ভার(NGINX) HTTPS রিকোয়েস্ট পেয়ে থাকে তখন ২টি ধাপ প্রসেস হয়।
 
 - SSL/TLS Handshake ধাপ
 - Request Processing ধাপ
@@ -187,7 +187,28 @@ http {
 
 #### Request Processing ধাপ
 
-চলমান
+সুরক্ষিত communication শুরু হওয়ার পরে,
+
+- Request Decryption: Nginx HTTPS রিকোয়েস্টকে সেই session key ডিক্ৰিপ্ট করে।
+- Request Processing: ডিক্ৰিপ্ট করা HTTP রিকোয়েস্টকে প্রসেস করে।
+- Response Encryption: রেসপন্স এনক্রিপ্ট করে ক্লায়েন্ট এর কাছে পাঠিয়ে দেয়।
+
+দুটি ধাপ(SSL/TLS Handshake, Request Processing) control করার জন্য NGINX এর কনফিগারেশন থাকে,
+
+```nginx
+server {
+  listen 443 ssl; # Enables HTTPS on port 443
+  server_name example.com;
+  ssl_certificate /etc/nginx/ssl/example.crt;
+  ssl_certificate_key /etc/nginx/ssl/example.key;
+
+  location / {
+    proxy_pass http://backend_server;
+  }
+}
+```
+
+এখানে ssl_certificate এবং ssl_certificate_key মূলত SSL/TLS Handshake এর অংশ। অন্যদিকে location এবং proxy_pass, Request Processing এর অংশ।
 
 ### NGINX Load Balancer এবং AWS Elastic Load Balancer
 
