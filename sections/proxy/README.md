@@ -168,6 +168,27 @@ http {
 }
 ```
 
+### কিভাবে রিভার্স প্রক্সিতে HTTPS কাজ করে?
+
+যখন প্রক্সি সার্ভার HTTPS রিকোয়েস্ট পেয়ে থাকে তখন ২টি ধাপ প্রসেস হয়।
+
+- SSL/TLS Handshake ধাপ
+- Request Processing ধাপ
+
+#### SSL/TLS Handshake ধাপ
+
+যখন ক্লায়েন্ট এর কাছে থেকে https রিকোয়েস্ট পায়, তখন
+
+- Client Hello: ক্লায়েন্ট TLS ভার্সন এবং Cipher Suites প্রেরণ করে।
+- Server Hello: NGINX তার Cipher Suite এবং TLS ভার্সন ক্লায়েন্টকে পাঠিয়ে দেয়।
+- Certificate Exchange: NGINX তার SSL সার্টিফিকেট, ক্লায়েন্টকে প্রেরণ করে।
+- Key Exchange: ক্লায়েন্ট সার্টিফিকেট যাচাই করে এবং একটি Session key তৈরী করে।
+- Session Established: সুরক্ষিত communication শুরু।
+
+#### Request Processing ধাপ
+
+চলমান
+
 ### NGINX Load Balancer এবং AWS Elastic Load Balancer
 
 NGINX Load Balancer মূলত একাধিক ইনকামিং রিকোয়েস্টগুলোকে একাধিক সার্ভারের মধ্য থেকে এক একটি সার্ভারে ডিস্ট্রিবিউট করে দেয়।
