@@ -185,6 +185,8 @@ http {
 - Key Exchange: ক্লায়েন্ট সার্টিফিকেট যাচাই করে এবং একটি Session key তৈরী করে।
 - Session Established: সুরক্ষিত communication শুরু।
 
+(Cipher Suites কী? এটি এক বা একাধিক Alogirithm এর সমষ্টি যা সুরক্ষিত নেটওয়ার্ক connection তৈরী করতে সাহায্য করে থাকে। এতে মূলত encryption, authentication এবং key exchange method গুলো উল্লেখ থাকে।)
+
 #### Request Processing ধাপ
 
 সুরক্ষিত communication শুরু হওয়ার পরে,
