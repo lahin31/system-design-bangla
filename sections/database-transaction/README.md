@@ -1,48 +1,11 @@
-## Database Transactions
+## Database Transaction
 
-ডাটাবেজ ট্রানজাকশন এই সমস্ত প্রশ্ন বা সমস্যার সমাধান করতে পারে:
+### কখন ট্রানসাকশান ব্যবহার করতে পারি?
 
-- ডাটাবেজ সফটওয়্যার বা হার্ডওয়্যার যে কোনো সময় fail হতে পারে। (write অপারেশনের মাঝখানেও)
+- Financial এবং Banking Application। কেনো? কারণ এগুলোতে Money Transfers এবং Withdrawals হয়ে থাকে।
+- E-Commerce এবং Online Marketplace। কেনো? কারণ এগুলোতে Order, Payment এবং Inventory তে Consistency বজায় রাখা লাগে।
 
-- নেটওয়ার্কে বাধা আসতে পারে, যা অ্যাপ্লিকেশনকে ডাটাবেজ থেকে অপ্রত্যাশিতভাবে বিচ্ছিন্ন করতে পারে।
-
-- একাধিক ক্লায়েন্ট একই এন্ট্রি আপডেট করার চেষ্টা করতে পারে, যার ফলে একে অপরের পরিবর্তনগুলি ওভাররাইট হতে পারে।
-
-- একটি ক্লায়েন্ট ডাটাবেজ থেকে এমন তথ্য পড়তে পারে যা সম্পূর্ণরূপে Commit করা হয়নি, ফলে তথ্যটি অপ্রাসঙ্গিক বা অসংগতিপূর্ণ হতে পারে।
-
-- ক্লায়েন্টদের মধ্যে concurrency বা race condition এর কারণে অপ্রত্যাশিত বাগ তৈরি হতে পারে।
-
-উপরের পয়েন্টগুলোর উত্তর পেতে হলে নিচের টপিকগুলো বুঝতে হবে।
-
-## Transaction কী?
-
-ডাটাবেস এ Transaction মানে হচ্ছে, একাধিক READ এবং WRITE অপারেশনগুলোকে একটি লজিকাল ইউনিট এর ভিতর রেখে দেয়া, যার মানে দাঁড়ায় সকল READ এবং WRITE অপারেশনগুলোকে একটি অপারেশন হিসেবে গণ্য করবে।
-
-সাধারণত Transaction এভাবে শুরু হয়,
-
-```sql
-BEGIN
-
-SELECT * FROM users
-UPDATE users SET username=“lahin” WHERE id=224
-
-COMMIT
-```
-
-আপনি Prisma দিয়ে লিখতে গেলে,
-
-```js
-await prisma.$transaction(async (prisma) => {
-  const users = await prisma.users.findMany();
-
-  await prisma.user.update({
-    where: { id: 224 },
-    data: { username: "lahin" },
-  });
-});
-```
-
-Transaction মূলত ৪'টি features দিয়ে থাকে আমাদের।
+Transaction মূলত আমাদেরকে ৪'টি features দিয়ে থাকে।
 
 - Atomicity
 - Consistency
