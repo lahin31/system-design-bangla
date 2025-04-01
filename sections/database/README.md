@@ -31,7 +31,7 @@
 
 ACID খুবই গুরুত্বপূর্ণ বিষয়। ACID বুঝতে হলে আমাদেরকে **Transaction** বুঝতে হবে।
 
-**Transaction বুঝতে হলে এখানে [ক্লিক করুন](https://github.com/lahin31/system-design-bangla/blob/master/sections/database/transaction/README.md)।**
+**Transaction বুঝতে হলে Section-3 দেখতে পারেন**
 
 NoSQL ভিত্তিক Database, BASE মানে (Basically Available, Soft state, Eventual consistency) সাপোর্ট করে।
 
@@ -94,6 +94,74 @@ Database Sharding হল টেবিল থেকে ডেটা পৃথক 
 </p>
 
 Connection Pool এর size randomly সেট করা যাবে না। Concurrent Users এর সংখ্যা নিয়ে চিন্তা করতে হবে। উদাহরণস্বরূপ, যদি আপনার অ্যাপ্লিকেশনে ২০০০ concurrent users থাকে, তবে সব ২০০০ ব্যবহারকারী একসঙ্গে ডেটাবেসে আঘাত করবে না। তাই কত শতাংশ ব্যবহারকারী একযোগে ডেটাবেস request করবে তা estimate করুন এবং সেই অনুযায়ী Connection Pool এর size নির্ধারণ করুন।
+
+কিভাবে PostgreSQL এ Connection Pool ডিফাইন করবেন,
+
+```js
+const { Pool } = require("pg");
+
+const pool = new Pool({
+  user: "your_user",
+  host: "localhost",
+  database: "your_db",
+  password: "your_password",
+  port: 5432,
+  max: 10, // Maximum number of connections in the pool
+  idleTimeoutMillis: 30000, // Close idle connections after 30s
+  connectionTimeoutMillis: 2000, // Timeout if connection takes too long
+});
+
+// Usage
+async function queryDatabase() {
+  const client = await pool.connect();
+  try {
+    const result = await client.query("SELECT * FROM users");
+    console.log(result.rows);
+  } finally {
+    client.release(); // Return client to the pool
+  }
+}
+
+queryDatabase();
+```
+
+কিভাবে MySQL এ Connection Pool ডিফাইন করবেন,
+
+```js
+const mysql = require("mysql2");
+
+// Create a pool of connections
+const pool = mysql.createPool({
+  host: "localhost",
+  user: "your_user",
+  password: "your_password",
+  database: "your_db",
+  waitForConnections: true, // Allow waiting for available connection
+  connectionLimit: 10, // Maximum number of connections in the pool
+  queueLimit: 0, // Unlimited queued connections
+});
+
+// Query the database
+pool
+  .execute("SELECT * FROM users")
+  .then(([rows, fields]) => {
+    console.log(rows);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+```
+
+আপনি চাইলে MySQL কনফিগারেশন ফাইলে Connection Pool সেটআপ করতে পারবেন,
+
+আপনি লিনাক্স ব্যবহার করলে, `/etc/mysql/my.cnf`
+
+```
+[mysqld]
+max_connections = 200       # Maximum number of connections allowed
+wait_timeout = 600           # Timeout for waiting for client data
+interactive_timeout = 600    # Timeout for interactive connections
+```
 
 ### Buffer Pool (InnoDB অনুসারে)
 
