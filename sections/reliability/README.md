@@ -100,7 +100,7 @@ Downtime = (1−0.9999)×525,600 = 0.0001×525,600 = 52.56 minutes
   <img src="./images/spof-2.png" alt="Single Point of Failure">
 </p>
 
-### How to prevent Single Point of Failure
+### কিভাবে Single Point of Failure কে প্রতিরোধ করবো?
 
 ধরুন আমাদের একটি সিস্টেম আছে যেখানে একটি সার্ভার নোড এবং একটি ডেটাবেস সার্ভার আছে।
 
@@ -122,3 +122,50 @@ Downtime = (1−0.9999)×525,600 = 0.0001×525,600 = 52.56 minutes
 এখানে Load Balancer নিজে Single Point of Failure। একাধিক Load Balancer যোগ করে DNS এর মাধ্যমে আমাদের ক্লায়েন্ট রিকোয়েস্ট নির্দিষ্ট Load Balancer চলে যাবে।
 
 এরকম আমরা Single Point of Failure prevent করতে পারব।
+
+## 500 - Internal Server Error কী সম্পূর্ণ সিস্টেম ডাউন করতে পারবে?
+
+হ্যাঁ, যদি সমস্যা সার্ভারের মূল অংশে বা ডাটাবেজে হয়, তবে এটি পুরো সিস্টেমকে ডাউন করে দিতে পারে।
+
+- ডাটাবেজ সংযোগ বিচ্ছিন্ন বা ডাউন থাকলে।
+- যদি একটি ডাটাবেস স্কিমা আপডেট, সঠিকভাবে বিদ্যমান ডাটা মাইগ্রেট না করে ডিপ্লয় করা হয়, তবে অ্যাপ্লিকেশনটি ক্র্যাশ করতে পারে কারণ কিছু কলাম, টেবিল বা সম্পর্ক অনুপস্থিত বা পরিবর্তিত হতে পারে।
+- যদি সার্ভারে মেমোরি লিক হয় বা কোনো প্রসেস অতিরিক্ত রিসোর্স ব্যবহার করে (100% CPU Usage), তাহলে সার্ভার সম্পূর্ণরূপে ক্র্যাশ করতে পারে।
+- যদি আপনার application এ error throw করা হয় যা properly caught করা হয় নি, তা আমাদের সম্পূর্ণ সিস্টেম ডাউন করে দিতে পারবে। উদাহরণ,
+
+```js
+// in express.js/node.js
+app.get("/", (req, res) => {
+  throw new Error("Something went wrong!");
+});
+```
+
+সম্পূন সিস্টেম ডাউন না হওয়ার জন্য এটি যোগ করবেন,
+
+```js
+// in express.js/node.js
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Internal Server Error" });
+});
+```
+
+আপনি যদি `app.use((err, req, res, next) => {})` ব্যবহার করে থাকেন তাহলে তা আপনাকে express.js এর error গুলো handle করে দিবে।
+
+আর আপনি যদি,
+
+```js
+process.on("uncaughtException", (err) => {
+  console.error("❌ Uncaught Exception:", err);
+  process.exit(1);
+});
+
+// Handle Unhandled Promise Rejections
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("⚠️ Unhandled Rejection:", promise, "Reason:", reason);
+  process.exit(1);
+});
+```
+
+ব্যবহার করেন তাহলে তা Synchronous error গুলো catch/handle করে দিবে, যদি আপনি try-catch এর ভিতর handle না করে থাকেন।
+
+উপরের ৪ টি পয়েন্ট আমাদের সিস্টেম এর Reliability নিয়ে প্রশ্নবিদ্ধ করবে। এজন্য Logging করে দেখতে হবে আমাদের সিস্টেম ঠিক আছে কি না।
