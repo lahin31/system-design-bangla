@@ -296,6 +296,65 @@ RAM যদি ৪ GB হয়?
 
 [ইউটুবে দেখুন](https://youtu.be/fY-LGFSIkBw?si=f-R-W77xkFjxQ9_A)
 
+## প্রোডাকশন environment এর মধ্যে কিভাবে ডাটাবেস error গুলো log করবো?
+
+প্রোডাকশন environment এ যেকোনো সময় যেকোনো error চলে আসতে পারে। আমাদের সিস্টেম সচল রাখার জন্য এসব error এর লগ পড়ে বুঝতে হবে তারপর সমাধান(fix) করতে হবে। যত তাড়াতাড়ি আমরা সেই error গুলো পড়ে fix করতে পারবো, তা আমাদের সিস্টেমের জন্য ভালো।
+
+ধরে নি, আমরা লিনাক্স(ubuntu) এর মধ্যে MySQL ব্যবহার করছি।
+
+### Error Log
+
+Linux এর ভিতর আমরা cd করলে,
+
+```
+ubuntu@ip-192-168-0-1:/$ cd /var/log/mysql
+```
+
+mysql ফোল্ডার এর ভিতর **error.log** নামক ফাইল থাকে। এই ফাইল cat করলে আমরা দেখতে পারবো,
+
+- Server Startup ভিত্তিক Errors: MySQL যখন start হয় তখন এরকম কিছু error আসতে পারে,
+
+```
+[ERROR] Can't start server: Bind on TCP/IP port: Address already in use
+```
+
+এর মানে দাঁড়ায়, MySQL bind করতে পারছে না তার পোর্ট দিয়ে (সাধারণত ৩৩০৬)। সেই পোর্ট ইতিমধ্যে অন্য প্রসেস দ্বারা প্রসেস হচ্ছে।
+
+কিংবা,
+
+```
+[ERROR] Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
+```
+
+MySQL যখন তার privilege tables এক্সেস করতে না পারে তখন এই error আসে।
+
+- Authentication এবং Access ভিত্তিক Errors: ভুল username কিংবা password কিংবা missing privileges ভিত্তিক এররগুলো দেখাবে।
+
+```
+[Warning] Access denied for user 'root'@'localhost' (using password: YES)
+```
+
+- Storage Engine ভিত্তিক Errors: Disk Failure, Power Outage কিংবা Forced Shutdown যা টেবিলকে corrupted করে ফেলে। আমরা এরকম এরর দেখতে পারি,
+
+```
+[ERROR] InnoDB: Page [page id] log sequence number [LSN] is in the future!
+[ERROR] InnoDB: Database page corruption on disk or a failed file read
+[ERROR] InnoDB: Table `mydb/mytable` is corrupted
+[ERROR] InnoDB: Unable to read tablespace [file.ibd]
+```
+
+- Crash এবং Critical Errors: টেবিল corrupted থাকার কারণে কিংবা Disk full থাকার কারণে MySQL version এ বাগ থাকার কারণেও নিচের এররগুলো আসতে পারে,
+
+```
+[ERROR] mysqld got signal 11 (Segmentation fault)
+[ERROR] InnoDB: Assertion failure
+[ERROR] Fatal error: Can't open and lock privilege tables
+```
+
+Table Corruption কী? MySQL-এ টেবিল Corruption মানে হচ্ছে — কোনো ডেটাবেজ টেবিলের স্ট্রাকচার বা ডেটা ভেঙে গেছে বা খারাপ হয়ে গেছে, যেটার ফলে ওই টেবিল থেকে সঠিকভাবে ডেটা পড়া বা লেখা যায় না।
+
+(আরো আসছে।)
+
 ## গুরুত্বপূর্ণ প্রশ্নগুলো
 
 - Data Integrity কি?
