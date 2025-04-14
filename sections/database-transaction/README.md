@@ -1,5 +1,67 @@
 ## Database Transaction
 
+### Atomic update এবং Database Transaction
+
+কোনো একদিন একজন user X একটি নির্দিষ্ট হোটেল রুম রিসার্ভ(reserve) করার চেষ্টা করছে। ঠিক একই সময় আরেকজন user Y একই রুম রিসার্ভ(reserve) করার চেষ্টা করছে।
+
+ঠিক রাত ১১:০০:১২ ঘটিকায়, ২টি user একই সময় ফর্ম fill-up করেছে এবং "Reserve" বাটন ক্লিক করেছে।
+
+এখন ২টি user এর ভিতর Race Condition তৈরী হবে।
+
+ডাটাবেস ইঞ্জিন এর ভিতর Serialization ঘটবে, যাতে কোয়েরিগুলো একটি serial মেইনটেইন করে।
+
+এখন Atomic update কিভাবে হবে?
+
+- ধরে নি, user A এর রিকোয়েস্ট প্রথমে প্রসেস হচ্ছে,
+
+```sql
+UPDATE reservations SET status = 'booked', user_id = 1 WHERE room_number = 10;
+```
+
+User A এর জন্য রুম রিসার্ভ হয়ে গেলো।
+
+- এখন, user B এর জন্য রিকোয়েস্ট প্রসেস হচ্ছে,
+
+```sql
+UPDATE reservations SET status = 'booked', user_id = 2 WHERE room_number = 10;
+```
+
+যেহেতু রুম নম্বর ১০ ইতিমধ্যে user_id = 1 এর দ্বারা রিসার্ভ হয়ে গেছে, সেহেতু user_id = 2 এর এই query কিছু করবে না।
+
+**এই আচরণটি(behavior) Atomic Update নামে পরিচিত**। যা নিশ্চিত করে কমপক্ষে একটি query সফলভাবে রেকর্ড মোডিফাই করতে পারে।
+
+এখন প্রশ্ন হচ্ছে Atomic Update থাকার পরেও আমাদের কেনো Transaction প্রয়োজন পড়ে?
+
+ধরে নি, আমাদের সিস্টেম নিম্নলিখিত কাজগুলো করবে,
+
+- প্রথমে user balance চেক করবে, reservation এর পূর্বে।
+- রুম এর ভাড়ার পরিমান অনুযায়ী ব্যালান্স কেটে ফেলবে।
+- রুম'টা রিসার্ভ করবে, ডাটাবেস এর reservation টেবিল এর মধ্যে।
+
+**ট্রানসাকশান ছাড়া**,
+
+— ১) user এর ব্যালান্স যাচাই করা —
+
+```sql
+SELECT balance FROM users WHERE id = 1;
+```
+
+— ২) ব্যালান্স কেটে নিলে —
+
+```sql
+UPDATE users SET balance = balance - 100 WHERE id = 1;
+```
+
+— ৩) reservations টেবিলে রুম বুক করা —
+
+```sql
+UPDATE reservations SET status = 'booked', user_id = 1 WHERE room_number = 10;
+```
+
+সমস্যা: যদি ব্যালান্স কেটে নেয়া হয়ে যায়, তখন অন্য কোনো user তার নিজের জন্য স্টেপ ৩ প্রসেস করে ফেলে তাহলে প্রথম user এর জন্য ব্যালান্স কেটে নেয়া হয়েছে কিন্তু তার জন্য রুম বরাদ্ধ করা হয় নি।
+
+**এই সমস্যার সমাধান করে থাকে Database Transaction**।
+
 ### কখন ট্রানসাকশান ব্যবহার করতে পারি?
 
 - Financial এবং Banking Application। কেনো? কারণ এগুলোতে Money Transfers এবং Withdrawals হয়ে থাকে।
