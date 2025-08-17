@@ -50,7 +50,8 @@
 - [Section 38: How OAuth2 works](#section-38-how-oauth2-works)
 - [Section 39: Serverless Architecture] (চলমান)
 - [Section 40: High Availability best practices by Netflix](#section-40-high-availability-best-practices-by-netflix)
-- [Section 41: Resources](#section-41-resources)
+- [Section 41: Real World Problems](#section-41-real-world-problems)
+- [Section 42: Resources](#section-42-resources)
 
 ## Section 1: System Design
 
@@ -616,7 +617,17 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 41: Resources
+## Section 41: Real World Problems
+
+একজন ভালো system designer হতে হলে, আমাদেরকে real-world সমস্যাগুলোর requirements এবং planning সঠিকভাবে বুজতে হবে। আমি এখানে কিছু সমস্যা এবং সেই সমস্যাগুলোর সমাধানের ধারা আমি বর্ণনা করছি।
+
+- Design a URL Shortener
+- Design a Highly Concurrent Wordcamp Event Booking System
+- Design a Scalable One to One and One to Many chat system
+- Design an Image Service that supports ~5M uploads/hour (~1.39k uploads/sec)
+-
+
+## Section 42: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive Applications (paid)</a>
