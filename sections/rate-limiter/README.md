@@ -23,11 +23,11 @@
 
 কিছু Algorithm যা ব্যবহার করে আমরা Rate Limit ইমপ্লিমেন্ট করতে পারব।
 
-* Token Bucket
-* Leaky Bucket
-* Fixed Window Counter
-* Sliding Window Log
-* Sliding Window Counter
+- Token Bucket
+- Leaky Bucket
+- Fixed Window Counter
+- Sliding Window Log
+- Sliding Window Counter
 
 এখানে আমরা শুধু Token Bucket এবং Leaky Bucket সম্পর্কে জানব।
 
