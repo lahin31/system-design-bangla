@@ -1,7 +1,5 @@
 # Design a Highly Concurrent Wordcamp Event Booking System
 
-## Problem Statement
-
 WordCamp একটি জনপ্রিয় ওয়ার্ডপ্রেস-সম্পর্কিত ইভেন্ট, যেখানে নির্দিষ্ট সংখ্যক সিট থাকে এবং হাজার হাজার মানুষ একসাথে রেজিস্ট্রেশনের চেষ্টা করে। আমাদের উদ্দেশ্য একটি Highly Concurrent Event Booking System ডিজাইন করা, যা একই সিটের জন্য অত্যন্ত বেশি সংখ্যক রিকোয়েস্ট (উদাহরণস্বরূপ: ৫০০+ concurrent requests per seat) সামলাতে পারবে।
 
 ## Key requirements
