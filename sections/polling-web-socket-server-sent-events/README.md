@@ -42,4 +42,8 @@ B বার্তাগুলো সাথে সাথে পাবে না, 
 
 ## Server-Sent Events
 
-(চলমান)
+Server-Sent Events (SSE) হলো একটি একমুখী communication মাধ্যম, যেখানে ডাটা শুধুমাত্র সার্ভার → ক্লায়েন্ট এ পাঠানো হয় এবং এটি HTTP এর উপর কাজ করে।
+
+যা WebSocket-এর থেকে আলাদা, এখানে communication single direction-এ হয় (অর্থাৎ শুধু সার্ভার → ক্লায়েন্ট দিকেই হয়), অপরদিকে WebSocket Bidirectional Communication করে।
+
+রিয়েল-টাইম নোটিফিকেশন, রিয়েল-টাইম ড্যাশবোর্ড, লগ, মনিটরিং ইত্যাদির জন্য Server-Sent Events effective।
