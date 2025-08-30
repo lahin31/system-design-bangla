@@ -626,6 +626,7 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 - Design a Scalable One to One and One to Many chat system
 - [**Design a Live Streaming platform like Twitch**](./sections/real-world-problems/live-streaming-platform/README.md)
 - Design an Image Service that supports ~5M uploads/hour (~1.39k uploads/sec)
+- Design a High-Scale Unique User Counting System
 
 ## Section 42: Resources
 
