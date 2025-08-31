@@ -9,6 +9,7 @@
 - real-time streaming।
 - viewer রা বিভিন্ন resolution এ ভিডিও লাইভ দেখতে পারবে।
 - real-time chat যাতে viewer; streamers এবং অন্যান্য viewer দের সাথে interect করতে পারে।
+- stream metadata, chat logs এবং analytics ডাটাবেস এ সংরক্ষন করতে হবে।
 - Low Latency এবং ৯৯.৯৯% uptime।
 
 ## সমাধান
@@ -65,6 +66,65 @@ Transcoded স্ট্রিমগুলোকে HLS ফরম্যাটে 
 
 এখন আমরা Bi Directional প্রোটোকল WebSocket ব্যবহার করে ভিউয়ার এবং স্ট্রিমার কিংবা ভিউয়ার এবং ভিউয়ার এর সাথে real-time chat করতে পারবো। (WebSocket নিয়ে সামনে আরো অনেক real-world problem নিয়ে লিখবো।)
 
-কিভাবে ৯৯.৯৯% uptime রাখবো?
+এখন পর্যন্ত এই ৩ বিষয়ের আলোচনা হয়েছে।
+
+- real-time streaming।
+- viewer রা বিভিন্ন resolution এ ভিডিও লাইভ দেখতে পারবে।
+- real-time chat যাতে viewer; streamers এবং অন্যান্য viewer দের সাথে interect করতে পারে।
+
+## এখন stream metadata, chat logs এবং analytics ডাটাবেস এ সংরক্ষন করা যাক।
+
+### Stream Metadata
+
+লাইভ স্ট্রিম সম্পর্কে তথ্য, প্লেব্যাক, স্ট্রিমার এবং বিশ্লেষণের জন্য ডাটাবেস এ সংরক্ষন করতে হবে।
+
+Table name: streams
+
+Columns:
+
+- Stream ID (unique identifier)
+- Streamer ID
+- Stream title
+- Description
+- Tags/categories (e.g., gaming, art)
+- Start timestamp
+- End timestamp (for completed streams)
+- Status (live, ended, scheduled)
+
+এগুলো স্টোর করে রাখতে হবে। আমরা এখানে Structured ডাটাবেস ব্যবহার করতে পারি। MySQL কিংবা PostgreSQL।
+
+### Chat Logs
+
+Moderation এবং Analytics এর জন্য আমরা Chat Logs স্টোর করে রাখতে পারি।
+
+Table name: chat_messages
+
+Columns:
+
+- Stream ID
+- User ID (sender)
+- Timestamp
+- Message text
+- Moderation status (e.g., flagged, deleted)
+
+আমি যেহেতু unstructured কিছু দেখতে পারছি না, সেহেতু MySQL ব্যবহার করা যেতে পারে।
+
+### Analytics Data
+
+দর্শকদের সংখ্যা, Average watch time ইত্যাদি স্টোর করে রাখা যায় Analytics এর জন্য।
+
+Table name: viewership_metrics
+
+Columns:
+
+- Stream ID
+- Timestamp (per minute/hour)
+- Concurrent viewers
+- Peak viewers
+- Average watch time
+
+InfluxDB ভালো হতে পারে এসব স্টোর এর জন্য।
+
+## কিভাবে ৯৯.৯৯% uptime রাখবো?
 
 আমি পরবর্তীতে নতুন করে লিখবো, এই সিস্টেম কে কিভাবে ৯৯.৯৯% uptime রাখা যায়।
