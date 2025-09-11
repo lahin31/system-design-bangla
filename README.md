@@ -629,6 +629,7 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 - Design a High-Scale Unique User Counting System
 - Design a Real-time Collaborative Editor
 - Design a Content Delivery Network (CDN)
+- Design a scalable blob storage like Amazon's S3
 
 ## Section 42: Resources
 
