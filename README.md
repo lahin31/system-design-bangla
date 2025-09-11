@@ -627,6 +627,8 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 - [**Design a Live Streaming platform like Twitch**](./sections/real-world-problems/live-streaming-platform/README.md)
 - Design an Image Service that supports ~5M uploads/hour (~1.39k uploads/sec)
 - Design a High-Scale Unique User Counting System
+- Design a Real-time Collaborative Editor
+- Design a Content Delivery Network (CDN)
 
 ## Section 42: Resources
 
