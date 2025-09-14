@@ -38,7 +38,7 @@
 - [Section 26: Rate Limiter](#section-26-rate-limiter)
 - [Section 27: CAP Theorem](#section-27-cap-theorem)
 - [Section 28: Consistent Hashing] (চলমান)
-- [Section 29: Polling, Web Socket, Server-Sent Events and Webhooks](#section-29-polling-web-socket-and-server-sent-events-and-webhooks)
+- [Section 29: Polling, Web Socket, Server-Sent Events and Webhooks](#section-29-polling-web-socket-server-sent-events-and-webhooks)
 - [Section 30: Stream and Batch Processing] (চলমান)
 - [Section 31: Message Queue](#section-31-message-queue)
 - [Section 32: rpc, gRpc] (চলমান)
