@@ -12,46 +12,46 @@
 
 - [Section 1: System Design](#section-1-system-design)
 - [Section 2: Database Engineering](#section-2-database-engineering)
-- [Section 3: Database Transaction](#section-3-database-transaction)
-- [Section 4: Client Server Architecture](#section-4-client-server-architecture)
-- [Section 5: Reliability](#section-5-reliability)
-- [Section 6: Performance Metrics](#section-6-performance-metrics)
-- [Section 7: Distributed System](#section-7-distributed-system)
-- [Section 8: Domain Name System](#section-8-domain-name-system)
-- [Section 9: Transmission Control Protocol](#section-9-transmission-control-protocol)
-- [Section 10: User Datagram Protocol](#section-10-user-datagram-protocol)
-- [Section 11: HTTP, TLS and HTTPS](#section-11-http-tls-and-https)
-- [Section 12: What happens when you type a URL in your browser](#section-12-what-happens-when-you-type-a-url-in-your-browser)
-- [Section 13: Concurrency and Parallelism](#section-13-concurrency-and-parallelism)
-- [Section 14: High Concurrency Control](#section-14-high-concurrency-control)
-- [Section 15: Functional and Non Functional Requirements](#section-15-functional-and-non-functional-requirements)
-- [Section 16: Back Of the Envelope Estimation](#section-16-back-of-the-envelope-estimation)
-- [Section 17: Authentication and Authorization](#section-17-authentication-and-authorization)
-- [Section 18: Stateful and Stateless Architecture](#section-18-stateful-and-stateless-architecture)
-- [Section 19: Proxy](#section-19-proxy)
-- [Section 20: REST API](#section-20-rest-api)
-- [Section 21: Scalability](#section-21-scalability)
-- [Section 22: Database Sharding](#section-22-database-sharding)
-- [Section 23: Database Replication](#section-23-database-replication)
-- [Section 24: Caching](#section-24-caching)
-- [Section 25: Content Delivery Network](#section-25-content-delivery-network)
-- [Section 26: Rate Limiter](#section-26-rate-limiter)
-- [Section 27: CAP Theorem](#section-27-cap-theorem)
-- [Section 28: Consistent Hashing] (চলমান)
-- [Section 29: Polling, Web Socket, Server-Sent Events and Webhooks](#section-29-polling-web-socket-server-sent-events-and-webhooks)
-- [Section 30: Stream and Batch Processing] (চলমান)
-- [Section 31: Message Queue](#section-31-message-queue)
-- [Section 32: rpc, gRpc] (চলমান)
-- [Section 33: Single Sign-On](#section-33-single-sign-on)
-- [Section 34: Elasticsearch](#section-34-elasticsearch)
-- [Section 35: Bloom Filter](#section-35-bloom-filter)
-- [Section 36: Load Balancing Algorithms] (চলমান)
-- [Section 37: How Live Streaming works] (চলমান)
+- [Section 3: B+ Tree and Database Indexing]
+- [Section 4: Database Transaction](#section-4-database-transaction)
+- [Section 5: Client Server Architecture](#section-5-client-server-architecture)
+- [Section 6: Reliability](#section-6-reliability)
+- [Section 7: Performance Metrics](#section-7-performance-metrics)
+- [Section 8: Distributed System](#section-8-distributed-system)
+- [Section 9: Domain Name System](#section-9-domain-name-system)
+- [Section 10: Transmission Control Protocol](#section-10-transmission-control-protocol)
+- [Section 11: User Datagram Protocol](#section-11-user-datagram-protocol)
+- [Section 12: HTTP, TLS and HTTPS](#section-12-http-tls-and-https)
+- [Section 13: What happens when you type a URL in your browser](#section-13-what-happens-when-you-type-a-url-in-your-browser)
+- [Section 14: Concurrency and Parallelism](#section-14-concurrency-and-parallelism)
+- [Section 15: High Concurrency Control](#section-15-high-concurrency-control)
+- [Section 16: Functional and Non Functional Requirements](#section-16-functional-and-non-functional-requirements)
+- [Section 17: Back Of the Envelope Estimation](#section-17-back-of-the-envelope-estimation)
+- [Section 18: Authentication and Authorization](#section-18-authentication-and-authorization)
+- [Section 19: Stateful and Stateless Architecture](#section-19-stateful-and-stateless-architecture)
+- [Section 20: Proxy](#section-20-proxy)
+- [Section 21: REST API](#section-21-rest-api)
+- [Section 22: Scalability](#section-22-scalability)
+- [Section 23: Database Sharding](#section-23-database-sharding)
+- [Section 24: Database Replication](#section-24-database-replication)
+- [Section 25: Caching](#section-25-caching)
+- [Section 26: Content Delivery Network](#section-26-content-delivery-network)
+- [Section 27: Rate Limiter](#section-27-rate-limiter)
+- [Section 28: CAP Theorem](#section-28-cap-theorem)
+- [Section 29: Consistent Hashing] (চলমান)
+- [Section 30: Polling, Web Socket, Server-Sent Events and Webhooks](#section-30-polling-web-socket-server-sent-events-and-webhooks)
+- [Section 31: Stream and Batch Processing] (চলমান)
+- [Section 32: Message Queue](#section-32-message-queue)
+- [Section 33: rpc, gRpc] (চলমান)
+- [Section 34: Single Sign-On](#section-34-single-sign-on)
+- [Section 35: Elasticsearch](#section-35-elasticsearch)
+- [Section 36: Bloom Filter](#section-36-bloom-filter)
+- [Section 37: Load Balancing Algorithms] (চলমান)
 - [Section 38: How OAuth2 works](#section-38-how-oauth2-works)
-- [Section 39: Serverless Architecture] (চলমান)
-- [Section 40: High Availability best practices by Netflix](#section-40-high-availability-best-practices-by-netflix)
-- [Section 41: Real World Problems](#section-41-real-world-problems)
-- [Section 42: Resources](#section-42-resources)
+- [Section 40: Serverless Architecture] (চলমান)
+- [Section 41: High Availability best practices by Netflix](#section-41-high-availability-best-practices-by-netflix)
+- [Section 42: Real World Problems](#section-42-real-world-problems)
+- [Section 43: Resources](#section-43-resources)
 
 ## Section 1: System Design
 
@@ -72,7 +72,15 @@
 
 🔗 [**আরও পড়ুন: ডেটাবেস**](./sections/database/README.md)
 
-## Section 3: Database Transaction
+## Section 3: B+ Tree and Database Indexing
+
+প্রথমে আমাদের বুঝতে হবে, B+ ট্রি কি এবং কেনো প্রয়োজন?
+
+এটি একটি self-balancing Tree Data Structure। যা ডেটাবেসে ব্যবহার করা হয় Efficiently Data Retrieve করার জন্য। B+ ট্রি হলো Balanced Tree Index Structure যার প্রতিটি নোডে একাধিক key সংরক্ষণ করে, যা এটিকে ঐতিহ্যবাহী বাইনারি সার্চ ট্রির(Binary Search Tree) তুলনায় অনেক বেশি কার্যকর করে তুলে, বিশেষ করে বড় ডেটাসেটের জন্য।
+
+(চলমান)
+
+## Section 4: Database Transaction
 
 ডাটাবেজ ট্রানজাকশন এই সমস্ত প্রশ্ন বা সমস্যার সমাধান করতে পারে:
 
@@ -116,7 +124,7 @@ await prisma.$transaction(async (prisma) => {
 
 🔗 [**আরও পড়ুন: ডাটাবেস ট্রানসাকশান**](./sections/database-transaction/README.md)
 
-## Section 4: Client Server Architecture
+## Section 5: Client Server Architecture
 
 ক্লায়েন্ট রিকুয়েস্ট করবে সার্ভারকে কিছু স্পেসিকিফ রিসোর্স এর জন্য, সার্ভার সেই রিকুয়েস্ট পাওয়ার পর সে তার যাবতীয় প্রসেস শেষ করে ক্লায়েন্টকে রেসপন্স দিয়ে দিবে, এটি ক্লায়েন্ট সার্ভার আর্কিটেকচার।
 
@@ -126,7 +134,7 @@ await prisma.$transaction(async (prisma) => {
 
 আমাদের সব উদাহরণ থাকবে ক্লায়েন্ট সার্ভার আর্কিটেকচারের উপর ভিত্তি করে।
 
-## Section 5: Reliability
+## Section 6: Reliability
 
 সিস্টেম যদি কোনো প্রকারের Fault/Error থাকার পরও ভালোভাবে কাজ করতে পারে কিংবা সিস্টেমটি যদি বন্ধ না হয়, তবে সেই সিস্টেমটি Reliable। আমাদের মনে রাখতে হবে এক বা একাধিক Fault এর কারণে সিস্টেম Failure হতে পারে।
 
@@ -134,7 +142,7 @@ Fault এরকম হতে পারে কোনো user সিস্টে�
 
 🔗 [**আরও পড়ুন: রিলাইবিলিটি**](./sections/reliability/README.md)
 
-## Section 6: Performance Metrics
+## Section 7: Performance Metrics
 
 ### Throughput
 
@@ -146,7 +154,7 @@ Fault এরকম হতে পারে কোনো user সিস্টে�
 
 🔗 [**আরও পড়ুন: পারফরম্যান্স ম্যাট্রিক্স**](./sections/performance-metrics/README.md)
 
-## Section 7: Distributed System
+## Section 8: Distributed System
 
 একাধিক কম্পিউটার (বা কম্পোনেন্ট) একসাথে কাজ করার ফলে কোন কাজ শেষ হয় এবং End User এর কাছে একটি কম্পিউটার (বা কম্পোনেন্ট) হিসেবে আসে, সেই সিস্টেমটি হল ডিস্ট্রিবিউটেড সিস্টেম। এই মেশিনগুলোতে শেয়ার্ড স্টেট(Shared State) থাকে, কঙ্কারেন্টলি (Concurrently) কাজ করতে পারে, প্রতিটি সিস্টেম একে অপরের সাথে Information শেয়ার করতে পারবে।
 
@@ -160,7 +168,7 @@ YouTube কেন?
 
 এগুলো সবকিছু মিলে Distributed System YouTube তৈরি করে।
 
-## Section 8: Domain Name System
+## Section 9: Domain Name System
 
 Domain Name System কিংবা DNS একটি নির্দিষ্ট Human Readable Domain (যেমন www.google.com) কে একটি নির্দিষ্ট IP-তে রূপান্তর করে।
 
@@ -185,7 +193,7 @@ Domain Name System কিংবা DNS একটি নির্দিষ্ট 
 
 🔗 [**আরও পড়ুন: ডোমেইন নেইম সিস্টেম**](./sections/domain-name-system/README.md)
 
-## Section 9: Transmission Control Protocol
+## Section 10: Transmission Control Protocol
 
 Transmission Control Protocol অথবা TCP হচ্ছে একটি নেটওয়ার্ক প্রোটোকল যেখানে একাধিক Device একে অপরের সাথে মেসেজ আদান-প্রধান করতে পারে।
 
@@ -209,7 +217,7 @@ TCP মূলত Networking এর OSI Model এর Practical Form। এটি 
 
 HTTP, Web Socket, FTP ইত্যাদি মূলত TCP তে চলে।
 
-## Section 10: User Datagram Protocol
+## Section 11: User Datagram Protocol
 
 UDP মূলত OSI Model এর Transport Layer-এ অবস্থান করে। TCP এর মত এটি reliable না। এতে কোনো 3-way handshake তৈরী হয় না। এটি মূলত Low Latency এবং unreliable connection তৈরী করে।
 
@@ -233,7 +241,7 @@ UDP লাইভ ভিডিও স্ট্রিমিংয়ের জন�
 
 আপনি বিপিএল (ক্রিকেট) দেখছেন। ওভার ১.২-তে হঠাৎ বাফারিং শুরু হলো, আর এখন ওভার ১.৪ চলছে। ওই দুই বল নিয়ে আপনি তেমন চিন্তা করছেন না। আপনি পরের বল দেখছেন। এটি হচ্ছে UDP।
 
-## Section 11: HTTP, TLS and HTTPS
+## Section 12: HTTP, TLS and HTTPS
 
 HTTP অর্থাৎ Hyper Text Transfer Protocol, HTTP এক প্রকারের বৈশিষ্ট প্রদান করে থাকে, যার মাধ্যমে Web Browser এবং Web Server নিজেদের ভিতর communication করে থাকে। এটি এক প্রকারের set of rules যা ডেটা ক্লায়েন্ট থেকে সার্ভারে পাঠানো সাহায্য করে। ডেটা হতে পারে Text, Image ইত্যাদি। ক্লায়েন্ট এবং সার্ভারের ভিতর ডেটা আদান প্রধান plain-text এ হয়ে থাকে, এর ফলে HTTP secured না।
 
@@ -247,7 +255,7 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
 
 🔗 [**আরও পড়ুন: এইচটিটিপি, টিএলএস এবং এইচটিটিপি'এস**](./sections/http-tls-and-https/README.md)
 
-## Section 12: What happens when you type a URL in your browser
+## Section 13: What happens when you type a URL in your browser
 
 <p align="center">
   <img src="./images/what-happens.jpeg" alt="what happens">
@@ -261,7 +269,7 @@ HTTPS অর্থাৎ Hyper Text Transfer Protocol Secure, এটি নি�
 
 সার্ভার রিকোয়েস্ট প্রসেস করে তারপর রেসপন্স রিটার্ন করে থাকে। ব্রাউজার সেই রেসপন্স কে বিভিন্ন স্টেপ শেষ করে ব্রাউজারে দেখায়।
 
-## Section 13: Concurrency and Parallelism
+## Section 14: Concurrency and Parallelism
 
 Concurrency এবং Parallelism বুঝতে হলে আমাদেরকে Process এবং Thread অপারেটিং সিস্টেম এর আলোকে বুঝতে হবে।
 
@@ -317,13 +325,13 @@ fetchData();
 
 Node.js Parallel Execution এর জন্য Worker Threads, Child Processes, Cluster module রয়েছে।
 
-## Section 14: High Concurrency Control
+## Section 15: High Concurrency Control
 
 High Concurrency মানে হচ্ছে, যখন একাধিক user কিংবা একাধিক process একই সময়/একই মুহূর্তে একটি নির্দিষ্ট রিসোর্স কিংবা একটি নির্দিষ্ট ডাটা modify করতে যায়। এর দ্বারা অনেক সমস্যা সৃষ্টি হতে পারে, যার মধ্যে সবচেয়ে গুরুত্বপূর্ণ সমস্যা হচ্ছে Data Inconsistency।
 
 (চলমান)
 
-## Section 15: Functional and Non Functional Requirements
+## Section 16: Functional and Non Functional Requirements
 
 ### Functional Requirements
 
@@ -348,13 +356,13 @@ High Concurrency মানে হচ্ছে, যখন একাধিক user
 
 প্রতিটা হচ্ছে এক একটি Non Functional Requirement।
 
-## Section 16: Back Of the Envelope Estimation
+## Section 17: Back Of the Envelope Estimation
 
 এটি একটি টেকনিক যা আমাদেরকে সিস্টেম ডিজাইন এর Load Balancer, CDN ইত্যাদি ব্যবহার করবো কি না তার আনুমানিক ধারনা হিসাব করে বলে দিতে পারে।
 
 🔗 [**আরও পড়ুন: ব্যাক অফ দা এনভেলপ এস্টিমেশন**](./sections/back-of-the-envelop-estimation/README.md)
 
-## Section 17: Authentication and Authorization
+## Section 18: Authentication and Authorization
 
 একটি secured সিস্টেম design করতে হলে Authentication এবং Authorization জানা অত্যন্ত গুরুত্বপূর্ণ। Authentication মূলত identity verify করাকে বুজায়। আমরা যখন কোনো সিস্টেমে গিয়ে ইমেইল এবং পাসওয়ার্ড দিয়ে লগইন করার চেষ্টা করি, সেই ইমেইল আর পাসওয়ার্ড ভেরিফাই করে হচ্ছে Authentication।
 
@@ -362,7 +370,7 @@ Authorization হলো কোনো নির্দিষ্ট রিসোর
 
 🔗 [**আরও পড়ুন: অথেনটিকেশন এবং অথরিজাশন**](./sections/authentication-and-authorization/README.md)
 
-## Section 18: Stateful and Stateless Architecture
+## Section 19: Stateful and Stateless Architecture
 
 ### Stateful
 
@@ -378,7 +386,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: স্টেটলেস-স্টেটফুল আর্কিটেকচার**](./sections/stateless-stateful-architecture/README.md)
 
-## Section 19: Proxy
+## Section 20: Proxy
 
 ক্লায়েন্ট যখন সার্ভারকে রিকুয়েস্ট পাঠানোর সময় সরাসরি সার্ভারকে রিকুয়েস্ট না করে অন্য একটি সার্ভাররের মাধ্যমে রিকুয়েস্ট করলে, সেই প্রসেস হচ্ছে প্রক্সি এবং যে সার্ভার দিয়ে রিকুয়েস্ট করবে সেটা হচ্ছে প্রক্সি সার্ভার।
 
@@ -386,7 +394,7 @@ HTTP সবসময় Stateless Architecture, কারণ কোনো protected
 
 🔗 [**আরও পড়ুন: প্রক্সি**](./sections/proxy/README.md)
 
-## Section 20: REST Api
+## Section 21: REST Api
 
 REST Api জানার পূর্বে আমাদের বুঝতে হবে রেস্ট(REST) মানে কি, REST মানে হল Representational State Transfer যার মানে দাড়ায় এটি একটি আর্কিটেকচারাল স্টাইল যা ব্যবহার করা হয় স্টেট ট্রান্সফার এর জন্য। এখন REST Api হল, এক প্রকারের এপিআই কনভেনশন যা ব্যবহার করা হয় দুটি এন্ড(যেমনঃ ক্লায়েন্ট এবং সার্ভার) এর মধ্যে স্টেট ট্রান্সফার করাকে নিশ্চিত করার জন্য।
 
@@ -394,7 +402,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: রেস্ট এপিআই**](./sections/rest-api/README.md)
 
-## Section 21: Scalability
+## Section 22: Scalability
 
 স্কেলেবিলিটি সাধারণত সিস্টেমের ক্ষমতাকে বুঝায় যখন সিস্টেমে ট্রাফিকের পরিমাণ বাড়তে থাকে। উদাহরণ বলা যেতে পারে, একটি ওয়েবসাইটের ডাটাবেসে এখন একটি নির্দিষ্ট পরিমাণ রিকুয়েস্ট করা হচ্ছে কিন্তু আজ থেকে ৫ মাস পর রিকুয়েস্ট ২ গুণ হয়ে গেল তার ঠিক আরও ৫ মাস পর রিকুয়েস্ট ৪ গুণ হয়ে গেল, একটা সময় দেখা যেতে পারে ডাটাবেস সার্ভার এত পরিমাণ রিকুয়েস্ট লোড নিতে পারছে না, এই সমস্যার সমাধানের জন্য স্কেল করাকে স্কেলেবিলিটি বলে।
 
@@ -402,7 +410,7 @@ REST Api জানার পূর্বে আমাদের বুঝতে �
 
 🔗 [**আরও পড়ুন: স্কেলেবিলিটি**](./sections/scalability/README.md)
 
-## Section 22: Database Sharding
+## Section 23: Database Sharding
 
 Database Sharding হল টেবিল থেকে ডেটা পৃথক করা। উদাহরণ বলা যায়, ডাটাবেসের ডেটা/row যদি বাড়তে থাকে এবং এত পরিমাণ ডেটা/row বেড়ে গেল যার ফলে ডাটাবেস টেবিলে আর স্টোর করা যায় না তখন আমরা ডেটাগুলোকে মূল টেবিল থেকে পৃথক করে অন্যান্য shard টেবিলে distribute করে রাখি সেটাই Database Sharding। একাধিক সার্ভার এই ডিস্ট্রিবিউশন হবে।
 
@@ -412,7 +420,7 @@ Database Sharding হল টেবিল থেকে ডেটা পৃথক 
 
 🔗 [**আরও পড়ুন: ডেটাবেস সাৰ্ডিং**](./sections/database-sharding/README.md)
 
-## Section 23: Database Replication
+## Section 24: Database Replication
 
 Database Replication এক প্রকারের Strategy, যেখানে একটি Master Database এবং একটি কিংবা একাধিক Slave Database থাকবে। Master Database এর মধ্যে Insert, Delete এবং Update এর কাজ হবে এবং Slave Database মধ্যে Master Database এর ডেটাগুলোর Copy থাকবে এবং তার মধ্যে শুধু Read Operation হবে।
 
@@ -424,7 +432,7 @@ Database Replication, SQL এবং NoSQL দুটি ডেটাবেসে 
 
 🔗 [**আরও পড়ুন: ডেটাবেস রেপ্লিকেশন**](./sections/database-replication/README.md)
 
-## Section 24: Caching
+## Section 25: Caching
 
 Caching একটি কৌশল যা দ্বারা কোন Expensive Response'কে কোনো মেমোরিতে রাখা হয়, যাতে বার বার আসা সেই রেস্পন্সের রিকোয়েস্ট কে দ্রুত রেসপন্সটি দিতে পারি। মূল সার্ভারে (যেমন ডাটাবেস) হিট করার পরিবর্তে ক্যাশিং সার্ভারে রিকোয়েস্ট করবে। এতে করে যে সুবিধাটুকু হবে,
 
@@ -438,7 +446,7 @@ Caching একটি কৌশল যা দ্বারা কোন Expensive 
 
 🔗 [**আরও পড়ুন: ক্যাশিং**](./sections/caching/README.md)
 
-## Section 25: Content Delivery Network
+## Section 26: Content Delivery Network
 
 Content Delivery Network অথবা CDN, এটি একটি সিস্টেম যেখানে একাধিক সার্ভার আমাদের ভৌগোলিক এর আসেপাশে থাকে, যাতে আমরা খুব দ্রুত কন্টেন্ট পেতে পারি। কন্টেন্টটি হতে পারে JS, CSS, Images কিংবা Videos।
 
@@ -453,7 +461,7 @@ Content Delivery Network অথবা CDN, এটি একটি সিস্�
 
 🔗 [**আরও পড়ুন: কনটেন্ট ডেলিভারি নেটওয়ার্ক**](./sections/cdn/README.md)
 
-## Section 26: Rate Limiter
+## Section 27: Rate Limiter
 
 Rate Limiter একটি প্রসেস, যেখানে ক্লায়েন্ট থেকে আসা রিকোয়েস্ট সার্ভারে যাওয়ার পূর্বে রিকোয়েস্টটি কন্ট্রোল করা হয়। একটি নির্দিষ্ট সময়ের মধ্যে একটি নির্দিষ্ট পরিমাণ রিকোয়েস্ট Rate Limiter এর মাধ্যমে সার্ভার রিকোয়েস্ট গ্রহণ করে থাকে। নির্দিষ্ট পরিমানের চেয়ে রিকোয়েস্ট বেশি হয়ে গেলে Rate Limiter রিকোয়েস্টগুলোকে block করে ফেলে, যার ফলে রিকোয়েস্টগুলো আর সার্ভারে যেতে পারে না।
 
@@ -467,7 +475,7 @@ Rate Limiter একটি প্রসেস, যেখানে ক্লায়
 
 🔗 [**আরও পড়ুন: রেইট লিমিটার**](./sections/rate-limiter/README.md)
 
-## Section 27: CAP Theorem
+## Section 28: CAP Theorem
 
 এটি একটি কনসেপ্ট বা থিওরি যা দ্বারা বুজা যায়, একটি Distributed System এ উল্লিখিত তিনটি প্রোপার্টি থেকে দুইটি প্রোপার্টি সবসময় মেনে চলবে।
 
@@ -483,7 +491,7 @@ Partition Tolerance হচ্ছে একাধিক নোড একে অ�
 
 🔗 [**আরও পড়ুন: ক্যাপ থিওরাম**](./sections/cap-theorem/README.md)
 
-## Section 29: Polling, Web Socket, Server-Sent Events and Webhooks
+## Section 30: Polling, Web Socket, Server-Sent Events and Webhooks
 
 Polling মানে হচ্ছে client regular interval এ server কে বার বার ডেটার জন্য রিকোয়েস্ট করবে। যেমন, ক্লায়েন্ট প্রতি ৫ সেকেন্ড পর পর সার্ভার কে রিকোয়েস্ট করবে আর সার্ভার তার রেসপন্স দিবে।
 
@@ -503,7 +511,7 @@ Web Socket এ সার্ভার এবং ক্লায়েন্টের
 
 🔗 [**আরও পড়ুন: পোলিং, ওয়েব সকেট এবং সার্ভার সেন্ট ইভেন্টস**](./sections/polling-web-socket-server-sent-events-webhooks/README.md)
 
-## Section 31: Message Queue
+## Section 32: Message Queue
 
 এটি একটি প্রসেস যেখানে এক বা একাধিক Producer থাকবে, যাদের কাজ হচ্ছে Message(এখানে message মানে রিকোয়েস্ট) Queue এর মধ্যে send করা এবং queue সেই রিকোয়েস্টগুলোকে প্রসেস করে বিভিন্ন consumer এর কাছে পাঠিয়ে দেয়।
 
@@ -528,7 +536,7 @@ Message Queue প্রতিটা Task কে Asynchronously প্রসে�
 
 🔗 [**আরও পড়ুন: মেসেজ কিউ**](./sections/message-queue/README.md)
 
-## Section 33: Single Sign-On
+## Section 34: Single Sign-On
 
 Single Sign-On কিংবা SSO হল একটি Authentication Mechanism। যা user কে একাধিক প্লাটফর্ম (গুগল, ফেইসবুক, টুইটার) দিয়ে Authenticate করে দেয়, একটি নির্দিষ্ট credential মাধ্যমে।
 
@@ -538,13 +546,13 @@ Single Sign-On কিংবা SSO হল একটি Authentication Mechanism�
 
 (বিস্তারিত চলমান)
 
-## Section 34: Elasticsearch
+## Section 35: Elasticsearch
 
 এটি একটি NoSQL ভিত্তিক ডেটাবেস। মূলত এটিকে Distributed Search এবং Aggregation Engine হিসেবে ব্যবহার করা হয়। Elasticsearch এর ভিতর structured এবং unstructured data স্টোর করে রাখা যায়।
 
 🔗 [**আরও পড়ুন: ইলাস্টিকসার্চ**](./sections/elasticsearch/README.md)
 
-## Section 35: Bloom Filter
+## Section 36: Bloom Filter
 
 Bloom Filter একটি Probabilistic Data Structure। Hashing টেকনিক ব্যবহার করে এখানে ডেটা insert করা হয়। এটি খুবই Faster এবং মেমোরি Efficient।
 
@@ -601,7 +609,7 @@ OAuth2 হল এক প্রকারের Authorization Grant Technique। �
   <img src="./images/oauth2.png" alt="oauth2">
 </p>
 
-## Section 40: High Availability best practices by Netflix
+## Section 41: High Availability best practices by Netflix
 
 Netflix High Availability নিশ্চিত করার জন্য কিছু টিপস শেয়ার করেছিল(যেগুলো এরা নিজে follow করে থাকে) যা আমাদের অনেক সিস্টেমের কাজে লাগবে,
 
@@ -617,7 +625,7 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 41: Real World Problems
+## Section 42: Real World Problems
 
 একজন ভালো system designer হতে হলে, আমাদেরকে real-world সমস্যাগুলোর requirements এবং planning সঠিকভাবে বুজতে হবে। আমি এখানে কিছু সমস্যা এবং সেই সমস্যাগুলোর সমাধানের ধারা আমি বর্ণনা করছি।
 
@@ -631,7 +639,7 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 - Design a Content Delivery Network (CDN)
 - Design a scalable blob storage like Amazon's S3
 
-## Section 42: Resources
+## Section 43: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive Applications (paid)</a>
