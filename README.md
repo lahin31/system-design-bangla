@@ -38,7 +38,7 @@
 - [Section 26: Rate Limiter](#section-26-rate-limiter)
 - [Section 27: CAP Theorem](#section-27-cap-theorem)
 - [Section 28: Consistent Hashing] (চলমান)
-- [Section 29: Polling, Web Socket and Server-Sent Events](#section-29-polling-web-socket-and-server-sent-events)
+- [Section 29: Polling, Web Socket, Server-Sent Events and Webhooks](#section-29-polling-web-socket-and-server-sent-events-and-webhooks)
 - [Section 30: Stream and Batch Processing] (চলমান)
 - [Section 31: Message Queue](#section-31-message-queue)
 - [Section 32: rpc, gRpc] (চলমান)
@@ -483,7 +483,7 @@ Partition Tolerance হচ্ছে একাধিক নোড একে অ�
 
 🔗 [**আরও পড়ুন: ক্যাপ থিওরাম**](./sections/cap-theorem/README.md)
 
-## Section 29: Polling, Web Socket and Server-Sent Events
+## Section 29: Polling, Web Socket, Server-Sent Events and Webhooks
 
 Polling মানে হচ্ছে client regular interval এ server কে বার বার ডেটার জন্য রিকোয়েস্ট করবে। যেমন, ক্লায়েন্ট প্রতি ৫ সেকেন্ড পর পর সার্ভার কে রিকোয়েস্ট করবে আর সার্ভার তার রেসপন্স দিবে।
 
@@ -501,7 +501,7 @@ Web Socket মানে হচ্ছে Socket এর মাধ্যমে স�
 
 Web Socket এ সার্ভার এবং ক্লায়েন্টের মধ্যে একটি কানেকশন তৈরী হয়, অর্থাৎ সার্ভারের ভিতর ক্লায়েন্টের কিছু ইনফরমেশন থাকতে হবে যাতে সার্ভার ক্লায়েন্টকে ট্র্যাক করতে পারে। এজন্য এটিকে Stateful Architecture বলা হয়।
 
-🔗 [**আরও পড়ুন: পোলিং, ওয়েব সকেট এবং সার্ভার সেন্ট ইভেন্টস**](./sections/polling-web-socket-server-sent-events/README.md)
+🔗 [**আরও পড়ুন: পোলিং, ওয়েব সকেট এবং সার্ভার সেন্ট ইভেন্টস**](./sections/polling-web-socket-server-sent-events-webhooks/README.md)
 
 ## Section 31: Message Queue
 
