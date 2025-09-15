@@ -12,7 +12,7 @@
 
 - [Section 1: System Design](#section-1-system-design)
 - [Section 2: Database Engineering](#section-2-database-engineering)
-- [Section 3: B+ Tree and Database Indexing]
+- [Section 3: B+ Tree and Database Indexing](#section-3-b-tree-and-database-indexing)
 - [Section 4: Database Transaction](#section-4-database-transaction)
 - [Section 5: Client Server Architecture](#section-5-client-server-architecture)
 - [Section 6: Reliability](#section-6-reliability)
@@ -78,7 +78,7 @@
 
 এটি একটি self-balancing Tree Data Structure। যা ডেটাবেসে ব্যবহার করা হয় Efficiently Data Retrieve করার জন্য। B+ ট্রি হলো Balanced Tree Index Structure যার প্রতিটি নোডে একাধিক key সংরক্ষণ করে, যা এটিকে ঐতিহ্যবাহী বাইনারি সার্চ ট্রির(Binary Search Tree) তুলনায় অনেক বেশি কার্যকর করে তুলে, বিশেষ করে বড় ডেটাসেটের জন্য।
 
-(চলমান)
+🔗 [**আরও পড়ুন: ডেটাবেস ইনডেক্সিং**](./sections/database-indexing/README.md)
 
 ## Section 4: Database Transaction
 
