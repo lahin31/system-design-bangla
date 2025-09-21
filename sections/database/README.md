@@ -335,7 +335,7 @@ for(let dataset of datasets) {
 
 এখন আপনি মনে করুন ডাটাসেটের সাইজ ২০০০ length এর। তখন ল্যাটেন্সি বেড়ে যাবে কারণ একটি একটি করে insertion শেষ হতে হবে আর যেহেতু এখানে ২০০০ length এর ডাটাসেট তার মানে অনেক সময় লাগবে স্বাভাবিক। তাছাড়া তখন বলা যায় ২০০০ insertion এর জন্য ২০০০ টি I/O রিকোয়েস্ট যাবে, যা expensive, এতে আপনার ডাটাবেস হোস্টিং খরচ বেড়ে যাওয়ার সম্ভাবনা আছে।
 
-এই সমস্যার সমাধান আমরা Batch Insert/Bulk Insert দিয়ে করতে পারি।
+এই সমস্যার সমাধান আমরা Batch Insert দিয়ে করতে পারি।
 
 ```js
 await prisma.blogs.createMany({ data: datasets });
@@ -352,7 +352,7 @@ await prisma.blogs.createMany({ data: datasets });
 └─────────────────────────┘
 ```
 
-এটি হচ্ছে Bulk Insert। ২০০০ insertion একসাথে শুরু হবে।
+এটি হচ্ছে Batch Insert। ২০০০ insertion একসাথে শুরু হবে।
 
 **এখন প্রশ্ন হচ্ছে এই ২০০০ insertion এর জন্য কতটি i/o রিকোয়েস্ট যাবে?**
 
