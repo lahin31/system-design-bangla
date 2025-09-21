@@ -286,6 +286,8 @@ RAM যদি ৪ GB হয়?
 
 প্রথমে আমরা Sequential Insert দেখে ফেলি। মনে করুন, আপনার কাছে একটি ছোট ডাটাসেট আছে। এগুলো আপনি ডাটাবেস blogs টেবিলে insert করবেন।
 
+(আমাদের উদাহরণের জন্য আমরা Prisma ব্যবহার করবো।)
+
 ```js
 const datasets = [
   { id: 27817, title: ... },
@@ -294,16 +296,16 @@ const datasets = [
 ]
 
 for(let dataset of datasets) {
-  await db.blogs.insert(dataset);
+  await prisma.blogs.create(dataset);
 }
 ```
 
 এখানে মূলত কী হবে?
 
 ```
-┌─────────────────────────────────────────────────┐
-| Start for-loop                                  |
-└─────────────────────────────────────────────────┘
+┌──────────────────┐
+| Start for-loop   |
+└──────────────────┘
       │
       ▼
 ┌─────────────┐
@@ -333,9 +335,50 @@ for(let dataset of datasets) {
 
 এখন আপনি মনে করুন ডাটাসেটের সাইজ ২০০০ length এর। তখন ল্যাটেন্সি বেড়ে যাবে কারণ একটি একটি করে insertion শেষ হতে হবে আর যেহেতু এখানে ২০০০ length এর ডাটাসেট তার মানে অনেক সময় লাগবে স্বাভাবিক। তাছাড়া তখন বলা যায় ২০০০ insertion এর জন্য ২০০০ টি I/O রিকোয়েস্ট যাবে, যা expensive, এতে আপনার ডাটাবেস হোস্টিং খরচ বেড়ে যাওয়ার সম্ভাবনা আছে।
 
-এই সমস্যার সমাধান আমরা Batch Insert দিয়ে করতে পারি।
+এই সমস্যার সমাধান আমরা Batch Insert/Bulk Insert দিয়ে করতে পারি।
 
-(চলমান)
+```js
+await prisma.blogs.createMany({ data: datasets });
+```
+
+```
+┌──────────────────────────────────┐
+|  Start all 2000 inserts at once  |
+└──────────────────────────────────┘
+  | | | | | | ... (2000 arrows)
+  V V V V V V
+┌─────────────────────────┐
+| resolve/reject          |
+└─────────────────────────┘
+```
+
+এটি হচ্ছে Bulk Insert। ২০০০ insertion একসাথে শুরু হবে।
+
+**এখন প্রশ্ন হচ্ছে এই ২০০০ insertion এর জন্য কতটি i/o রিকোয়েস্ট যাবে?**
+
+উত্তর হলো তা নির্ভর করে max_allowed_packet এর ভ্যালু এর উপর।
+
+```sql
+SHOW VARIABLES LIKE 'max_allowed_packet';
+```
+
+[MySQL Documentation - max_allowed_packet](https://dev.mysql.com/doc/refman/8.4/en/server-system-variables.html#sysvar_max_allowed_packet)
+
+- datasets এর length = ২০০০
+- প্রতিটা row তে কলাম সংখ্যা ১০
+- গড় bytes (প্রতিটা কলাম) ৫০
+
+সর্বমোট size = ২০০০ × ১০ × ৫০ bytes = ১,০০০,০০০ bytes ≈ ১ এম.বি
+
+max_allowed_packet ধরে নিলাম ৪ এম.বি।
+
+আমাদের SQL statement ≈ ১ এম.বি < ৪ এম.বি
+
+ফলাফল: Prisma একটি single INSERT পাঠাবে → single I/O call
+
+**তাহলে কখন একাধিক i/o পাঠাবে?**
+
+datasets এর length ২০০০ থেকে বেড়ে গেলে তখন সর্বমোট size টাও বেড়ে যাবে, মানে তখন ১ এম.বি থেকে আরো বেশি হবে, কোনো কারণে তা max_allowed_packet ৪ এম.বি চেয়ে বেশি হয়ে গেলে একাধিক i/o execute হবে।
 
 ## Read query, indexing ছাড়া কিভাবে execute হয়?
 
