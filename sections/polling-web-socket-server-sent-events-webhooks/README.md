@@ -48,7 +48,11 @@ Server-Sent Events (SSE) হলো একটি একমুখী communication
 
 রিয়েল-টাইম নোটিফিকেশন, রিয়েল-টাইম ড্যাশবোর্ড, লগ, মনিটরিং ইত্যাদির জন্য Server-Sent Events effective।
 
-Pooling আমরা Application লেভেল এ কোড করে ইম্প্লিমেনট করতে পারি, কিন্তু WebSocket একটি প্রোটোকল এর ইমপ্লিমেন্টেশন ভিন্ন। SSE কোনো protocol না, বরং HTTP এর উপর ভিত্তি করে একটা স্ট্যান্ডার্ড টেকনিক (Content-Type: text/event-stream)।
+<p align="center">
+  <img src="./images/sse.png" alt="sse">
+</p>
+
+**Pooling আমরা Application লেভেল এ কোড করে ইম্প্লিমেনট করতে পারি, কিন্তু WebSocket একটি প্রোটোকল এর ইমপ্লিমেন্টেশন ভিন্ন। SSE কোনো protocol না, বরং HTTP এর উপর ভিত্তি করে একটা স্ট্যান্ডার্ড টেকনিক (Content-Type: text/event-stream)।**
 
 ## Webhooks
 
