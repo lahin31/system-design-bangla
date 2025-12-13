@@ -638,6 +638,7 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 - Design a Real-time Collaborative Editor
 - Design a Content Delivery Network (CDN)
 - Design a scalable blob storage like Amazon's S3
+- Design a Zero Downtime Database Migration
 
 ## Section 43: Resources
 

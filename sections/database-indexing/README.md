@@ -115,4 +115,61 @@ CREATE INDEX idx_user_name ON users(user_name);
 
 ### Covering Index
 
-(চলমান)
+আধুনিক ডাটাবেস ইঞ্জিনগুলোতে আপনি ইনডেক্সের মধ্যে নন-কি কলামগুলো সরাসরি যোগ করতে পারেন, যার ফলে ইনডেক্সটি কোয়েরির আরও বেশি প্রয়োজন মেটাতে পারে এবং টেবিলের মূল স্টোরেজ (হিপ) থেকে ডেটা আনার দরকার পড়ে না।
+এখন নিচের কোয়েরিটি বিবেচনা করুন:
+
+```sql
+SELECT title, genre FROM books WHERE genre = 'Science Fiction';
+```
+
+এখানে genre কলামে একটি সেকেন্ডারি ইনডেক্স আছে (InnoDB-তে)। কিন্তু title আনার জন্য ডাটাবেসকে তবু টেবিলের মূল স্টোরেজ (হিপ) থেকে ডেটা পড়তে হয়। এতে সময় লাগে।
+
+কিন্তু যদি আপনি একটি কভারিং ইনডেক্স তৈরি করেন এভাবে:
+
+```sql
+CREATE INDEX idx_covering ON books (genre, title);
+```
+
+তাহলে একই query চালালে:
+
+```sql
+SELECT title, genre FROM books WHERE genre = 'Science Fiction';
+```
+
+MySQL বা অন্য যেকোনো ডাটাবেস সরাসরি index থেকেই প্রয়োজনীয় সব কলামের ডেটা পেয়ে যাবে, টেবিলের মূল স্টোরেজে যাওয়ার কোনো দরকার হবে না।
+
+কিন্তু যদি কভারিং ইনডেক্স না থাকে এবং query এরকম হয়:
+
+```sql
+SELECT * FROM books WHERE genre = 'Science Fiction';
+```
+
+তাহলে ডাটাবেসকে সব কলাম আনার জন্য টেবিলের মূল স্টোরেজে যেতে হবে। এতে I/O অপারেশন বেড়ে যায় এবং পারফরম্যান্স কমে যায়।
+
+একটি বিষয় আমাদেরকে মনে রাখতে হবে,
+
+ইনডেক্সের কলাম অর্ডার (Column Order) খুব গুরুত্বপূর্ণ।
+
+মানে, আপনার ইনডেক্স এরকম হলে, **INDEX (genre, title)**
+
+এবং আপনার query যদি এরকম হয়,
+
+```sql
+SELECT title, genre FROM books WHERE genre = 'Science Fiction';
+```
+
+এটি ভালো কাজ করবে। আবার query এরকম হলে,
+
+```sql
+SELECT title, genre FROM books WHERE genre = 'Science Fiction' AND title = 'Software Engineering';
+```
+
+এটি ভালো কাজ করবে। কিন্তু query এরকম হলে,
+
+```sql
+SELECT title, genre FROM books WHERE title = 'Software Engineering';
+```
+
+তা ভালো কাজ করবে না। কারণ MySQL(innodb) index শুধুমাত্র তখনই কার্যকরভাবে ব্যবহার করতে পারে, যদি WHERE ক্লজে ব্যবহৃত কলামগুলো ইনডেক্সের leftmost columns ম্যাচ করে।
+
+আমাদের মনে রাখতে হবে, কভারিং ইনডেক্স ভালো কাজ করে - Read-heavy system এ।
