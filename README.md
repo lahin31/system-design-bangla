@@ -53,6 +53,112 @@
 - [Section 42: Real World Problems](#section-42-real-world-problems)
 - [Section 43: Resources](#section-43-resources)
 
+## 🛣️ System Design Learning Path
+
+এই Learning Path অনুসরণ করলে beginner থেকে advanced পর্যন্ত ধাপে ধাপে পড়া যাবে।
+
+---
+
+### 🟢 Basic Architecture
+
+- [Section 1: System Design](#section-1-system-design)
+- [Section 5: Client Server Architecture](#section-5-client-server-architecture)
+- [Section 19: Stateful and Stateless Architecture](#section-19-stateful-and-stateless-architecture)
+- [Section 22: Scalability](#section-22-scalability)
+
+---
+
+### 🌐 Networking Basics
+
+- [Section 9: Domain Name System](#section-9-domain-name-system)
+- [Section 10: Transmission Control Protocol](#section-10-transmission-control-protocol)
+- [Section 11: User Datagram Protocol](#section-11-user-datagram-protocol)
+- [Section 12: HTTP, TLS and HTTPS](#section-12-http-tls-and-https)
+- [Section 13: What happens when you type a URL in your browser](#section-13-what-happens-when-you-type-a-url-in-your-browser)
+
+---
+
+### 🧱 Backend Fundamentals
+
+- [Section 16: Functional and Non Functional Requirements](#section-16-functional-and-non-functional-requirements)
+- [Section 17: Back Of the Envelope Estimation](#section-17-back-of-the-envelope-estimation)
+- [Section 18: Authentication and Authorization](#section-18-authentication-and-authorization)
+- [Section 21: REST API](#section-21-rest-api)
+- [Section 20: Proxy](#section-20-proxy)
+
+---
+
+### 🗄️ Database Basics
+
+- [Section 2: Database Engineering](#section-2-database-engineering)
+- [Section 3: B+ Tree and Database Indexing](#section-3-b-tree-and-database-indexing)
+- [Section 4: Database Transaction](#section-4-database-transaction)
+
+---
+
+### 🟡 Performance & Reliability
+
+- [Section 6: Reliability](#section-6-reliability)
+- [Section 7: Performance Metrics](#section-7-performance-metrics)
+- [Section 14: Concurrency and Parallelism](#section-14-concurrency-and-parallelism)
+- [Section 15: High Concurrency Control](#section-15-high-concurrency-control)
+
+---
+
+### 🧵 Distributed Systems Core
+
+- [Section 8: Distributed System](#section-8-distributed-system)
+- [Section 28: CAP Theorem](#section-28-cap-theorem)
+- [Section 29: Consistent Hashing](#section-29-consistent-hashing)
+- [Section 27: Rate Limiter](#section-27-rate-limiter)
+
+---
+
+### 📦 Data Scaling & Performance Optimization
+
+- [Section 23: Database Sharding](#section-23-database-sharding)
+- [Section 24: Database Replication](#section-24-database-replication)
+- [Section 25: Caching](#section-25-caching)
+- [Section 26: Content Delivery Network](#section-26-content-delivery-network)
+
+---
+
+### 🔁 Async & Communication Patterns
+
+- [Section 30: Polling, Web Socket, Server-Sent Events and Webhooks](#section-30-polling-web-socket-server-sent-events-and-webhooks)
+- [Section 31: Stream and Batch Processing](#section-31-stream-and-batch-processing)
+- [Section 32: Message Queue](#section-32-message-queue)
+- [Section 33: rpc, gRpc](#section-33-rpc-grpc)
+
+---
+
+### 🔐 Security & Identity
+
+- [Section 34: Single Sign-On](#section-34-single-sign-on)
+- [Section 38: How OAuth2 works](#section-38-how-oauth2-works)
+
+---
+
+### ⚙️ Advanced Infrastructure Concepts
+
+- [Section 35: Elasticsearch](#section-35-elasticsearch)
+- [Section 36: Bloom Filter](#section-36-bloom-filter)
+- [Section 37: Load Balancing Algorithms](#section-37-load-balancing-algorithms)
+- [Section 40: Serverless Architecture](#section-40-serverless-architecture)
+
+---
+
+### 🏗️ Production & Real-World Systems
+
+- [Section 41: High Availability best practices by Netflix](#section-41-high-availability-best-practices-by-netflix)
+- [Section 42: Real World Problems](#section-42-real-world-problems)
+
+---
+
+### 📚 References
+
+- [Section 43: Resources](#section-43-resources)
+
 ## Section 1: System Design
 
 যখন আমরা একটি অ্যাপ্লিকেশন ডেভেলপ করি, তখন একটি নির্দিষ্ট ডিজাইন অনুসরণ করা জরুরি। এর প্রধান কারণ হলো, অ্যাপ্লিকেশনটি যাতে বর্তমানে এবং ভবিষ্যতে কোনও সমস্যা ছাড়াই ভালভাবে কাজ করতে পারে। বিশেষ করে, যদি অ্যাপ্লিকেশনটি এক সময় প্রচুর ব্যবহারকারী পেয়ে থাকে, তখন এটি প্রচুর লোড সহ্য করতে সক্ষম হতে হবে এবং কোনো কানেকশন বিচ্ছিন্নতা বা পারফরম্যান্সের অবনতি ছাড়াই কাজ করতে হবে। এই ধরনের ডিজাইনকেই সিস্টেম ডিজাইন বলা হয়।
@@ -301,7 +407,26 @@ Parallelism কি? একাধিক কাজ একই সময়ে আল�
 
 যখন সব Thread ব্যস্ত হয়ে পড়বে তখন অন্য Task গুলোর জন্য Context Switching এর মাধ্যমে Task গুলো সম্পাদন করা হবে।
 
-Parallelism উদাহরণ I/O bound task এর জন্য Node.js দিয়ে,
+বাস্তব জীবনের উদাহরণ,
+
+```
+একজন waiter:
+- এক table থেকে order নেয়
+- kitchen এ দিয়ে আসে
+- অন্য table এ যায়
+
+এটা concurrency
+কিন্তু waiter একা, parallel না
+```
+
+```
+দুইজন waiter:
+- একই সময়ে দুই table serve করছে
+
+এটা parallelism
+```
+
+Concurrency উদাহরণ I/O bound task এর জন্য Node.js দিয়ে,
 
 ```js
 const fetch = require("node-fetch");
@@ -315,7 +440,7 @@ async function fetchData() {
 
   const promises = urls.map((url) => fetch(url).then((res) => res.json()));
 
-  const results = await Promise.all(promises); // Parallel Execution
+  const results = await Promise.all(promises);
 
   console.log(results);
 }

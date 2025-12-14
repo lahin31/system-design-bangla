@@ -173,3 +173,5 @@ SELECT title, genre FROM books WHERE title = 'Software Engineering';
 তা ভালো কাজ করবে না। কারণ MySQL(innodb) index শুধুমাত্র তখনই কার্যকরভাবে ব্যবহার করতে পারে, যদি WHERE ক্লজে ব্যবহৃত কলামগুলো ইনডেক্সের leftmost columns ম্যাচ করে।
 
 আমাদের মনে রাখতে হবে, কভারিং ইনডেক্স ভালো কাজ করে - Read-heavy system এ।
+
+**সাধারণত সকল প্রকারের ইনডেক্স আমাদের সিস্টেমের WRITE query latency বৃদ্ধি করে থাকে। কারণ তখন প্রতিটা entry এর সময় নতুন করে ইনডেক্স স্ট্রাকচার করা লাগে।**
