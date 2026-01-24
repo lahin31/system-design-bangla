@@ -281,9 +281,9 @@ After:
 
 আমাদের বুজতে হবে id Auto-increment primary key ব্যবহার করলে,
 
-→ নতুন ডাটা সবসময় append-only(শেষের দিকে) হয় মানে ডাটা sequentially প্রবেশ করে।
-→ page split প্রায় কমে যায়।
-→ INSERT query তখন অনেক দ্রুত ও efficient হয়।
+- নতুন ডাটা সবসময় append-only(শেষের দিকে) হয় মানে ডাটা sequentially প্রবেশ করে।
+- page split প্রায় কমে যায়।
+- INSERT query তখন অনেক দ্রুত ও efficient হয়।
 
 ## Buffer Pool (InnoDB অনুসারে)
 
