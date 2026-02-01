@@ -1,6 +1,6 @@
-# Design a Highly Concurrent Wordcamp Event Booking System, with Performance and Consistency in mind
+# Design a Highly Concurrent Event Booking System, with Performance and Consistency in mind
 
-আমি পূর্বে Design a Highly Concurrent Wordcamp Event Booking System লিখেছিলাম। যা আমাদেরকে ধারণা দিয়েছে,
+আমি পূর্বে Design a Highly Concurrent Event Booking System লিখেছিলাম। যা আমাদেরকে ধারণা দিয়েছে,
 
 - Exclusive Lock কি?
 

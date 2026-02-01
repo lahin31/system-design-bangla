@@ -299,6 +299,38 @@ After:
 - page split প্রায় কমে যায়।
 - INSERT query তখন অনেক দ্রুত ও efficient হয়।
 
+## Full Table Scan
+
+Full Table Scan তখন হয় যখন ডেটাবেস টেবিলের সব রেকর্ড(row) পড়তে হয় কোনো Query এর জন্য। উদাহরণ:
+
+```sql
+select * from users where name="Lahin";
+```
+
+যদি টেবিল এর রেকর্ড সংখ্যা(total rows) ৫০,০০০ হয়, ৪৯,৯৯৯ নং row তে name="Lahin" থাকে তাহলে ৪৯,৯৯৮ টি row সার্চ করে ৪৯,৯৯৯ নং row তে name="Lahin" পাবে।
+
+Page পড়ার হিসাব,
+
+ধরা যাক:
+
+- **টেবিল**: users
+
+- **রেকর্ড সংখ্যা(total rows)**: ৫০,০০০
+
+- **প্রতিটি row আকার**: ১০০ বাইট
+
+- **Page size**: ১৬ KB = ১৬,৩৮৪ বাইট
+
+### Step 1 – প্রতিটা পেজে row:
+
+Rows per page = Row size / Page size​ = 16384 / 100 ≈ 163 rows/page
+
+### Step 2 – Page সংখ্যা:
+
+Pages to read= Rows per page / Total rows ​= 50000 / 163 ≈ 306.75 ≈ 307 pages
+
+অর্থাৎ, 50,000 রেকর্ডের টেবিলে full table scan করলে প্রায় ৩০৭ টি পেজ পড়তে হবে।
+
 ## Buffer Pool (InnoDB অনুসারে)
 
 এটি মূল মেমোরি বা RAM এর ভিতরের একটি এলাকা, যেখানে InnoDB (MySQL ইঞ্জিন) টেবিল এবং ইনডেক্স ডেটা ক্যাশ করে রাখে যখন তা access করা হয়। ডেটা সরাসরি বাফার পুল থেকে অ্যাক্সেস করার মাধ্যমে আমরা query processing এর সময়কে দ্রুততর করতে পারি।
