@@ -756,8 +756,8 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 
 একজন ভালো system designer হতে হলে, আমাদেরকে real-world সমস্যাগুলোর requirements এবং planning সঠিকভাবে বুজতে হবে। আমি এখানে কিছু সমস্যা এবং সেই সমস্যাগুলোর সমাধানের ধারা আমি বর্ণনা করছি।
 
-- [**Design a Highly Concurrent Wordcamp Event Booking System**](./sections/real-world-problems/wc-event-booking/README.md)
-- [**Design a Highly Concurrent Wordcamp Event Booking System, with Performance and Consistency in mind**](./sections/real-world-problems/wc-event-booking-perf/README.md)
+- [**Design a Highly Concurrent Event Booking System**](./sections/real-world-problems/event-booking/README.md)
+- [**Design a Highly Concurrent Event Booking System, with Performance and Consistency in mind**](./sections/real-world-problems/event-booking-perf/README.md)
 - Design a Scalable One to One and One to Many chat system
 - [**Design a Live Streaming platform like Twitch**](./sections/real-world-problems/live-streaming-platform/README.md)
 - Design an Image Service that supports ~5M uploads/hour (~1.39k uploads/sec)
