@@ -118,7 +118,7 @@ Connection: keep-alive
 সাধারণ মেসেজ ফরম্যাট,
 
 ```js
-data: Hello world
+data: Hello world\n\n
 ```
 
 একাধিক ফিল্ডসহ মেসেজ,
