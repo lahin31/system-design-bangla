@@ -80,7 +80,7 @@ B বার্তাগুলো সাথে সাথে পাবে না, 
 
 Server-Sent Events (SSE) হলো একটি একমুখী communication মাধ্যম, যেখানে ডাটা শুধুমাত্র সার্ভার → ক্লায়েন্ট এ পাঠানো হয় এবং এটি HTTP এর উপর কাজ করে।
 
-যা WebSocket-এর থেকে আলাদা, এখানে communication single direction-এ হয় (অর্থাৎ শুধু সার্ভার → ক্লায়েন্ট দিকেই হয়), অপরদিকে WebSocket Bidirectional Communication করে।
+যা WebSocket-এর থেকে আলাদা(SSE কোনো protocol না), এখানে communication single direction-এ হয় (অর্থাৎ শুধু সার্ভার → ক্লায়েন্ট দিকেই হয়), অপরদিকে WebSocket Bidirectional Communication করে।
 
 রিয়েল-টাইম নোটিফিকেশন, রিয়েল-টাইম ড্যাশবোর্ড, লগ, মনিটরিং ইত্যাদির জন্য Server-Sent Events effective।
 
@@ -88,7 +88,73 @@ Server-Sent Events (SSE) হলো একটি একমুখী communication
   <img src="./images/sse.png" alt="sse">
 </p>
 
-**Pooling আমরা Application লেভেল এ কোড করে ইম্প্লিমেনট করতে পারি, কিন্তু WebSocket একটি প্রোটোকল এর ইমপ্লিমেন্টেশন ভিন্ন। SSE কোনো protocol না, বরং HTTP এর উপর ভিত্তি করে একটা স্ট্যান্ডার্ড টেকনিক (Content-Type: text/event-stream)।**
+**কিভাবে Server-Sent Events কাজ করে?**
+
+- ক্লায়েন্ট একটি সাধারণ HTTP রিকোয়েস্ট দিয়ে শুরু করলো।
+
+```js
+const eventSource = new EventSource('/events');
+
+GET /events HTTP/1.1
+Host: example.com
+Accept: text/event-stream
+Cache-Control: no-cache
+Connection: keep-alive
+```
+
+- সার্ভার রিকোয়েস্ট গ্রহণ করলো এবং connection open রাখে। সার্ভার ক্লায়েন্টকে যা রিটার্ন করবে,
+
+```js
+HTTP/1.1 200 OK
+Content-Type: text/event-stream
+Cache-Control: no-cache
+Connection: keep-alive
+```
+
+- ইভেন্ট স্ট্রিম ফরম্যাট,
+
+সার্ভার কানেকশন ওপেন রেখে নিচের ফরম্যাটে ডেটা পাঠাতে থাকে।
+
+সাধারণ মেসেজ ফরম্যাট,
+
+```js
+data: Hello world
+```
+
+একাধিক ফিল্ডসহ মেসেজ,
+
+```js
+event: meeting_created
+id: 42
+data: {"title":"Sprint Review"}
+```
+
+**SSE (Server-Sent Events) এর ক্ষেত্রে Heartbeat বা Keep-alive অত্যন্ত গুরুত্বপূর্ণ একটি mechanism। কানেকশনটি যাতে মাঝপথে কোনো কারণ ছাড়াই বন্ধ না হয়ে যায়, সেজন্যই এটি ব্যবহার করা হয়।**
+
+HTTP কানেকশনগুলো সাধারণত Idle থাকলে প্রক্সি সার্ভার, লোড ব্যালেন্সার (যেমন: Nginx, Cloudflare) automatically কানেকশনটি বন্ধ করে দেয়। Heartbeat হিসেবে সার্ভার ছোট একটি কমেন্ট পাঠিয়ে ব্রাউজারকে এবং নেটওয়ার্ক ডিভাইসগুলোকে বুঝিয়ে দেয় যে কানেকশনটি এখনও সচল আছে।
+
+### Server-Sent Events-এর লুকানো Edge Case গুলো
+
+- \n\n না পাঠালে onmessage event fire হবে না।
+
+```js
+data: hello world\n
+```
+
+কাজ করবে না।
+
+```js
+data: hello world\n\n
+```
+
+- NGINX buffering
+
+NGINX/Cloudflare buffer করে রাখে, যতক্ষণ না buffer full, data flush হয় না। এটি করা হয় performance বাড়ানোর জন্য, যাতে ক্লায়েন্টকে বড় বড় Chunk ডেটা পাঠানো যায়। কিন্তু SSE-তে আমরা চাই প্রতিটা মেসেজ তৈরি হওয়ার সাথে সাথে যেন ক্লায়েন্ট মেসেজ/ডেটা পেয়ে যায়। সমাধান,
+
+```
+proxy_buffering off;
+proxy_cache off;
+```
 
 ## Webhooks
 
