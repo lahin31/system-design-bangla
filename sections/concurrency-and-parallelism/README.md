@@ -1,4 +1,28 @@
-# একাধিক প্রসেস কিংবা থ্রেড একই পোর্ট বিন্ড করার চেষ্টা করে থাকলে কি হয়?
+# Concurrency and Parallelism handling
+
+একটি প্রোডাকশন environment এ User Experience ভালো রাখার জন্য সঠিকভাবে Concurrency/Parallelism ব্যবহার করতে হয়। 
+
+## Worker Thread
+
+Worker Thread হল Node.js-এর এমন একটি ফিচার যা আপনাকে Heavy CPU-bound কাজগুলো Main Thread থেকে আলাদা thread-এ চালাতে দেয়।
+
+Heavy CPU-bound কাজগুলো হতে পারে,
+
+- Image প্রসেসিং
+- Video প্রসেসিং
+- PDF প্রসেসিং
+
+এই কনসেপ্ট প্রায় সব Programming Language-এ আছে।
+
+Worker Thread ব্যবহার করার সুবিধা - Main Thread free থাকে, যার ফলে API response ফাস্ট হয়।
+
+একটি ব্যপার আমাদেরকে বুজতে হবে, Queue (যেমন RabbitMQ) আর Worker Thread এক জিনিস না।
+
+Worker Thread ব্যবহার করা হয় CPU-bound কাজ parallel ভাবে চালানোর জন্য, যাতে Main Thread block না হয়।
+
+Queue ব্যবহার করা হয় job decouple(scalability), distribute(scalability) এবং reliable করার জন্য — যাতে system crash হলেও কাজ হারিয়ে না যায় এবং multiple worker parallel কাজ করতে পারে।
+
+### একাধিক প্রসেস কিংবা থ্রেড একই পোর্ট বিন্ড করার চেষ্টা করে থাকলে কি হয়?
 
 আমরা অনেক সময় দেখতে পাই, Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
 
