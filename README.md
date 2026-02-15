@@ -758,8 +758,9 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 
 - [**Design a Highly Concurrent Event Booking System**](./sections/real-world-problems/event-booking/README.md)
 - [**Design a Highly Concurrent Event Booking System, with Performance and Consistency in mind**](./sections/real-world-problems/event-booking-perf/README.md)
-- Design a Scalable One to One and One to Many chat system
+- [**Design a Scalable One to One and One to Many chat system**](./sections/real-world-problems/scalable-chat-system/README.md)
 - [**Design a Live Streaming platform like Twitch**](./sections/real-world-problems/live-streaming-platform/README.md)
+- Design DNS that scales to millions of users
 - Design an Image Service that supports ~5M uploads/hour (~1.39k uploads/sec)
 - Design a High-Scale Unique User Counting System
 - Design a Real-time Collaborative Editor
