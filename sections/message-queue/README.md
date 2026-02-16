@@ -4,7 +4,7 @@ Kafka খুবই জনপ্রিয় Message Queue। High-performance data 
 
 ## Components of Kafka
 
-- Producer: Producer কিংবা Publisher যার কাজ হচ্ছে message pass করা। এখানে message হতে পারে API রিকোয়েস্ট।
+- Producer: Producer কিংবা Publisher যার কাজ হচ্ছে message pass করা।
 
 - Cluster: Producer message টি Cluster এ pass করবে। Cluster এর ভিতর Topics, Broker এবং ZooKeeper থাকবে।
 
