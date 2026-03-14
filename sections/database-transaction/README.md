@@ -254,6 +254,10 @@ Transaction commit হওয়ার পরে পরিবর্তিত data pa
 
 পরবর্তীতে background process গুলো পরিবর্তিত data page গুলোকে মূল database table-এ insert করে দেয়।
 
+<p align="center">
+  <img src="./images/wal.png" alt="wal">
+</p>
+
 **এখন একাধিক Transaction এর জন্য আমরা practically কিভাবে consistency বজায় রাখতে পারবো?**
 
 আমাদের কাছে ২ টি option আছে,

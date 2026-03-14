@@ -98,6 +98,10 @@ Worker Thread হচ্ছে একটি thread যেটি background এ ta
 
 Message Queue এবং Worker Thread একসাথে ব্যবহার করা যায়। সাধারণত Message Queue থেকে message বা job নিয়ে Worker Thread সেগুলো process করে। Process শেষ হলে worker acknowledgement (ACK) পাঠায়। 
 
+<p align="center">
+  <img src="./images/mq-wt.png" alt="mq-wt">
+</p>
+
 ## Real life Message Queue use-cases
 
 - Real-time Data Processing.
