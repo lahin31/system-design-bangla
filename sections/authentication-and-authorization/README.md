@@ -13,6 +13,10 @@
 
 যেহেতু Session কোনো স্থানে স্টোর করে রাখা হয় সেজন্য Session based Authentication কে Stateful বলা হয়।
 
+<p align="center">
+  <img src="./images/session_auth.png" alt="Session Based Auth">
+</p>
+
 ### Token based Authentication
 
 এক্ষেত্রে Authentication করার সময় session ইনফরমেশন/তথ্য ডাটাবেসে কিংবা Session Store এ রাখা হয় না। কিভাবে কাজ করে?

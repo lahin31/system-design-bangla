@@ -103,6 +103,10 @@ CREATE INDEX idx_user_name ON users(user_name);
 - ইনডেক্স করা কলাম খুঁজে Primary key বের করা
 - সেই Primary key দিয়ে Clustered data থেকে row আনতে
 
+<p align="center">
+  <img src="./images/secondary_index.png" alt="Secondary Index">
+</p>
+
 ### Unique Index
 
 আপনি কোনো কলামে যখন UNIQUE constraint বলে দিবেন, তখন ডেটাবেস সেই কলামের উপর একটি Unique Index তৈরি করে। Unique Index কলামের প্রতিটি রো-তে uniqueness নিশ্চিত করে।
