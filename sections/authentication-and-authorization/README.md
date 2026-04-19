@@ -26,6 +26,10 @@
 - তারপর সার্ভার JWT সম্বলিত cookie ক্লায়েন্ট এর কাছে পাঠাবে।
 - পরবর্তী সময় ক্লায়েন্ট যখন কোনো প্রোটেক্টেড রিসোর্স এর জন্য সার্ভারের কাছে রিকোয়েস্ট পাঠাবে, তখন সার্ভার সেই রিকোয়েস্ট এর মধ্যে থাকা JWT কে যাচাই করবে সেই Private Key এর মাধ্যমে।
 
+<p align="center">
+  <img src="./images/token_auth.png" alt="Token Based Auth">
+</p>
+
 যেহেতু Session কোনো স্থানে স্টোর করে রাখা হয় না সেজন্য Token based Authentication কে Stateless বলা হয়।
 
 ## কখন Session based Authentication/Token based Authentication ব্যবহার করব?

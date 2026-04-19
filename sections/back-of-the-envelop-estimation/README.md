@@ -30,3 +30,7 @@ storage এর পরিমান দাঁড়ায় ১০ trillion।
 (10 Billion \* 6 queries) / 86400 = ~700000
 
 প্রতি সেকেন্ডে ফেইসবুককে গড় ৭০০০০০ রিকোয়েস্ট প্রসেস করতে হচ্ছে।
+
+<p align="center">
+  <img src="./images/back_of_the_envelop.png" alt="Back of the Envelop">
+</p>

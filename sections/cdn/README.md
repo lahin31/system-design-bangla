@@ -8,6 +8,10 @@
 
 - Handle DDoS Attack: Attacker যখন multiple রিকোয়েস্ট DDoS করার জন্য করবে, তখন সেই রিকোয়েস্টগুলো CDN সার্ভার handle করবে, আর আমাদের মূল origin সার্ভার অক্ষত থাকবে।
 
+<p align="center">
+  <img src="./images/benefits_of_cdn.png" alt="Benefits of CDN" />
+</p>
+
 ## CDN এর ব্যবহার: Real-time Streaming
 
 Real-time Streaming সিস্টেম যেখানে Videos কিংবা Audio সার্ভ করা হয় সেখানে সাধারণত CDN ব্যবহার করা হয়,

@@ -88,6 +88,116 @@ Message Broker কি?
   <img src="./images/rabbitmq-basic.png" alt="rabbitmq-basic">
 </p>
 
+## Basic Code Example
+
+### Connection Manager
+
+```js
+// rabbitmq/connection.js
+const amqp = require("amqplib");
+
+let connection = null;
+let channel = null;
+
+async function connectRabbitMQ() {
+  try {
+    connection = await amqp.connect(process.env.RABBITMQ_URL);
+
+    connection.on("error", (err) => {
+      console.error("RabbitMQ connection error:", err.message);
+    });
+
+    connection.on("close", () => {
+      console.error("RabbitMQ connection closed. Reconnecting...");
+      setTimeout(connectRabbitMQ, 5000);
+    });
+
+    channel = await connection.createChannel();
+
+    console.log("✅ RabbitMQ connected");
+  } catch (err) {
+    console.error("❌ RabbitMQ connection failed:", err.message);
+    setTimeout(connectRabbitMQ, 5000);
+  }
+}
+
+function getChannel() {
+  if (!channel) throw new Error("Channel not initialized");
+  return channel;
+}
+
+module.exports = {
+  connectRabbitMQ,
+  getChannel,
+};
+```
+
+### Producer/Publisher
+
+```js
+// rabbitmq/producer.js
+const { getChannel } = require("./connection");
+
+async function publish(queue, message) {
+  const channel = getChannel();
+
+  await channel.assertQueue(queue, {
+    durable: true, // survives restart
+  });
+
+  channel.sendToQueue(
+    queue,
+    Buffer.from(JSON.stringify(message)),
+    {
+      persistent: true, // message saved to disk
+    }
+  );
+
+  console.log("📤 Message sent:", message);
+}
+
+module.exports = { publish };
+```
+
+### Consumer/Worker
+
+```js
+// rabbitmq/consumer.js
+const { getChannel } = require("./connection");
+
+async function consume(queue, handler) {
+  const channel = getChannel();
+
+  await channel.assertQueue(queue, {
+    durable: true,
+  });
+
+  // Fair dispatch (important for scaling)
+  channel.prefetch(1);
+
+  console.log(`📥 Waiting for messages in ${queue}`);
+
+  channel.consume(queue, async (msg) => {
+    if (!msg) return;
+
+    try {
+      const data = JSON.parse(msg.content.toString());
+
+      await handler(data);
+
+      channel.ack(msg); // success
+    } catch (err) {
+      console.error("❌ Error processing message:", err);
+
+      // Reject and requeue (or send to DLQ in real systems)
+      channel.nack(msg, false, true);
+    }
+  });
+}
+
+module.exports = { consume };
+```
+
 ## Message Queue এবং Worker Thread এর তফাৎ 
 
 Message Queue এবং Worker Thread নিয়ে অনেকের ভিতর confusion কাজ করে – দুটোই asynchronous processing এ ব্যবহৃত হয়।
@@ -153,3 +263,22 @@ Unique constraint error টা ধরবে ঠিকই, কিন্তু app
 যদি হ্যাঁ → ACK করুন, কিন্তু আর কিছু করবেন না
 
 যদি না → Insert করুন, তারপর ACK করুন
+
+## গুরুত্বপূর্ণ প্রশ্নগুলো
+
+- Message Queue এবং Pub/Sub এর মধ্যে পার্থক্য কি?
+- RabbitMQ এবং Apache Kafka এর মধ্যে মূল পার্থক্য কি?
+- At-most-once, At-least-once, Exactly-once delivery semantics কি? বাস্তবে কোনটা বেশি ব্যবহৃত হয় এবং কেন?
+- Message acknowledgement (ACK/NACK) কি? কেন এটি গুরুত্বপূর্ণ?
+- Dead Letter Queue (DLQ) কি? কখন ব্যবহার করা উচিত?
+- Retry mechanism কিভাবে design করবেন? Infinite retry সমস্যা কিভাবে handle করবেন?
+- Producer fast কিন্তু Consumer slow হলে কি সমস্যা হবে? কিভাবে handle করবেন?
+- Idempotent consumer কি? কেন দরকার?
+- Duplicate message আসলে কিভাবে handle করবেন?
+- Message schema change (versioning) কিভাবে handle করবেন যাতে পুরনো consumer break না করে?
+- Message size বড় হলে কি সমস্যা হতে পারে? কিভাবে optimize করবেন?
+- Synchronous vs Asynchronous processing - কখন কোনটা ব্যবহার করবেন?
+- Message Queue use করলে system latency বাড়ে না কমে? explain করুন।
+- Horizontal scaling এ multiple consumer use করলে কি কি challenge আসে?
+- Queue based system এ monitoring কি কি metric track করবেন?
+- Backpressure কি? Queue system এ কিভাবে implement করবেন?
