@@ -60,6 +60,10 @@ Availability (%) = ( Uptime / (Downtime + Uptime) ) \* 100
 
 (৩৯০০ / ৪০৫০) \* ১০০ = ৯৬.২৯%
 
+<p align="center">
+  <img src="./images/availability-measurement.png" alt="availability-measurement">
+</p>
+
 ## The x-9 structure of Availability
 
 যখন বলা হয় সিস্টেমের availability 99.99% তারমানে হল এক বছরে(কিংবা এক মাসে) সিস্টেমের ডাউনটাইম হবে
