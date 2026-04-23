@@ -52,8 +52,9 @@
 - [Section 41: How to choose the right database for your application](#section-41-how-to-choose-the-right-database-for-your-application)
 - [Section 42: Designing reliable Batch Processing for large-scale data](#section-42-designing-reliable-batch-processing-for-large-scale-data)
 - [Section 43: High Availability best practices by Netflix](#section-43-high-availability-best-practices-by-netflix)
-- [Section 44: Real World Problems](#section-44-real-world-problems)
-- [Section 45: Resources](#section-45-resources)
+- [Section 44: Production Outages](#section-44-production-outages)
+- [Section 45: Real World Problems](#section-45-real-world-problems)
+- [Section 46: Resources](#section-46-resources)
 
 ## 🛣️ System Design Learning Path
 
@@ -154,13 +155,14 @@
 ### 🏗️ Production & Real-World Systems
 
 - [Section 43: High Availability best practices by Netflix](#section-43-high-availability-best-practices-by-netflix)
-- [Section 44: Real World Problems](#section-44-real-world-problems)
+- [Section 44: Production Outages](#section-44-production-outages)
+- [Section 45: Real World Problems](#section-45-real-world-problems)
 
 ---
 
 ### 📚 References
 
-- [Section 45: Resources](#section-45-resources)
+- [Section 46: Resources](#section-46-resources)
 
 ## Section 1: System Design
 
@@ -794,7 +796,15 @@ Netflix High Availability নিশ্চিত করার জন্য কি
 
 Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0472f2599c
 
-## Section 44: Real World Problems
+## Section 44: Production Outages
+
+Real world production outage আপনাকে শেখায় কীভাবে সিস্টেম outage, কেন outage, এবং কীভাবে দ্রুত recover করতে হয়।
+
+একজন ভালো ইঞ্জিনিয়ার হওয়ার জন্য শুধু সিস্টেম ডিজাইন জানাই যথেষ্ট নয় - outage থেকে শেখা, root cause খুঁজে বের করা, আর সিস্টেমকে আরও resiliant বানানোই আসল দক্ষতা।
+
+🔗 [**আরও পড়ুন: প্রোডাকশন আউটেজ**](./sections/production-outages/README.md)
+
+## Section 45: Real World Problems
 
 একজন ভালো system designer হতে হলে, আমাদেরকে real-world সমস্যাগুলোর requirements এবং planning সঠিকভাবে বুজতে হবে। আমি এখানে কিছু সমস্যা এবং সেই সমস্যাগুলোর সমাধানের ধারা আমি বর্ণনা করছি।
 
@@ -810,7 +820,7 @@ Original Post: https://netflixtechblog.medium.com/tips-for-high-availability-be0
 - Design a scalable blob storage like Amazon's S3
 - Design a Zero Downtime Database Migration
 
-## Section 45: Resources
+## Section 46: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive Applications (paid)</a>
