@@ -313,9 +313,135 @@ def on_order(event):
 
 - একটা event-এর কথা অনেককে জানাতে হবে (order placed → email + sms + analytics)
 
+## RabbitMQ এবং Apache Kafka এর মধ্যে মূল পার্থক্য কি?
+
+### RabbitMQ কীভাবে কাজ করে
+
+- Producer message publish করে Exchange-এ
+- Exchange routing rules অনুযায়ী message Queue-তে পাঠায়
+- Broker message consumer-এর কাছে deliver করে
+- Consumer ACK দিলে message Queue থেকে remove হয়ে যায়
+- Complex routing support করে (Direct, Fanout, Topic, Headers Exchange)
+- Built-in message replay support নেই
+
+<p align="center">
+  <img src="./images/rabbit-1.png" alt="rabbit-1">
+</p>
+
+### Apache Kafka কীভাবে কাজ করে
+
+- Producer message Topic-এ publish করে
+- Message একটি append-only immutable log-এ সংরক্ষিত হয়
+- Consumer offset ব্যবহার করে নিজে message pull করে
+- Consumer message পড়লেও data retention period পর্যন্ত Kafka-তে থাকে
+- Offset reset করে পুরনো message পুনরায় পড়া (replay) সম্ভব
+
+<p align="center">
+  <img src="./images/kafka-1.png" alt="kafka-1">
+</p>
+
+**RabbitMQ এর Broker কে Smart এবং Consumer কে Dumb বলা হয়। কারণ কী?**
+
+RabbitMQ broker অনেক কাজ করে:
+
+- Message routing
+- Filtering
+- Load balancing
+- Retry handling
+- Dead Letter Queue (DLQ)
+- Priority queues
+- ACK tracking
+- Complex delivery rules
+
+Consumer সাধারণত শুধু message receive করে এবং process করে। সেজন্য RabbitMQ এর Broker কে Smart এবং Consumer কে Dumb বলা হয়।
+
+**Apache Kafka এর Consumer কে Smart এবং Broker কে Dumb বলা হয়। কারণ কী?**
+
+Kafka broker-এর কাজ তুলনামূলকভাবে সহজ:
+
+- Message store করা
+- Partition manage করা
+- Replication করা
+- Offset track করা
+
+Business logic এবং processing strategy consumer-এর দায়িত্ব।
+
+### RabbitMQ ব্যবহার করুন যখন
+
+আপনার মূল সমস্যা হলো:
+
+"এই কাজটা কে করবে?"
+
+অর্থাৎ আপনি work distribution বা task processing করতে চান।
+
+ভালো use cases,
+
+- Email sending
+- SMS/Push notification processing
+- Image/video processing jobs
+- Payment processing workflows
+- Background jobs
+- Order fulfillment tasks
+- Request/Response patterns
+- Job queues
+
+উদাহরণ,
+
+```
+User একটি ছবি upload করল।
+
+Upload API
+  |
+  v
+RabbitMQ
+  |
+  v
+Image Processing Worker
+```
+
+Worker image process করল, কাজ শেষ, message-ও শেষ।
+
+এখানে replay বা historical event store করার দরকার নেই।
+
+### Kafka ব্যবহার করুন যখন
+
+আপনার মূল সমস্যা হলো:
+
+"কি কি ঘটনা ঘটছে, সেগুলো সবাইকে জানাতে হবে এবং ভবিষ্যতের জন্য সংরক্ষণ করতে হবে।"
+
+ভালো use cases,
+
+- Event-driven architecture
+- Audit logs
+- User activity tracking
+- Analytics pipelines
+- Clickstream processing
+- CDC (Change Data Capture)
+- Event sourcing
+- Real-time dashboards
+- ML/Recommendation pipelines
+
+উদাহরণ,
+
+```
+User order করল।
+
+Order Service
+      |
+      v
+Order Topic (Kafka)
+      |
+-----------------------------
+|            |             |
+Billing   Analytics   Notification
+```
+
+একই event অনেক service consume করতে পারে।
+
+পরে নতুন Fraud Detection Service যোগ হলেও পুরোনো event replay করে শুরু করতে পারবে।
+
 ## গুরুত্বপূর্ণ প্রশ্নগুলো
 
-- RabbitMQ এবং Apache Kafka এর মধ্যে মূল পার্থক্য কি?
 - At-most-once, At-least-once, Exactly-once delivery semantics কি? বাস্তবে কোনটা বেশি ব্যবহৃত হয় এবং কেন?
 - Message acknowledgement (ACK/NACK) কি? কেন এটি গুরুত্বপূর্ণ?
 - Dead Letter Queue (DLQ) কি? কখন ব্যবহার করা উচিত?
