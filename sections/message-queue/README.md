@@ -264,9 +264,57 @@ Unique constraint error টা ধরবে ঠিকই, কিন্তু app
 
 যদি না → Insert করুন, তারপর ACK করুন
 
+## Message Queue এবং Pub/Sub এর মধ্যে পার্থক্য কি?
+
+### Message Queue — কাজের ধরন
+
+ধরেন আপনি একটা রেস্টুরেন্টের কিচেনে কাজ করছেন। অর্ডার আসে, একটা তালিকায় জমা হয়, এবং যে রাঁধুনি ফ্রি সে অর্ডারটা তুলে নেয়। এক অর্ডার, এক রাঁধুনি।
+
+```
+// Producer — কাজ পাঠাচ্ছে
+queue.send("resize_image", {"file": "photo.jpg", "size": "800x600"})
+
+// Consumer A (একজনই এটা process করবে)
+task = queue.receive()  # "resize_image" পেয়ে কাজ করল
+
+// Queue থেকে message delete হয়ে গেল
+```
+
+**মূল বৈশিষ্ট্য**: message একবার consume হলে চলে যায়। Consumer B বা C এটা আর দেখবে না। Load balancing নিজেই হয় — ৩টা consumer থাকলে ৩টা task parallel-এ চলবে।
+
+### Pub/Sub — কাজের ধরন
+
+এটি একপ্রকারের রেডিও ব্রডকাস্ট। একজন বলছে, যতজন শুনছে সবাই সেটা পাচ্ছে। কেউ শুনলো বা না শুনলো সেটা broadcaster-এর দায় নয়।
+
+```
+// Publisher — event পাঠাচ্ছে
+topic.publish("order_placed", {"order_id": 42, "total": 1500})
+
+// Subscriber 1 — Email Service
+def on_order(event):
+  send_confirmation_email(event["order_id"])  # নিজের কাজ করছে
+
+// Subscriber 2 — Analytics Service
+def on_order(event):
+  track_revenue(event["total"])  # সেও একই event পেয়েছে
+
+// দুজনই একই message পেয়েছে, স্বাধীনভাবে কাজ করেছে
+```
+
+### কোনটা কখন ব্যবহার করবো?
+
+**Message Queue বেছে নেবো যখন:**
+
+- একটা কাজ একবারই হওয়া দরকার (payment processing, image resize)
+- কাজ distribute করতে চাও multiple workers-এ
+- Retry দরকার হলে same worker আবার নেবে
+
+**Pub/Sub বেছে নেবো যখন:**
+
+- একটা event-এর কথা অনেককে জানাতে হবে (order placed → email + sms + analytics)
+
 ## গুরুত্বপূর্ণ প্রশ্নগুলো
 
-- Message Queue এবং Pub/Sub এর মধ্যে পার্থক্য কি?
 - RabbitMQ এবং Apache Kafka এর মধ্যে মূল পার্থক্য কি?
 - At-most-once, At-least-once, Exactly-once delivery semantics কি? বাস্তবে কোনটা বেশি ব্যবহৃত হয় এবং কেন?
 - Message acknowledgement (ACK/NACK) কি? কেন এটি গুরুত্বপূর্ণ?
