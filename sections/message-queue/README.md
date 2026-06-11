@@ -264,6 +264,10 @@ Unique constraint error টা ধরবে ঠিকই, কিন্তু app
 
 যদি না → Insert করুন, তারপর ACK করুন
 
+<p align="center">
+  <img src="./images/duplicate-mq.png" alt="duplicate-mq">
+</p>
+
 ## Message Queue এবং Pub/Sub এর মধ্যে পার্থক্য কি?
 
 ### Message Queue — কাজের ধরন
