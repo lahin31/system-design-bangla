@@ -1,63 +1,3 @@
-# Kafka
-
-Kafka খুবই জনপ্রিয় Message Queue। High-performance data pipelines, streaming analytics, data integration, এবং mission-critical applications গুলোর জন্য Kafka ব্যবহার করা হয়। 
-
-## Kafka এর components
-
-- Producer: Producer কিংবা Publisher যার কাজ হচ্ছে message pass করা।
-
-- Cluster: Producer message টি Cluster এ pass করবে। Cluster এর ভিতর Topics, Broker এবং ZooKeeper থাকবে।
-
-<p align="center">
-  <img src="./images/cluster.png" alt="Cluster">
-</p>
-
-- Broker: Cluster এর ভিতর Broker থাকে। এটি একটি সার্ভার যার কাজ হল message/data গ্রহণ এবং প্রসেস এর পর send করা। 
-
-<p align="center">
-  <img src="./images/broker.png" alt="Broker">
-</p>
-
-- Topic: Topic মূলত Broker এর একটি Core Section, যার কাজ হল মেসেজগুলোকে Organize করা। Broker এর ভিতর এক বা একাধিক Topic থাকবে।
-
-<p align="center">
-  <img src="./images/topic.png" alt="Topic">
-</p>
-
-Topic এর ভিতর Data Partitioning হয়ে থাকে। প্রতিটি Partition এ মূলত Set of Messages বিদ্যমান থাকে। প্রতিটি message identifie করা হয় partition এর offset দ্বারা। Messages গুলো partition এর শেষে যুক্ত হয় এবং অন্য দিক থেকে send করা হয়।
-
-<p align="center">
-  <img src="./images/partition.png" alt="Partition">
-</p>
-
-প্রতিটি মেসেজ একটি Dedicated Partition এ চলে যাবে।
-
-- Consumer: Consumer মূলত Topic থেকে Message নিয়ে থাকে। Topic এর Partition থেকে Message Consumer এ যায়।
-
-<p align="center">
-  <img src="./images/consumer-1.png" alt="Consumer">
-</p>
-
-ছবিতে দুটি Partition এবং একটি Consumer আছে, Kafka এর আর্কিটেকচার অনুযায়ী একধিক Partition থেকে ডেটা consume করতে পারবে। 
-
-<p align="center">
-  <img src="./images/consumer-2.png" alt="Consumer">
-</p>
-
-এখানে দুটি Partition এবং দুটি Consumer আছে, Kafka এই দুটি Partition এবং দুটি Consumer কে সমানভাবে ডিস্ট্রিবিউট (Auto Balancing) করে দিবে।
-
-<p align="center">
-  <img src="./images/consumer-3.png" alt="Consumer">
-</p>
-
-যেহেতু ১টি Partition কে কেবল ১টি Consumer নিতে পারবে সেজন্য consumer 3 কিছু consume করতে পারবে না। 
-
-- ZooKeeper: এটিতে মূলত Kafka Cluster এর information এবং Consumer এর details সংরক্ষন করা থাকে। এটি Active Broker এর একটি লিস্ট মেইনটেইন করে। যখন কোনো Broker নষ্ট হয়ে যায় কিংবা কোনো error হলে ZooKeeper একটি notification পাঠিয়ে দেয় Kafka'র কাছে। Kafka সার্ভারের জন্য ZooKeeper থাকা বাধ্যতামূলক।
-
-<p align="center">
-  <img src="./images/zookeeper.png" alt="zookeeper">
-</p>
-
 # RabbitMQ
 
 এটি একটি জনপ্রিয় Message Broker যা Message Queue - implement করে থাকে।
@@ -197,6 +137,25 @@ async function consume(queue, handler) {
 
 module.exports = { consume };
 ```
+
+## Queue Backpressure এবং Auto-scaling Workers
+
+ধরুন peak time-এ আপনার সিস্টেমে প্রতি সেকেন্ডে ১০০০টা মেসেজ আসছে, কিন্তু আপনার consumer প্রতি সেকেন্ডে মাত্র ২০০টা প্রসেস করতে পারে। তাহলে প্রতি সেকেন্ডে ৮০০টা মেসেজ queue-এ জমা হতে থাকবে। Peak শেষ হওয়ার পরও এই backlog ক্লিয়ার করতে ৪০-৫০ মিনিট লাগবে (যদি কোনো নতুন মেসেজ না-ই আসে)।
+
+এর উপর যদি consumer-এ error হয় এবং মেসেজ nack/requeue হয়, তাহলে queue আরও বড় হতে থাকবে।
+
+**ভুল চিন্তাভাবনা:** "Just queue them all" — সব মেসেজ queue-তে ফেলে দিই, পরে দেখা যাবে।
+
+**সঠিক চিন্তাভাবনা:** "Can our consumers catch up eventually?" — যদি queue সাইজ ক্রমাগত বাড়তেই থাকে এবং consumer কখনো catch up করতে না পারে, তাহলে সিস্টেম একসময় ভেঙে পড়বে। প্রশ্নটা হওয়া উচিত — আমাদের consumer-রা কি কখনো এই backlog সামলে উঠতে পারবে?
+
+**সমাধান:** Dynamic Worker Scaling
+
+Queue-এর সাইজ (depth) মনিটর করে, সেই অনুযায়ী consumer/worker-এর সংখ্যা বাড়ানো বা কমানো (auto-scale)। যেমন:
+
+- Queue depth বাড়লে → নতুন worker spin up
+- Queue depth কমলে → extra worker scale down
+
+এভাবে peak load-এও সিস্টেম backlog ক্লিয়ার করতে পারে, এবং normal time-এ অতিরিক্ত resource খরচ হয় না।
 
 ## Message Queue এবং Worker Thread এর তফাৎ 
 
@@ -459,4 +418,3 @@ Billing   Analytics   Notification
 - Message Queue use করলে system latency বাড়ে না কমে? explain করুন।
 - Horizontal scaling এ multiple consumer use করলে কি কি challenge আসে?
 - Queue based system এ monitoring কি কি metric track করবেন?
-- Backpressure কি? Queue system এ কিভাবে implement করবেন?
