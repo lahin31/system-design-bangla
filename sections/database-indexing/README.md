@@ -194,3 +194,7 @@ SELECT title, genre FROM books WHERE title = 'Software Engineering';
 একই row টি সরাসরি (in-place) পরিবর্তন করা হয়। শুধুমাত্র ইনডেক্সটিই আপডেট হয়। কোনো নতুন row ভার্সন তৈরি হয় না, তাই overhead অনেকটাই কমে যায়।
 
 এই পার্থক্যের কারণে PostgreSQL-এ UPDATE অপারেশন ইনডেক্স maintenance এর দিক থেকে বেশি ব্যয়বহুল, আর MySQL এই অপ্রয়োজনীয় ইনডেক্স আপডেট এড়িয়ে চলতে পারে।
+
+<p align="center">
+  <img src="./images/uber_incident.png" alt="Uber Incident">
+</p>
