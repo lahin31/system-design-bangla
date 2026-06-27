@@ -1,289 +1,173 @@
-# Production Outages
+# 🚨 Production Outages (Root Cause Engineering Series)
 
-## সূচিপত্র
+## 🧠 Philosophy
 
-- [Database Scenarios](#database-scenarios)
-  - [The Silent MySQL Crash](#the-silent-mysql-crash)
-  - [Flash Sale Crash: The Pool wasn’t the problem - Query latency was](#flash-sale-crash-the-pool-wasnt-the-problem---query-latency-was)
+এই সিরিজ কোনো debugging guide না।
 
+এটা হচ্ছে:
 
-## Database Scenarios
+> কীভাবে systems সত্যিই fail করে, এবং কেন তারা সেইভাবেই fail করতে বাধ্য ছিল — সেটা বোঝার চেষ্টা।
 
-### The Silent MySQL Crash
+আমরা ধরে নেই:
 
-| Field               | Detail                                  |
-| ------------------- | ----------------------------------------|
-| **Time**            | রাত ১১:৩২                                |
-| **Symptom**         | Dashboard লোড হচ্ছে না, API হ্যাং করছে        |
-| **Root Cause**      | Disk ১০০% ফুল — MySQL লিখতে পারছে না        |
-| **Resolution Time** | ~১৫ মিনিট                                 |
-| **Severity**        | 🔴 Critical                              |
+> Systems randomভাবে fail করে না।  
+> তারা ঠিক তাদের design boundary অনুযায়ী fail করে।
 
----
+প্রতিটি incident analysis করা হবে এই lens দিয়ে:
 
-#### 📟 Alert
+- Hidden constraints (অদৃশ্য সীমাবদ্ধতা)
+- Feedback loops (amplification behavior)
+- Illusion vs reality (system কী দেখায় vs আসলে কী করছে)
+- Design decisions যা failure allow করেছে
 
-```
-"Lahin bhai, system অনেক slow… userরা dashboard load করতে পারছে না।"
-```
+একটি ছোট্ট ডিসক্লেইমার:
+
+এই সিরিজের প্রতিটি সিনারিও কোনো কাল্পনিক থিওরি বা বই থেকে নেওয়া নয়। এগুলো আমার নিজের ক্যারিয়ারে ফেস করা বাস্তব প্রোডাকশন ক্র্যাশ, রাতের পর রাত জাগা স্ট্রাগল এবং অন-ফিল্ড root cause অ্যানালিসিসের অভিজ্ঞতা থেকে লেখা।
 
 ---
 
-#### 🔍 Investigation Timeline
+## 📌 সূচিপত্র
 
-**`১১:৩৫ PM` — Application Layer**
+- Database Scenarios
+  - The Silent MySQL Crash
+  - Flash Sale Crash: The Pool wasn’t the problem - Query latency was
+- Distributed Systems Scenario
 
-```bash
+---
+
+# 🗄️ Database Scenarios
+
+## ⚠️ The Silent MySQL Crash
+
+| Field | Detail |
+|------|--------|
+| Time | রাত ১১:৩২ |
+| Symptom | Dashboard লোড হচ্ছে না, API হ্যাং করছে |
+| Root Cause | Disk ১০০% ফুল — MySQL write path block |
+| Resolution Time | ~১৫ মিনিট |
+| Severity | 🔴 Critical |
+
+---
+
+## 📟 Alert
+
+“Lahin bhai, system অনেক slow… userরা dashboard load করতে পারছে না।”
+
+---
+
+## 🔍 Investigation Timeline
+
+### ১১:৩৫ PM — Application Layer
+
 pm2 logs
-```
 
-```
-✅ API চলছে  
-✅ Workers চলছে  
-```
+✔ API চলছে  
+✔ Workers চলছে  
 
-সবকিছু দেখে ঠিক মনে হচ্ছিল। কিন্তু endpoint manually hit করতেই বোঝা গেল আসল সমস্যা:
+curl /api/dashboard → hang
 
-```bash
-curl /api/dashboard
-# হ্যাং করে থাকে...
-```
-
-Application বেঁচে আছে, কিন্তু response দিচ্ছে না — মানে সমস্যা নিচের লেয়ারে।
+👉 Process alive, but no request progress
 
 ---
 
-**`১১:৩৮ PM` — Database Layer**
+### ১১:৩৮ PM — Database Layer
 
-```bash
-systemctl status mysql
-# Active (running) ← শুধু নামেই running
-```
+systemctl status mysql → running (misleading)
 
-Direct login করার চেষ্টা:
+mysql login → freeze
 
-```bash
-mysql -u root -p
-# ফ্রিজ করে… তারপর fail
-```
-
-মানে MySQL technically চালু, কিন্তু practically dead — কোনো query serve করতে পারছে না।
+👉 DB alive, but no forward progress
 
 ---
 
-**`১১:৪০ PM` — Infrastructure Layer**
+### ১১:৪০ PM — Infrastructure Layer
 
-```bash
-df -h
-```
-
-```
-Filesystem      Size  Used  Avail  Use%  Mounted on
-/dev/sda1        50G   50G     0G  100%  /          ← 🔴
-```
-
-**এখানেই সমস্যা।** Disk পুরোপুরি ফুল।
-
-MySQL তখন “alive but paralyzed” — log লিখতে পারছে না, temp file তৈরি করতে পারছে না, transaction complete করতে পারছে না।
-
-ফলাফল: সব query হ্যাং।
+df -h → 100% disk full
 
 ---
 
-#### 🛠️ Fix
+## 🧠 System Behavior Model
 
-**Step 1 — কোনটা disk খাচ্ছে খুঁজে বের করুন**
+Request → MySQL → write blocked → txn stuck → connection stuck → pool full → API hang
 
-```bash
+---
+
+## 🔗 Root Cause Chain
+
+Disk Full
+→ Write blocked
+→ Transactions stuck
+→ Connections not released
+→ Queue builds
+→ System stall
+
+---
+
+## 🛠️ Fix
+
 du -sh /* | sort -rh | head -20
-```
+
+/var/lib/mysql  
+/var/log  
+/tmp  
+
+mysql purge logs  
+restart mysql  
 
 ---
 
-**Step 2 — সাধারণত যেগুলো culprit হয়**
+## 🧠 Takeaway
 
-```
-/var/lib/mysql/        ← binary logs  
-/var/log/              ← log rotate হয়নি  
-/tmp/                  ← temp file, dump  
-```
+Running ≠ Healthy  
+Disk full = silent killer  
+No forward progress = outage  
 
 ---
 
-**Step 3 — কিছু space খালি করুন, তারপর restart**
+# ⚡ Flash Sale Crash
 
-```bash
-# পুরানো MySQL binary logs delete
-mysql -e "PURGE BINARY LOGS BEFORE DATE_SUB(NOW(), INTERVAL 3 DAY);"
+## Symptom
+Too many connections + timeout
 
-systemctl restart mysql
-```
-
----
-
-#### 🧠 Takeaway
-
-* “Service running” মানেই service healthy না
-* Disk full = silent killer (especially for DB)
-* Monitoring ছাড়া এই সমস্যা আগে থেকে ধরা কঠিন
-* Log rotation, alerting, disk threshold — production এ must-have
+## Root Cause
+Query latency (~500ms)
 
 ---
 
-এই ধরনের আউটেজ আপনাকে শেখাবে — problem সবসময় code-এ না, অনেক সময় infrastructure-এই আসল bottleneck থাকে।
+## Timeline
 
-### Flash Sale Crash: The Pool wasn’t the problem - Query latency was
+Traffic: 100 → 15000
 
-| Field               | Detail                                      |
-| ------------------- | --------------------------------------------|
-| **Time**            | রাত ৮:০০ (Black Friday Sale শুরু)             |
-| **Symptom**         | `Too many connections`, API timeout          |
-| **Root Cause**      | High query latency (~500ms)                  |
-| **Resolution Time** | ~৩০ মিনিট                                    |
-| **Severity**        | 🔴 Critical                                  |
+pm2 logs → ER_CON_COUNT_ERROR
+
+Threads_running = 10
 
 ---
 
-#### 📟 Alert
+## System Model
 
-```
-"Lahin bhai, সেল শুরু হতেই অ্যাপ ডাউন! ডাটাবেজ কানেকশন এরর দিচ্ছে, ইউজাররা কিছুই কিনতে পারছে না।"
-```
+Slow query → connection held → pool full → queue → amplification loop
 
 ---
 
-#### 🔍 Investigation Timeline
+## Root Cause Chain
 
-**`৮:০০ PM` — Traffic Spike**
-
-ফ্ল্যাশ সেল শুরু হওয়ার সাথে সাথে traffic jumps from **~100 → 15,000** concurrent users। API suddenly শুরু করে fail করতে:
-
-```
-ER_CON_COUNT_ERROR
-```
-
-প্রথম সন্দেহ — "Connection pool ছোট নাকি?"
+Missing index → full scan → slow query → pool saturation → collapse
 
 ---
 
-**`৮:০৫ PM` — Application Layer**
+## Fix
 
-```bash
-pm2 logs
-```
+CREATE INDEX user_id
 
-```
-0|app  | Error: connect ETIMEDOUT 127.0.0.1:3306
-0|app  | at Connection._handleConnectTimeout
-0|app  | SequelizeConnectionError: connect ETIMEDOUT
-0|app  | at /app/node_modules/sequelize/lib/dialects/mysql/connection-manager.js
+500ms → 10ms
 
-0|app  | Error: ER_CON_COUNT_ERROR: Too many connections
-0|app  | at Handshake.Sequence._packetToError
-```
-
-PM2 ঠিক আছে, কিন্তু API fail করছে — মানে app layer alive, but struggling।
-
----
-
-**`৮:১০ PM` — Database Layer**
-
-ডাটাবেজ: MySQL
-
-```sql
-SHOW STATUS LIKE 'Threads_running';
-```
-
-```
-Threads_running = 10 (always maxed out)
-```
-
-এটা clear signal — সব connection busy, নতুন request ঢুকতেই পারছে না।
-
----
-
-**`৮:১২ PM` — Deeper Analysis**
-
-| Parameter            | Value        |
-| -------------------- | ------------ |
-| Connection pool size | `10`         |
-| Avg query latency    | `~500ms`     |
-
-Capacity calculation:
-
-```
-10 / 0.5 = 20 QPS
-```
-
-Incoming traffic ~750 req/sec — কিন্তু system handle করতে পারছে মাত্র 20।
-
-```
-✅ Processed  →   20/sec
-❌ Queued     →  ~730/sec
-```
-
-10টা connection আছে, প্রতিটা একটা query শেষ করতে 0.5s নেয়। তাহলে 1 সেকেন্ডে সর্বোচ্চ 20টা query serve করা সম্ভব।
-
----
-
-**`৮:১৫ PM` — Root Cause Identified**
-
-সমস্যা pool size **না**।
-
-আসল সমস্যা — **Slow queries (high latency)**:
-
-```
-Missing index → Full table scan → ভারী JOIN
-```
-
-**প্রতিটা query বেশি সময় নিচ্ছে → connection ধরে রাখছে → pool blocked।**
-
----
-
-#### 🛠️ Fix
-
-**Step 1 — Slow query identify করুন**
-
-```sql
-SHOW FULL PROCESSLIST;
-```
-
----
-
-**Step 2 — Query optimize করুন + index দিন**
-
-```sql
-CREATE INDEX idx_user_id ON orders(user_id);
-```
-
----
-
-**Step 3 — Latency drop করুন**
-
-```
-Before: ~500ms
-After:  ~10ms
-```
-
----
-
-**Step 4 — Capacity recalculate**
-
-```
 10 / 0.01 = 1000 QPS
-```
-
-Same infra, same pool — কিন্তু এখন 50x বেশি throughput।
 
 ---
 
-#### 🧠 Takeaway
+## Takeaway
 
-* Pool size বাড়ানো quick fix, কিন্তু real solution না
-* Slow query = hidden bottleneck
-* `Threads_running == pool size` → DB saturated-এর signal
-* Latency কমালে একই infra দিয়ে huge scale handle করা যায়
-
----
-
-এই ঘটনা একটা জিনিস clear করে — system down হয় না sudden load-এ, down হয় inefficient query-তে।
+Latency > Load  
+Amplification kills systems  
+Pool is time-based resource
