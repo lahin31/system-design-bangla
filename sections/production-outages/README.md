@@ -32,21 +32,17 @@
 ## 📌 সূচিপত্র
 
 - 🗄️ Database Scenarios
-  - The Silent MySQL Crash
-  - Flash Sale Crash: Pool নয়, আসল ভিলেন ছিল Query Latency
+  - [The Silent MySQL Crash](#the-silent-mysql-crash)
+  - [Flash Sale Crash: Pool নয়, আসল ভিলেন ছিল Query Latency](#flash-sale-crash-pool-নয়-আসল-ভিলেন-ছিল-query-latency)
 - ⚙️ Application & Process Management Scenarios
-  - The 255-Character Crash Loop
+  - [The 255-Character Crash Loop](#the-255-character-crash-loop)
 - 🌐 Web Server & Routing Scenarios
-  - The SPA Refresh 404 (Nginx Routing Mismatch)
+  - [The SPA Refresh 404 (Nginx Routing Mismatch)](#the-spa-refresh-404-nginx-routing-mismatch)
 - ⚡ Distributed Systems Scenarios (আসছে...)
-
----
 
 # 🗄️ Database Scenarios
 
----
-
-# ⚠️ The Silent MySQL Crash
+## The Silent MySQL Crash
 
 | Field | Detail |
 |------|--------|
@@ -76,7 +72,7 @@ pm2 logs
 
 API process তো বেঁচে আছে। Workers-ও চলছে। সব দেখে মনে হচ্ছে ঠিকই আছে।
 
-তারপর চেক করলাম:
+তারপর চেক করা হলো:
 
 ```bash
 curl /api/dashboard
@@ -179,11 +175,7 @@ du -sh /* | sort -rh | head -20
 - "কোনো forward progress নেই" — এটাই আসল outage-এর সংজ্ঞা, error message না
 - Backpressure যদি escape path না পায়, সেটাই ধীরে ধীরে collapse-এ পরিণত হয়
 
----
-
-# ⚡ Flash Sale Crash: Pool নয়, আসল ভিলেন ছিল Query Latency
-
----
+# Flash Sale Crash: Pool নয়, আসল ভিলেন ছিল Query Latency
 
 ## 📟 Alert
 
@@ -309,13 +301,9 @@ CREATE INDEX idx_user_id;
 - বেশিরভাগ "scaling problem" আসলে ভিতরে ভিতরে একটা query inefficiency problem
 - Latency নিজেই feedback loop তৈরি করে, এবং সেটা দেখতে capacity শর্টেজের মতো লাগে — কিন্তু আসলে তা না
 
----
-
 # ⚙️ Application & Process Management Scenarios
 
----
-
-# The 255-Character Crash Loop
+## The 255-Character Crash Loop
 
 ## 🧠 Philosophy
 
@@ -649,13 +637,9 @@ module.exports = {
 - Service layer-এর একটা path সেই assumption ভেঙে দিয়েছিল
 - PM2 faithfully restart করেছে — কিন্তু restart নিজে bug fix করেনি, শুধু symptom সাময়িকভাবে থামিয়েছে
 
----
-
 # 🌐 Web Server & Routing Scenarios
 
----
-
-# The SPA Refresh 404 (Nginx Routing Mismatch)
+## The SPA Refresh 404 (Nginx Routing Mismatch)
 
 ## 📌 Incident Summary
 
