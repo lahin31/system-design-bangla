@@ -36,6 +36,8 @@
   - Flash Sale Crash: Pool নয়, আসল ভিলেন ছিল Query Latency
 - ⚙️ Application & Process Management Scenarios
   - The 255-Character Crash Loop
+- 🌐 Web Server & Routing Scenarios
+  - The SPA Refresh 404 (Nginx Routing Mismatch)
 - ⚡ Distributed Systems Scenarios (আসছে...)
 
 ---
@@ -150,7 +152,7 @@ Disk Full
 
 ---
 
-## 🛠️ যেভাবে ঠিক করলাম
+## 🛠️ যেভাবে ঠিক করা হলো
 
 ```bash
 du -sh /* | sort -rh | head -20
@@ -286,7 +288,7 @@ Missing Index
 
 ---
 
-## 🛠️ যেভাবে ঠিক করলাম
+## 🛠️ যেভাবে ঠিক করা হলো
 
 ```sql
 SHOW FULL PROCESSLIST;
@@ -648,3 +650,181 @@ module.exports = {
 - PM2 faithfully restart করেছে — কিন্তু restart নিজে bug fix করেনি, শুধু symptom সাময়িকভাবে থামিয়েছে
 
 ---
+
+# 🌐 Web Server & Routing Scenarios
+
+---
+
+# The SPA Refresh 404 (Nginx Routing Mismatch)
+
+## 📌 Incident Summary
+
+| Field | Detail |
+|---|---|
+| Time | Deploy-এর পরের দিন, সকাল |
+| Symptom | `/dashboard`-এ refresh দিলেই 404, কিন্তু সরাসরি homepage থেকে navigate করলে ঠিকঠাক কাজ করে |
+| Root Cause | Nginx file-system-ভিত্তিক routing আশা করছিল, কিন্তু SPA route গুলো client-side JavaScript-এ resolve হচ্ছিল — সার্ভারে সেই path-এর কোনো ফাইল নেই |
+| Resolution | `try_files` directive দিয়ে সব unknown route-কে `index.html`-এ fallback করানো |
+| Severity | 🟠 High (user-facing, কিন্তু data loss নেই) |
+
+---
+
+## 📟 Alert
+
+"ভাই, dashboard page refresh দিলেই 404 দেখাচ্ছে। কিন্তু লিংকে ক্লিক করলে ঠিকই কাজ করে!"
+
+এই ধরনের bug report শুনলে প্রথমে মনে হয় frontend routing-এ কোনো bug আছে। কিন্তু আসল সমস্যা client এবং server — দুই জায়গায় route বোঝার দুইটা সম্পূর্ণ আলাদা মডেলের মধ্যে।
+
+---
+
+## 🔍 Investigation Timeline
+
+### Step 1 — Browser থেকে প্রথম পর্যবেক্ষণ
+
+```
+example.com → click "Dashboard" link → example.com/dashboard লোড হয়
+```
+
+কোনো problem নেই। URL বদলেছে, page-ও বদলেছে।
+
+```
+example.com/dashboard → press F5 (refresh)
+```
+
+→ **404 Not Found**
+
+👉 একই URL, কিন্তু একবার কাজ করছে, একবার করছে না। মানে সমস্যাটা route নিজে নয় — সমস্যা হলো *কীভাবে* এই route-এ পৌঁছানো হচ্ছে।
+
+### Step 2 — Network Tab খুঁটিয়ে দেখা
+
+ক্লিক করার সময়:
+
+```
+No network request sent for /dashboard
+```
+
+Refresh করার সময়:
+
+```
+GET /dashboard → 404
+```
+
+👉 এখানেই clue পাওয়া গেল — link click-এর সময় কোনো HTTP request-ই Nginx পর্যন্ত যাচ্ছে না। পুরোটাই browser-এর ভেতরে handle হচ্ছে।
+
+### Step 3 — Nginx Config চেক করা
+
+```
+cat /etc/nginx/sites-available/default
+```
+
+```nginx
+location / {
+  try_files $uri $uri/ =404;
+}
+```
+
+👉 পাওয়া গেল আসল কারণ — `=404` মানে Nginx-কে বলা আছে, file বা directory না পাওয়া গেলে সরাসরি 404 ফেরত দিতে। Nginx-এর কাছে `/dashboard` মানে disk-এ থাকা একটা ফাইল বা ফোল্ডার — যা আদতে কখনো বানানোই হয়নি।
+
+---
+
+## 🧠 System কী হয়েছিল, আসলে
+
+এটা কোনো crash বা bug না — এটা দুই layer-এর routing model-এর মধ্যে একটা **mismatch**।
+
+```
+Browser একটা link-এ click করে
+→ React Router URL বদলে দেয় (pushState)
+→ কোনো server request যায়ই না
+→ Component client-side render হয়
+→ সব ঠিকঠাক দেখায়
+
+কিন্তু refresh করলে:
+→ Browser একদম fresh GET request পাঠায়
+→ Nginx সেই path-কে ফাইল-সিস্টেম path হিসেবে treat করে
+→ /dashboard নামে কোনো ফাইল বা folder নেই
+→ Nginx 404 ফেরত দেয় — JavaScript লোড হওয়ার সুযোগই পায় না
+```
+
+Nginx ভুল কিছু করেনি — সে নিজের নিয়ম অনুযায়ী ঠিকই কাজ করছে। সমস্যা হলো, SPA routing model-এর সাথে এই নিয়মটা কখনো align করানোই হয়নি।
+
+---
+
+## 🔗 Root Cause Chain
+
+```
+SPA deploy করা হয় (client-side routing সহ)
+→ Nginx config-এ শুধু literal file/folder lookup আছে
+→ Client navigation request পাঠায় না (JS intercept করে)
+→ Refresh/direct-URL hit সরাসরি Nginx-কে আসল path জিজ্ঞেস করে
+→ ডিস্কে সেই path-এর কোনো file নেই
+→ try_files $uri $uri/ =404 fallback ট্রিগার হয়
+→ Nginx 404 পাঠায়, index.html কখনো লোড হয় না
+→ React Router-এর সুযোগই থাকে না route resolve করার
+```
+
+---
+
+## 🛠️ যেভাবে ঠিক করা হলো
+
+```nginx
+server {
+  listen 80;
+  server_name example.com;
+  root /var/www/my-spa-app;
+  index index.html;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+}
+```
+
+```
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+### `try_files` ধাপে ধাপে যা করে
+
+1. **`$uri`** — exact file আছে কিনা চেক করে (যেমন `logo.png`)। থাকলে সরাসরি serve করে।
+2. **`$uri/`** — file না হলে directory কিনা চেক করে।
+3. **`/index.html`** — কোনোটাই না থাকলে (যেমন `/dashboard`), `index.html` ফেরত দেয়। Browser SPA লোড করে, client-side router URL দেখে ঠিক component বানায়।
+
+ফলাফল: refresh করলেও আর 404 আসে না, কারণ Nginx এখন routing decision client-side JavaScript-এর হাতে ছেড়ে দেয়, নিজে judge করার চেষ্টা করে না।
+
+---
+
+## ⚠️ Hidden Failure Mode
+
+> "যদি ক্লিক করে কাজ করে, তাহলে route-টা ঠিক আছে" — এই assumption-টাই বিভ্রান্তিকর।
+
+Client-side navigation আর server-side request — এই দুটো সম্পূর্ণ আলাদা path। QA-তে যদি কেউ শুধু click করে test করে, refresh কখনো না করে, এই bug প্রোডাকশনে যাওয়া পর্যন্ত ধরাই পড়বে না। আর deep-link শেয়ার করা (কাউকে সরাসরি `/dashboard` লিংক পাঠানো) একই কারণে ভেঙে যাবে — কারণ সেটাও একটা fresh server request।
+
+---
+
+```
+
+## 🧨 Common Gotchas (Fix করার পরেও যা মাথায় রাখতে হবে)
+
+### 1. Real 404 হারিয়ে যায়
+
+```
+example.com/this-route-does-not-exist-anywhere
+```
+
+এখন এটাও `index.html`-এ fallback হয়ে যাবে — Nginx-level 404 আর দেখা যাবে না। এর মানে **router নিজেই** একটা catch-all "Not Found" route define করতে হবে, নাহলে user একটা broken page-কে valid page ভেবে বসে থাকবে।
+
+### 2. `index.html` Caching
+
+`index.html` যদি aggressively cache হয়, নতুন deploy করার পরেও user পুরনো JS bundle reference করা version দেখতে থাকবে। `index.html`-এর জন্য `Cache-Control: no-cache` রাখা ভালো, আর static asset (JS/CSS bundle)-এর জন্য hashed filename + long-term caching।
+
+---
+
+## 🧠 আসল শিক্ষা
+
+> Server কখনো জানে না client-side router-এর ভেতরে কী কী route define করা আছে — তাই তাকে বলে দিতে হয়, "তোমার যা চেনার কথা না, সেটার fallback দিয়ে দিও।"
+
+- File-system-ভিত্তিক routing আর client-side routing — এই দুই মডেল কখনো নিজে থেকে একে অপরের সাথে align হয় না, explicitly বলে দিতে হয়
+- "ক্লিক করে কাজ করছে" মানেই "route ঠিক আছে" না — refresh আর direct-URL hit আলাদাভাবে test করতে হয়
+- একটা fix (try_files fallback) নিজের সাথে নতুন trade-off নিয়ে আসে (real 404 হারানো) — fix দেওয়ার মানে এই না যে সব side-effect ভাবা শেষ
+- Infrastructure layer (Nginx) আর application layer (router) — দুই জায়গাতেই "not found" handling থাকা লাগে, একটা আরেকটার বিকল্প না
