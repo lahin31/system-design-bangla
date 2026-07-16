@@ -54,7 +54,8 @@
 - [Section 43: High Availability best practices by Netflix](#section-43-high-availability-best-practices-by-netflix)
 - [Section 44: Production Outages](#section-44-production-outages)
 - [Section 45: Real World Problems](#section-45-real-world-problems)
-- [Section 46: Resources](#section-46-resources)
+- [Section 46: Backend Interview Questions and Answers](#section-46-backend-interview-questions-and-answers)
+- [Section 47: Resources](#section-47ddd-resources)
 
 ## 🛣️ System Design Learning Path
 
@@ -162,7 +163,7 @@
 
 ### 📚 References
 
-- [Section 46: Resources](#section-46-resources)
+- [Section 47: Resources](#section-47-resources)
 
 ## Section 1: System Design
 
@@ -830,7 +831,13 @@ Real world production outage আপনাকে শেখায় কীভা�
 - Design a scalable blob storage like Amazon's S3
 - Design a Zero Downtime Database Migration
 
-## Section 46: Resources
+## Section 46: Backend Interview Questions and Answers
+
+এই সেকশনে ব্যাকএন্ড ইন্টারভিউতে সাধারণত যেসব প্রশ্ন জিজ্ঞেস করা হয়, সেগুলোর সংক্ষিপ্ত এবং প্র্যাক্টিক্যাল উত্তর দেয়া হয়েছে। প্রতিটি উত্তর ছোট রাখার চেষ্টা করা হয়েছে, বিস্তারিত জানতে উপরের রিলেটেড সেকশনগুলো দেখুন।
+
+🔗 [**আরও পড়ুন: ব্যাকএন্ড ইন্টারভিউ প্রশ্ন ও উত্তর**](./sections/backend-interview-questions-and-answers/README.md)
+
+## Section 47: Resources
 
 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer by Donne Martin (free)</a>
 - <a href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321" target="_blank">Designing Data Intensive Applications (paid)</a>
