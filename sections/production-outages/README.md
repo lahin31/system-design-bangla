@@ -34,6 +34,7 @@
 - 🗄️ Database Scenarios
   - [The Silent MySQL Crash](#the-silent-mysql-crash)
   - [Flash Sale Crash: Pool নয়, আসল ভিলেন ছিল Query Latency](#flash-sale-crash-pool-নয়-আসল-ভিলেন-ছিল-query-latency)
+  - [Migration Disaster: The Table that Froze Production](#mgration-disaster-the-table-that-froze-production)
 - ⚙️ Application & Process Management Scenarios
   - [The 255-Character Crash Loop](#the-255-character-crash-loop)
   - [Cron ভুল টাইমজোনে ট্রিগার হওয়া](#cron-ভুল-টাইমজোনে-ট্রিগার-হওয়া)
@@ -301,6 +302,156 @@ CREATE INDEX idx_user_id;
 - Connection pool আসলে একটা time-based resource — যত বেশি thread, ততটা সমাধান না
 - বেশিরভাগ "scaling problem" আসলে ভিতরে ভিতরে একটা query inefficiency problem
 - Latency নিজেই feedback loop তৈরি করে, এবং সেটা দেখতে capacity শর্টেজের মতো লাগে — কিন্তু আসলে তা না
+
+## Migration Disaster: The Table that Froze Production
+
+### 🧱 Environment
+
+- MySQL 5.7
+- InnoDB
+- `users` table size: ~43 million rows
+
+> **নোট:** এই ঘটনাটি **MySQL 5.x**-এ ঘটেছিল, যেখানে `ALTER TABLE ... ADD COLUMN`-এর মতো অনেক DDL অপারেশন টেবিল রিবিল্ড ঘটাতে পারত এবং উল্লেখযোগ্য সময় ধরে মেটাডেটা লক ধরে রাখতে পারত। আধুনিক MySQL 8 ভার্সনগুলো এই ধরনের অনেক অপারেশনের জন্য `ALGORITHM=INSTANT` সাপোর্ট করে, যার ফলে এই নির্দিষ্ট ধরনের ব্যর্থতা এখন অনেক কম দেখা যায়।
+
+## 📌 Incident Summary
+
+| Field | Detail |
+|---|---|
+| Time | দুপুর ২:১৫ |
+| Symptom | API suddenly hanging, database CPU low, connections increasing |
+| Root Cause | A seemingly harmless migration acquired metadata locks and blocked the write path |
+| Resolution | Kill migration session |
+| Severity | 🔴 Critical |
+
+## 📟 Alert
+
+> "ভাই API খুব slow."
+
+কয়েক মিনিট পরে:
+
+> "Create user কাজ করছে না।"
+
+তারপর:
+
+> "Checkout কাজ করছে না।"
+
+সবচেয়ে অদ্ভুত বিষয় ছিল:
+
+- CPU usage low
+- Memory healthy
+- Database running
+- Network healthy
+
+কিন্তু পুরো system কার্যত unusable।
+
+## 🔍 Investigation Timeline
+
+### 2:17 PM
+
+```sql
+SHOW PROCESSLIST;
+```
+
+দেখা গেলো:
+
+```text
+Waiting for table metadata lock
+Waiting for table metadata lock
+Waiting for table metadata lock
+Waiting for table metadata lock
+```
+
+### 2:19 PM
+
+Deploy pipeline-এর অংশ হিসেবে একটি migration run হয়েছিল:
+
+```sql
+ALTER TABLE users
+ADD COLUMN last_login_ip VARCHAR(45);
+```
+
+দেখতে harmless।
+
+কিন্তু `users` table-এ ছিল:
+
+```text
+43 million rows
+```
+
+## 🧠 System কী হয়েছিল, আসলে
+
+MySQL 5.x schema change করার আগে table-এর উপর metadata lock নেয় এবং অনেক DDL operation-এর ক্ষেত্রে table rebuild করে।
+
+```text
+মাইগ্রেশন শুরু হলো
+→ মেটাডেটা লক নেওয়া হলো
+→ নতুন write অপেক্ষায় থাকল
+→ ট্রানজ্যাকশন জমা হতে লাগল
+→ কানেকশন পুল ভরে গেল
+→ API আটকে যেতে শুরু করল
+→ রিট্রাই বাড়তে লাগল
+→ পুরো সিস্টেম থমকে গেল
+```
+
+## 🔗 Root Cause Chain
+
+```text
+ALTER TABLE শুরু হলো
+→ মেটাডেটা লক নেওয়া হলো
+→ INSERT/UPDATE ব্লক হয়ে গেল
+→ ট্রানজ্যাকশনগুলো খোলা থেকে গেল
+→ কানেকশন রিলিজ হলো না
+→ পুল saturation দেখা দিল
+→ রিকোয়েস্ট queue বাড়তে থাকল
+→ সর্বত্র টাইমআউট
+```
+
+## 🛠️ Resolution
+
+```sql
+SHOW PROCESSLIST;
+```
+
+Output
+
+```markdown
+Id    User   Command   Time    State
+101   deploy Query     420     altering table
+102   app    Query     300     Waiting for table metadata lock
+103   app    Query     280     Waiting for table metadata lock
+104   app    Query     275     Waiting for table metadata lock
+```
+
+এখানে:
+
+- 101 হচ্ছে lock holder
+- 102-104 হচ্ছে lock waiter
+
+তখন:
+
+```KILL 101;```
+
+দিলে:
+
+- ALTER TABLE বাতিল হলো
+    - → কানেকশন টার্মিনেট হলো
+    - → মেটাডেটা লক রিলিজ হলো
+    - → অপেক্ষমান queries চলতে থাকল
+
+## 🛡️ Prevention
+
+- `gh-ost` বা `pt-online-schema-change` ব্যবহার করুন
+- ভারী মাইগ্রেশনগুলো কম ট্রাফিকের সময়ে চালান
+- প্রোডাকশনে রোলআউটের আগে মাইগ্রেশনের সময়কাল টেস্ট করুন
+- মেটাডেটা লক এবং লক ওয়েট টাইম মনিটর করুন
+
+## 🧠 আসল শিক্ষা
+
+```markdown
+> বেশিরভাগ প্রোডাকশন আউটেজ সিস্টেম ভেঙে ফেলার কারণে হয় না।
+
+> এগুলো হয় তখন, যখন সিস্টেমকে ট্রাফিক সার্ভ করা অবস্থাতেই পরিবর্তন করতে বলা হয়।
+```
 
 # ⚙️ Application & Process Management Scenarios
 
