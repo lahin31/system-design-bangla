@@ -34,7 +34,7 @@
 - 🗄️ Database Scenarios
   - [The Silent MySQL Crash](#the-silent-mysql-crash)
   - [Flash Sale Crash: Pool নয়, আসল ভিলেন ছিল Query Latency](#flash-sale-crash-pool-নয়-আসল-ভিলেন-ছিল-query-latency)
-  - [Migration Disaster: The Table that Froze Production](#mgration-disaster-the-table-that-froze-production)
+  - [Migration Disaster: The Table that Froze Production](#migration-disaster-the-table-that-froze-production)
 - ⚙️ Application & Process Management Scenarios
   - [The 255-Character Crash Loop](#the-255-character-crash-loop)
   - [Cron ভুল টাইমজোনে ট্রিগার হওয়া](#cron-ভুল-টাইমজোনে-ট্রিগার-হওয়া)
